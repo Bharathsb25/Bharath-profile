@@ -58,10 +58,22 @@ export default function Hero() {
                 Hire / Work With Me
               </a>
               <a
-                href="#experience"
-                className="rounded-full border border-line bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
+                href={profile.resume}
+                download
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
               >
-                View Experience
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" />
+                </svg>
+                Download CV
               </a>
               <a
                 href={profile.linkedin}

@@ -42,6 +42,13 @@ export default function Contact() {
               >
                 in LinkedIn
               </a>
+              <a
+                href={profile.resume}
+                download
+                className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                ↓ Download CV
+              </a>
             </div>
           </div>
         </div>
