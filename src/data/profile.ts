@@ -2,7 +2,10 @@ export const profile = {
   name: "Bharath Sathiskumar",
   title: "CRM Implementation Specialist — Delivery & Testing",
   tagline:
-    "Product Analyst & CRM Implementation Specialist helping SaaS teams deliver smooth onboarding, reliable integrations, and happier clients.",
+    "I help SaaS and enterprise teams turn complex CRM rollouts into smooth, on-time deliveries — from requirement gathering and integrations to testing, onboarding, and client success.",
+  availability:
+    "Open to full-time opportunities and available for freelance / contract projects.",
+  photo: "/profile.jpg",
   email: "Sbharath23@outlook.com",
   phone: "+91 9944979507",
   linkedin: "https://www.linkedin.com/in/bharath-sb-4a9834146",
@@ -10,6 +13,13 @@ export const profile = {
   summary:
     "Results-driven Product Analyst and CRM Implementation Specialist with experience in SaaS implementations, CRM delivery, functional testing, and client onboarding. Skilled in requirement gathering, cross-functional coordination, API integrations, workflow optimization, and enterprise application support. Proven ability to manage multiple projects, ensure timely delivery, and enhance customer experience through strong problem-solving and stakeholder management skills. Experienced in client interactions, process improvement initiatives, and delivering business-focused solutions aligned with organizational goals.",
 };
+
+export const highlights = [
+  { value: "4+ yrs", label: "CRM & SaaS Implementation" },
+  { value: "Multi-region", label: "Concurrent Project Delivery" },
+  { value: "MBA-IB", label: "International Business" },
+  { value: "Power BI", label: "Certified Analyst" },
+];
 
 export const skillGroups = [
   {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { href: "#about", label: "About" },
@@ -12,23 +12,37 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur dark:border-slate-800/80 dark:bg-slate-950/80">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "border-b border-line bg-background/80 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
           href="#top"
-          className="text-sm font-semibold tracking-tight text-slate-900 dark:text-white"
+          className="font-display text-sm font-bold tracking-tight text-foreground"
         >
-          Bharath Sathiskumar
+          Bharath<span className="text-gradient"> Sathiskumar</span>
         </a>
 
-        <ul className="hidden gap-8 text-sm font-medium text-slate-600 sm:flex dark:text-slate-300">
+        <ul className="hidden gap-8 text-sm font-medium text-muted sm:flex">
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="transition-colors hover:text-teal-600 dark:hover:text-teal-400"
+                className="transition-colors hover:text-foreground"
               >
                 {link.label}
               </a>
@@ -36,10 +50,19 @@ export default function Navbar() {
           ))}
         </ul>
 
+        <div className="hidden sm:block">
+          <a
+            href="#contact"
+            className="rounded-full accent-bar px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
+          >
+            Let&apos;s talk
+          </a>
+        </div>
+
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 text-slate-700 sm:hidden dark:border-slate-700 dark:text-slate-200"
+          className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground sm:hidden"
           aria-label="Toggle menu"
         >
           {open ? "✕" : "☰"}
@@ -47,7 +70,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-slate-200 px-6 py-3 text-sm font-medium text-slate-600 sm:hidden dark:border-slate-800 dark:text-slate-300">
+        <ul className="flex flex-col gap-1 border-t border-line bg-background px-6 py-3 text-sm font-medium text-muted sm:hidden">
           {links.map((link) => (
             <li key={link.href}>
               <a
@@ -59,6 +82,15 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="mt-1 block rounded-full accent-bar px-4 py-2 text-center font-semibold text-white"
+            >
+              Let&apos;s talk
+            </a>
+          </li>
         </ul>
       )}
     </header>

@@ -1,51 +1,119 @@
-import { profile } from "@/data/profile";
+import Image from "next/image";
+import { profile, highlights } from "@/data/profile";
+import Reveal from "@/components/Reveal";
 
 export default function Hero() {
   return (
-    <section
-      id="top"
-      className="border-b border-slate-200 bg-gradient-to-b from-teal-50 to-white px-6 py-20 dark:border-slate-800 dark:from-slate-900 dark:to-slate-950"
-    >
-      <div className="mx-auto flex max-w-5xl flex-col items-start gap-6">
-        <span className="rounded-full bg-teal-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-teal-700 dark:bg-teal-900/40 dark:text-teal-300">
-          Available for new opportunities & freelance projects
-        </span>
+    <section id="top" className="relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="pointer-events-none absolute inset-0 bg-grid" />
+      <div className="glow animate-floaty pointer-events-none absolute -right-24 -top-24 h-96 w-96 opacity-40" />
+      <div className="glow pointer-events-none absolute -left-32 top-40 h-80 w-80 opacity-20" />
 
-        <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-          {profile.name}
-        </h1>
+      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-6 pb-16 pt-16 md:grid-cols-[1.35fr_1fr] md:pt-24">
+        {/* Text */}
+        <div className="flex flex-col items-start gap-6">
+          <Reveal>
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                </span>
+                Open to Full-Time Roles
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-sm">
+                <span className="h-2 w-2 rounded-full accent-bar" />
+                Available for Freelance
+              </span>
+            </div>
+          </Reveal>
 
-        <p className="text-lg font-medium text-teal-700 dark:text-teal-400">
-          {profile.title}
-        </p>
+          <Reveal delay={80}>
+            <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl">
+              Bharath
+              <br />
+              <span className="text-gradient">Sathiskumar</span>
+            </h1>
+          </Reveal>
 
-        <p className="max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
-          {profile.tagline}
-        </p>
+          <Reveal delay={140}>
+            <p className="font-display text-lg font-semibold text-foreground/80">
+              {profile.title}
+            </p>
+          </Reveal>
 
-        <div className="flex flex-wrap gap-3 pt-2">
-          <a
-            href="#contact"
-            className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700"
-          >
-            Get in touch
-          </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:border-teal-600 hover:text-teal-700 dark:border-slate-700 dark:text-slate-200 dark:hover:border-teal-500 dark:hover:text-teal-400"
-          >
-            Email Me
-          </a>
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:border-teal-600 hover:text-teal-700 dark:border-slate-700 dark:text-slate-200 dark:hover:border-teal-500 dark:hover:text-teal-400"
-          >
-            LinkedIn
-          </a>
+          <Reveal delay={200}>
+            <p className="max-w-xl text-base leading-7 text-muted">
+              {profile.tagline}
+            </p>
+          </Reveal>
+
+          <Reveal delay={260}>
+            <div className="flex flex-wrap gap-3 pt-1">
+              <a
+                href="#contact"
+                className="rounded-full accent-bar px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-transform hover:-translate-y-0.5"
+              >
+                Hire / Work With Me
+              </a>
+              <a
+                href="#experience"
+                className="rounded-full border border-line bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
+              >
+                View Experience
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-line bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </Reveal>
         </div>
+
+        {/* Photo */}
+        <Reveal delay={160} className="flex justify-center md:justify-end">
+          <div className="relative">
+            <div className="glow animate-floaty absolute -inset-6 opacity-60" />
+            <div className="accent-bar absolute -inset-1 rounded-[1.75rem] opacity-70 blur-[2px]" />
+            <div className="relative h-64 w-64 overflow-hidden rounded-[1.6rem] border border-white/20 shadow-2xl sm:h-72 sm:w-72">
+              <Image
+                src={profile.photo}
+                alt={profile.name}
+                fill
+                priority
+                sizes="288px"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </Reveal>
       </div>
+
+      {/* Highlights strip */}
+      <Reveal delay={120}>
+        <div className="relative mx-auto max-w-6xl px-6 pb-16">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {highlights.map((item) => (
+              <div
+                key={item.label}
+                className="card card-hover px-5 py-5 text-center"
+              >
+                <div className="font-display text-2xl font-bold text-gradient">
+                  {item.value}
+                </div>
+                <div className="mt-1 text-xs font-medium text-muted">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }

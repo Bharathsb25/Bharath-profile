@@ -1,39 +1,54 @@
 import { experience } from "@/data/profile";
+import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 
 export default function Experience() {
   return (
-    <section id="experience" className="px-6 py-16">
-      <div className="mx-auto max-w-5xl">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-teal-600 dark:text-teal-400">
-          Experience
-        </h2>
+    <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
+      <Reveal>
+        <SectionHeading
+          index="03"
+          kicker="Career"
+          title="Professional Experience"
+        />
+      </Reveal>
 
-        <div className="mt-6 space-y-8">
-          {experience.map((job) => (
-            <div
-              key={`${job.company}-${job.period}`}
-              className="border-l-2 border-teal-200 pl-6 dark:border-teal-900"
-            >
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="text-base font-semibold text-slate-900 dark:text-white">
-                  {job.role}
-                </h3>
-                <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                  {job.period}
+      <div className="relative">
+        {/* vertical line */}
+        <div className="absolute left-[7px] top-2 bottom-2 w-px bg-line md:left-[9px]" />
+
+        <div className="space-y-8">
+          {experience.map((job, i) => (
+            <Reveal key={`${job.company}-${job.period}`} delay={i * 70}>
+              <div className="relative pl-10 md:pl-12">
+                {/* dot */}
+                <span className="absolute left-0 top-1.5 flex h-4 w-4 items-center justify-center md:h-5 md:w-5">
+                  <span className="h-4 w-4 rounded-full accent-bar ring-4 ring-background md:h-5 md:w-5" />
                 </span>
+
+                <div className="card card-hover p-6">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 className="font-display text-base font-semibold text-foreground">
+                      {job.role}
+                    </h3>
+                    <span className="rounded-full border border-line px-3 py-1 text-xs font-medium text-muted">
+                      {job.period}
+                    </span>
+                  </div>
+                  <p className="mt-0.5 text-sm font-semibold text-accent">
+                    {job.company}
+                  </p>
+                  <ul className="mt-4 grid gap-2.5 text-sm leading-6 text-muted">
+                    {job.points.map((point, j) => (
+                      <li key={j} className="flex items-start gap-2.5">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full accent-bar" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <p className="text-sm font-medium text-teal-700 dark:text-teal-400">
-                {job.company}
-              </p>
-              <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                {job.points.map((point, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="text-teal-500">•</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
