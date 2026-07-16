@@ -14,10 +14,30 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
+const title = "Bharath Sathiskumar — CRM Implementation Specialist";
+const description =
+  "CRM Implementation Specialist & Product Analyst — SaaS delivery, client onboarding, API integrations, testing, and project management. Open to full-time roles and freelance projects.";
+
 export const metadata: Metadata = {
-  title: "Bharath Sathiskumar — CRM Implementation Specialist",
-  description:
-    "Portfolio of Bharath Sathiskumar, CRM Implementation Specialist and Product Analyst — SaaS delivery, client onboarding, API integrations, testing, and project management. Open to full-time roles and freelance projects.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title,
+    description,
+    siteName: "Bharath Sathiskumar",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({
