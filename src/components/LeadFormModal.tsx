@@ -15,6 +15,8 @@ export default function LeadFormModal({
   onSuccess,
   /** When true, the action still completes even if the form service fails. */
   proceedOnError = false,
+  /** When true, the phone field is required. */
+  requirePhone = false,
 }: {
   open: boolean;
   onClose: () => void;
@@ -24,6 +26,7 @@ export default function LeadFormModal({
   submitLabel: string;
   onSuccess: () => void;
   proceedOnError?: boolean;
+  requirePhone?: boolean;
 }) {
   const [status, setStatus] = useState<Status>("idle");
 
@@ -143,12 +146,18 @@ export default function LeadFormModal({
               htmlFor="lead-phone"
               className="mb-1 block text-xs font-medium text-muted"
             >
-              Phone <span className="text-muted/70">(optional)</span>
+              Phone{" "}
+              {requirePhone ? (
+                <span className="text-accent">*</span>
+              ) : (
+                <span className="text-muted/70">(optional)</span>
+              )}
             </label>
             <input
               id="lead-phone"
               name="phone"
               type="tel"
+              required={requirePhone}
               placeholder="+91 …"
               className={field}
             />

@@ -134,6 +134,52 @@ export const experience = [
   },
 ];
 
+export const featuredProject = {
+  title: "Automated Client Onboarding & Implementation Workflow",
+  role: "Process Owner & Automation Designer",
+  type: "End-to-end process automation",
+  summary:
+    "Designed and implemented an end-to-end automation for client onboarding — from deal closure to go-live — replacing manual status-chasing with a self-service intake system, automated task routing, and a tiered escalation engine. Cut onboarding friction and gave every stakeholder real-time visibility into progress.",
+  flow: [
+    {
+      title: "Deal Close",
+      desc: "Auto-triggers tenant setup, invoicing & a secure OTP-gated intake email.",
+    },
+    {
+      title: "Self-Service Intake",
+      desc: "Dynamic wizard — shows only purchased modules, with edit-locks, timed reminders & full versioning.",
+    },
+    {
+      title: "Auto Task Activation",
+      desc: "A completed section flips the matching internal task live and routes it to the right owner — zero chasing.",
+    },
+    {
+      title: "Tiered Escalation",
+      desc: "3-level SLA ladder (assignee → PM → senior) fires across email, chat & internal channels before the client ever notices.",
+    },
+    {
+      title: "Go-Live",
+      desc: "Supports single-shot or phased go-live, each phase tracked as its own milestone.",
+    },
+  ],
+  highlights: [
+    "OTP-authenticated intake gating for authorized stakeholders only",
+    "Section-level concurrent-edit locks with snapshotted versioning",
+    "Milestone-based customer updates plus an automated weekly digest",
+    "End-to-end DLT registration & SMS/WhatsApp gateway setup (TRAI-compliant)",
+  ],
+  tags: [
+    "Process Automation",
+    "Workflow Design",
+    "Customer Onboarding",
+    "SLA Management",
+    "DLT Registration",
+    "SMS/WhatsApp Config",
+  ],
+  businessCta:
+    "Need this for your business? I've handled DLT registration and SMS/WhatsApp configuration end-to-end — happy to set it up for you.",
+};
+
 export const education = [
   {
     degree: "MBA — International Business",

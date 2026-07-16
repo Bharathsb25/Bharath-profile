@@ -56,11 +56,12 @@ export default function DownloadCVButton({
         open={open}
         onClose={() => setOpen(false)}
         title="Download my CV"
-        description="Tell me a bit about you and the download will start right away."
+        description="Share your details and the download will start right away."
         subject="📄 Someone downloaded your CV"
         submitLabel="Download CV"
         onSuccess={download}
         proceedOnError
+        requirePhone
       />
     </>
   );
