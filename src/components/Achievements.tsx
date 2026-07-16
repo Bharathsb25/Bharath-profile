@@ -1,4 +1,4 @@
-import { awards, languages, publications } from "@/data/profile";
+import { awards, languages } from "@/data/profile";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 
@@ -7,13 +7,13 @@ export default function Achievements() {
     <section className="mx-auto max-w-6xl px-6 py-20">
       <Reveal>
         <SectionHeading
-          index="06"
+          index="07"
           kicker="More"
-          title="Awards, Languages & Publications"
+          title="Awards & Languages"
         />
       </Reveal>
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2">
         <Reveal>
           <div className="card h-full p-6">
             <h3 className="font-display text-sm font-semibold text-foreground">
@@ -45,29 +45,6 @@ export default function Achievements() {
                 </span>
               ))}
             </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={180}>
-          <div className="card h-full p-6">
-            <h3 className="font-display text-sm font-semibold text-foreground">
-              Publications
-            </h3>
-            <ul className="mt-4 space-y-3 text-sm">
-              {publications.map((pub) => (
-                <li key={pub.url}>
-                  <a
-                    href={pub.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-start gap-2 text-muted transition-colors hover:text-accent"
-                  >
-                    <span className="mt-0.5 text-accent">↗</span>
-                    <span className="group-hover:underline">{pub.title}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </Reveal>
       </div>

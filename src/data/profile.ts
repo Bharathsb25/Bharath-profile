@@ -176,8 +176,11 @@ export const featuredProject = {
     "DLT Registration",
     "SMS/WhatsApp Config",
   ],
-  businessCta:
-    "Need this for your business? I've handled DLT registration and SMS/WhatsApp configuration end-to-end — happy to set it up for you.",
+  businessCta: {
+    title: "Want to automate your business?",
+    text: "From onboarding to go-live, I design workflows that run themselves — less manual chasing, more visibility for everyone. If that sounds useful, ping me.",
+    button: "Ping me →",
+  },
 };
 
 export const education = [
@@ -220,13 +223,21 @@ export const awards = ["Camu Star Award"];
 
 export const languages = ["Tamil", "English", "Telugu", "Hindi"];
 
+export const blogUrl = "https://learnmoregrowmore0.blogspot.com";
+
 export const publications = [
   {
     title: "The Secret to Product Success — Playing the Long Game",
+    excerpt:
+      "Why the best products win on patience and compounding, not quick wins.",
+    date: "Jun 2025",
     url: "https://learnmoregrowmore0.blogspot.com/2025/06/the-secret-to-product-successplaying.html",
   },
   {
     title: "Why Business Management Fails — The Missing Piece",
+    excerpt:
+      "The overlooked factor behind stalled teams and how to put it back in place.",
+    date: "Dec 2025",
     url: "https://learnmoregrowmore0.blogspot.com/2025/12/why-business-management-failsmissing.html",
   },
 ];
