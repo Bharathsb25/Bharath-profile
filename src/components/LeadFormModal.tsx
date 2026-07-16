@@ -187,7 +187,15 @@ export default function LeadFormModal({
           </button>
 
           <p className="text-center text-[11px] leading-4 text-muted">
-            Your details are only used so I can get back to you. Never shared.
+            Your details are only used so I can get back to you — never shared
+            or used for marketing.{" "}
+            <a
+              href="/privacy"
+              target="_blank"
+              className="font-medium text-accent hover:underline"
+            >
+              Privacy policy
+            </a>
           </p>
         </form>
       </div>

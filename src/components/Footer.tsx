@@ -11,6 +11,9 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
         <div className="flex gap-4 text-xs font-medium text-muted">
+          <a href="/privacy" className="transition-colors hover:text-accent">
+            Privacy
+          </a>
           <a
             href={`mailto:${profile.email}`}
             className="transition-colors hover:text-accent"

@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#education", label: "Education" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#education", label: "Education" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -31,7 +31,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a
-          href="#top"
+          href="/#top"
           className="font-display text-sm font-bold tracking-tight text-foreground"
         >
           Bharath<span className="text-gradient"> Sathiskumar</span>
@@ -52,7 +52,7 @@ export default function Navbar() {
 
         <div className="hidden sm:block">
           <a
-            href="#contact"
+            href="/#contact"
             className="rounded-full accent-bar px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
           >
             Let&apos;s talk
@@ -84,7 +84,7 @@ export default function Navbar() {
           ))}
           <li>
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="mt-1 block rounded-full accent-bar px-4 py-2 text-center font-semibold text-white"
             >
