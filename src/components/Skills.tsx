@@ -15,14 +15,11 @@ const icons = [
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className="border-y border-line bg-card/40 py-20"
-    >
+    <section id="skills" className="py-20">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <SectionHeading
-            index="02"
+            index="03"
             kicker="Capabilities"
             title="Skills & Expertise"
           />

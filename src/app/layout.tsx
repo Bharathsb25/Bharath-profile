@@ -18,9 +18,9 @@ const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : "http://localhost:3000";
 
-const title = "Bharath Sathiskumar — CRM Implementation Specialist";
+const title = "Bharath Sathiskumar — Implementation Specialist";
 const description =
-  "CRM Implementation Specialist & Product Analyst — SaaS delivery, client onboarding, API integrations, testing, and project management. Open to full-time roles and freelance projects.";
+  "Implementation Specialist & Product Analyst — SaaS delivery, client onboarding, API integrations, testing, and project management. Open to full-time roles and freelance projects.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

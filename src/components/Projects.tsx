@@ -15,7 +15,7 @@ export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
       <Reveal>
-        <SectionHeading index="04" kicker="Featured Work" title="Projects" />
+        <SectionHeading index="05" kicker="Featured Work" title="Projects" />
       </Reveal>
 
       <Reveal delay={80}>

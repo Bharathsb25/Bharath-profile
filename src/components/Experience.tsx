@@ -7,7 +7,7 @@ export default function Experience() {
     <section id="experience" className="mx-auto max-w-6xl px-6 py-20">
       <Reveal>
         <SectionHeading
-          index="03"
+          index="04"
           kicker="Career"
           title="Professional Experience"
         />

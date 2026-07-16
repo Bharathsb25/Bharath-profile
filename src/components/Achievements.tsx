@@ -7,7 +7,7 @@ export default function Achievements() {
     <section className="mx-auto max-w-6xl px-6 py-20">
       <Reveal>
         <SectionHeading
-          index="07"
+          index="08"
           kicker="More"
           title="Awards & Languages"
         />

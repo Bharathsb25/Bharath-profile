@@ -7,7 +7,7 @@ export default function Blog() {
     <section id="blog" className="mx-auto max-w-6xl px-6 py-20">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <Reveal>
-          <SectionHeading index="06" kicker="Writing" title="From My Blog" />
+          <SectionHeading index="07" kicker="Writing" title="From My Blog" />
         </Reveal>
         <Reveal delay={80}>
           <a

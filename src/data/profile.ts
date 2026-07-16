@@ -1,8 +1,8 @@
 export const profile = {
   name: "Bharath Sathiskumar",
-  title: "CRM Implementation Specialist — Delivery & Testing",
+  title: "Implementation Specialist — Delivery & Testing",
   tagline:
-    "I help SaaS and enterprise teams turn complex CRM rollouts into smooth, on-time deliveries — from requirement gathering and integrations to testing, onboarding, and client success.",
+    "I help SaaS and enterprise teams turn complex product rollouts into smooth, on-time deliveries — and help businesses automate the workflows that slow them down.",
   availability:
     "Open to full-time opportunities and available for freelance / contract projects.",
   photo: "/profile.jpg",
@@ -15,11 +15,11 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/bharath-sb-4a9834146",
   location: "India",
   summary:
-    "Results-driven Product Analyst and CRM Implementation Specialist with experience in SaaS implementations, CRM delivery, functional testing, and client onboarding. Skilled in requirement gathering, cross-functional coordination, API integrations, workflow optimization, and enterprise application support. Proven ability to manage multiple projects, ensure timely delivery, and enhance customer experience through strong problem-solving and stakeholder management skills. Experienced in client interactions, process improvement initiatives, and delivering business-focused solutions aligned with organizational goals.",
+    "Results-driven Product Analyst and Implementation Specialist with experience in SaaS implementations, CRM delivery, functional testing, and client onboarding. Skilled in requirement gathering, cross-functional coordination, API integrations, workflow optimization, and enterprise application support. Proven ability to manage multiple projects, ensure timely delivery, and enhance customer experience through strong problem-solving and stakeholder management skills. Experienced in client interactions, process improvement initiatives, and delivering business-focused solutions aligned with organizational goals.",
 };
 
 export const highlights = [
-  { value: "4+ yrs", label: "CRM & SaaS Implementation" },
+  { value: "4+ yrs", label: "SaaS Implementation & Delivery" },
   { value: "Multi-region", label: "Concurrent Project Delivery" },
   { value: "MBA-IB", label: "International Business" },
   { value: "Power BI", label: "Certified Analyst" },
@@ -82,6 +82,33 @@ export const toolsAndTech = [
   "LeadSquared",
   "HRMS Platforms",
   "SMS Gateways (Dai4SMS, Netyfish)",
+];
+
+export const services = [
+  {
+    title: "End-to-End Implementation & Onboarding",
+    desc: "From kickoff to go-live: requirement gathering, configuration, data validation, user training, and hypercare — delivered on time.",
+  },
+  {
+    title: "Business Process Automation",
+    desc: "I map your manual workflows and rebuild them to run themselves — auto-routing, reminders, SLA escalations, and real-time visibility.",
+  },
+  {
+    title: "Functional & UAT Testing",
+    desc: "Functional and regression testing, UAT coordination, and go-live quality gates that catch issues before your customers do.",
+  },
+  {
+    title: "Dashboards & Reporting",
+    desc: "Power BI dashboards and MIS reporting that turn scattered data into decisions your team can act on.",
+  },
+  {
+    title: "Messaging Compliance — DLT & SMS/WhatsApp",
+    desc: "End-to-end DLT registration, template approvals, and SMS/WhatsApp gateway configuration — fully TRAI-compliant.",
+  },
+  {
+    title: "Business Website Setup",
+    desc: "A clean, professional web presence for your business — with lead capture, analytics, and easy self-editing built in.",
+  },
 ];
 
 export const experience = [

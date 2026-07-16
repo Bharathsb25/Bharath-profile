@@ -11,7 +11,7 @@ export default function Education() {
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <SectionHeading
-            index="05"
+            index="06"
             kicker="Background"
             title="Education & Certifications"
           />
