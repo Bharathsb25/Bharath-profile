@@ -21,9 +21,9 @@ export default function Blog() {
         </Reveal>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {publications.map((post, i) => (
-          <Reveal key={post.url} delay={i * 90}>
+          <Reveal key={post.url} delay={(i % 3) * 90}>
             <a
               href={post.url}
               target="_blank"

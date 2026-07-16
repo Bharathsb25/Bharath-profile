@@ -227,17 +227,39 @@ export const blogUrl = "https://learnmoregrowmore0.blogspot.com";
 
 export const publications = [
   {
-    title: "The Secret to Product Success — Playing the Long Game",
+    title:
+      "Automation and AI Are Not a Luxury Anymore — They're the Next Stage of Your Business",
     excerpt:
-      "Why the best products win on patience and compounding, not quick wins.",
-    date: "Jun 2025",
-    url: "https://learnmoregrowmore0.blogspot.com/2025/06/the-secret-to-product-successplaying.html",
+      "Automation and AI have shifted from optional to essential — enabling faster operations and better employee experiences.",
+    date: "Jul 2026",
+    url: "https://learnmoregrowmore0.blogspot.com/2026/07/automation-and-ai-are-not-luxury.html",
   },
   {
-    title: "Why Business Management Fails — The Missing Piece",
+    title: "Beyond Revenue: The Real Metric of Business Success",
     excerpt:
-      "The overlooked factor behind stalled teams and how to put it back in place.",
+      "Lasting success comes from building customer trust through consistent problem-solving, not short-term profit.",
+    date: "Jan 2026",
+    url: "https://learnmoregrowmore0.blogspot.com/2026/01/beyond-revenue-real-metric-of-business.html",
+  },
+  {
+    title: "Cost-Cutting Isn't Strategy — It's a Valuation Trap",
+    excerpt:
+      "Growth through strategic investment beats short-term cost reduction for building sustainable business value.",
     date: "Dec 2025",
-    url: "https://learnmoregrowmore0.blogspot.com/2025/12/why-business-management-failsmissing.html",
+    url: "https://learnmoregrowmore0.blogspot.com/2025/12/cost-cutting-isnt-strategy-its.html",
+  },
+  {
+    title: "Why Business Management Fails: The Missing Root Cause Analysis",
+    excerpt:
+      "Teams should run thorough root-cause analysis on problems instead of applying temporary fixes to recurring issues.",
+    date: "Dec 2025",
+    url: "https://learnmoregrowmore0.blogspot.com/2025/12/why-business-management-fails-missing.html",
+  },
+  {
+    title: "Unlocking Product Growth: Why Market Focus Makes All the Difference",
+    excerpt:
+      "Product success hinges on choosing between broad generalist platforms and specialized niche tools.",
+    date: "Jun 2025",
+    url: "https://learnmoregrowmore0.blogspot.com/2025/06/the-secret-to-product-success-playing.html",
   },
 ];
