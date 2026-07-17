@@ -66,6 +66,7 @@ export const skillGroups = [
       "CRM Platforms & Configuration",
       "ERP / HRMS Systems",
       "Workflow Automation & Rules Engines",
+      "AI-Assisted Workflows (Claude)",
       "Data Analysis & Reporting (Power BI)",
       "Postman API Testing",
     ],
@@ -74,6 +75,7 @@ export const skillGroups = [
 
 export const toolsAndTech = [
   "Power BI",
+  "Claude AI",
   "MS Excel",
   "Jaspersoft",
   "Postman",
@@ -91,7 +93,7 @@ export const services = [
   },
   {
     title: "Business Process Automation",
-    desc: "I map your manual workflows and rebuild them to run themselves — auto-routing, reminders, SLA escalations, and real-time visibility.",
+    desc: "I map your manual workflows and rebuild them to run themselves — auto-routing, reminders, SLA escalations, and real-time visibility — designed and shipped faster with AI tools like Claude.",
   },
   {
     title: "Functional & UAT Testing",
