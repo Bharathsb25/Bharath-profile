@@ -58,6 +58,18 @@ public/Bharath-Sathiskumar-CV.pdf
 (Replace the existing file with the same name — the download button will then
 serve the new version automatically.)
 
+**Editing the CV itself:** the CV's source lives in `cv-source/cv.html` —
+open it in any text editor and change the words (same idea as profile.ts).
+Then regenerate the PDF with:
+
+```
+cd cv-source
+npx playwright install chromium   # first time only
+node render-pdf.js
+```
+
+This overwrites `public/Bharath-Sathiskumar-CV.pdf` with your edited version.
+
 ---
 
 ## 4. Change the browser tab logo ("B")
