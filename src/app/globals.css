@@ -34,6 +34,32 @@
   }
 }
 
+/* Manual theme toggle — data-theme overrides the OS preference above. */
+:root[data-theme="light"] {
+  --background: #fbfcfd;
+  --foreground: #0b1220;
+  --card: #ffffff;
+  --muted: #5b6472;
+  --border: #e6e9ef;
+  --accent: #0d9488;
+  --accent-2: #0891b2;
+}
+
+:root[data-theme="dark"] {
+  --background: #070b14;
+  --foreground: #eef2f8;
+  --card: #0e1524;
+  --muted: #93a0b4;
+  --border: #1b2436;
+  --accent: #2dd4bf;
+  --accent-2: #22d3ee;
+}
+
+/* Smooth the transition when the user flips the toggle. */
+:root[data-theme] body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -116,6 +142,52 @@ body {
   box-shadow: 0 18px 40px -20px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
+/* ---- 3D tilt ---- */
+.tilt-scene {
+  perspective: 1000px;
+}
+
+.tilt-inner {
+  position: relative;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition:
+    transform 0.2s ease-out,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  will-change: transform;
+}
+
+.tilt-scene:hover .tilt-inner {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: 0 30px 60px -28px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+/* Glossy light that follows the cursor across the surface */
+.tilt-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 24%, transparent),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tilt-scene:hover .tilt-inner::after {
+  opacity: 1;
+}
+
+/* Lift a child above the surface for real depth */
+.tilt-raise {
+  transform: translateZ(38px);
+}
+
 /* ---- Scroll reveal ---- */
 .reveal {
   opacity: 0;
@@ -157,5 +229,12 @@ body {
   }
   .animate-floaty {
     animation: none;
+  }
+  .tilt-inner {
+    transform: none !important;
+    transition: none;
+  }
+  .tilt-raise {
+    transform: none;
   }
 }

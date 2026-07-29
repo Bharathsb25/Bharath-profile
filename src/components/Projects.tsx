@@ -11,6 +11,14 @@ const stepIcons = [
   "M5 13c0-5 4-9 9-11 1 6-1 10-5 12l-4-1zM5 13l-2 5 5-2M14 2c3 .5 5.5 3 6 6", // rocket
 ];
 
+// One glyph per outcome tile (solid, filled)
+const outcomeIcons = [
+  "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5h-2v6l5 3 1-1.7-4-2.4V7Z", // clock — speed
+  "M12 5C5 5 1 12 1 12s4 7 11 7 11-7 11-7-4-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z", // eye — visibility
+  "M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z", // shield — SLA
+  "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 14L6 11.2l1.4-1.4 3.4 3.4 5.8-5.8L18 8.8 10.8 16Z", // check — chasing removed
+];
+
 export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
@@ -40,6 +48,54 @@ export default function Projects() {
           <p className="relative mt-3 max-w-3xl text-sm leading-7 text-muted">
             {p.summary}
           </p>
+
+          {/* Case-study context */}
+          <div className="relative mt-6 grid gap-5 rounded-2xl border border-line bg-background p-5 sm:grid-cols-2">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+                Client
+              </p>
+              <p className="mt-1.5 text-sm text-foreground/85">{p.client}</p>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+                The problem
+              </p>
+              <p className="mt-1.5 text-sm text-muted">{p.problem}</p>
+            </div>
+          </div>
+
+          {/* Outcomes */}
+          <div className="relative mt-5">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+              The outcome
+            </p>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {p.outcomes.map((o, i) => (
+                <div
+                  key={o.label}
+                  className="rounded-xl border border-line bg-background p-4 text-center"
+                >
+                  <span className="mx-auto mb-2.5 flex h-9 w-9 items-center justify-center rounded-full accent-bar text-white">
+                    <svg
+                      className="h-4.5 w-4.5"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      style={{ width: "1.1rem", height: "1.1rem" }}
+                    >
+                      <path d={outcomeIcons[i % outcomeIcons.length]} />
+                    </svg>
+                  </span>
+                  <div className="font-display text-lg font-bold text-gradient">
+                    {o.value}
+                  </div>
+                  <div className="mt-1 text-xs leading-4 text-muted">
+                    {o.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
           {/* Flow chart */}
           <div className="relative mt-8">

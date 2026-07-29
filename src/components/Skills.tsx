@@ -1,6 +1,7 @@
 import { skillGroups, toolsAndTech } from "@/data/profile";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import TiltCard from "@/components/TiltCard";
 
 const icons = [
   // Project & Delivery — rocket / target
@@ -13,7 +14,14 @@ const icons = [
   "M5 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm14 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM12 21a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM6.5 6.5l4 9m3-9-4 9",
 ];
 
+// Sparkle / AI glyph for the featured group
+const aiIcon =
+  "M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Zm6 9l.8 2.2 2.2.8-2.2.8L18 18l-.8-2.2-2.2-.8 2.2-.8L18 12ZM6 13l.7 1.9 1.9.7-1.9.7L6 18l-.7-1.8-1.9-.7 1.9-.7L6 13Z";
+
 export default function Skills() {
+  const featured = skillGroups.find((g) => g.featured);
+  const rest = skillGroups.filter((g) => !g.featured);
+
   return (
     <section id="skills" className="py-20">
       <div className="mx-auto max-w-6xl px-6">
@@ -25,10 +33,54 @@ export default function Skills() {
           />
         </Reveal>
 
+        {/* Featured AI skill group */}
+        {featured && (
+          <Reveal>
+            <TiltCard
+              max={5}
+              className="card mb-5 overflow-hidden p-7 sm:p-8"
+            >
+              {/* ambient accent glow */}
+              <div className="glow pointer-events-none absolute -right-16 -top-16 h-56 w-56 opacity-30" />
+
+              <div className="relative flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
+                <div className="flex items-center gap-4 md:w-64 md:shrink-0 md:flex-col md:items-start">
+                  <span className="tilt-raise flex h-14 w-14 items-center justify-center rounded-2xl accent-bar text-white shadow-lg shadow-accent/30">
+                    <svg
+                      className="h-7 w-7"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d={aiIcon} />
+                    </svg>
+                  </span>
+                  <div>
+                    <span className="inline-block rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-accent">
+                      Core Focus
+                    </span>
+                    <h3 className="mt-2 font-display text-lg font-bold text-foreground">
+                      {featured.title}
+                    </h3>
+                  </div>
+                </div>
+
+                <ul className="grid flex-1 gap-2.5 text-sm text-foreground/80 sm:grid-cols-2">
+                  {featured.skills.map((skill) => (
+                    <li key={skill} className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full accent-bar" />
+                      <span>{skill}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </TiltCard>
+          </Reveal>
+        )}
+
         <div className="grid gap-5 sm:grid-cols-2">
-          {skillGroups.map((group, i) => (
+          {rest.map((group, i) => (
             <Reveal key={group.title} delay={i * 90}>
-              <div className="card card-hover h-full p-6">
+              <TiltCard className="card h-full p-6">
                 <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl accent-bar text-white">
                     <svg
@@ -55,7 +107,7 @@ export default function Skills() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

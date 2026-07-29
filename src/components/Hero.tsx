@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { profile, highlights } from "@/data/profile";
 import Reveal from "@/components/Reveal";
-import DownloadCVButton from "@/components/DownloadCVButton";
+import TiltCard from "@/components/TiltCard";
 
 export default function Hero() {
   return (
@@ -26,6 +26,12 @@ export default function Hero() {
               <span className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-sm">
                 <span className="h-2 w-2 rounded-full accent-bar" />
                 Available for Freelance
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3.5 py-1.5 text-xs font-semibold text-accent shadow-sm">
+                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z" />
+                </svg>
+                AI-Assisted Delivery
               </span>
             </div>
           </Reveal>
@@ -58,7 +64,6 @@ export default function Hero() {
               >
                 Hire / Work With Me
               </a>
-              <DownloadCVButton />
               <a
                 href={profile.linkedin}
                 target="_blank"
@@ -69,23 +74,51 @@ export default function Hero() {
               </a>
             </div>
           </Reveal>
+
+          <Reveal delay={320}>
+            <div className="pt-2">
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">
+                Working across
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {[
+                  "Meritto",
+                  "Camu",
+                  "LeadSquared",
+                  "Power BI",
+                  "Jira",
+                  "Postman",
+                  "Claude AI",
+                ].map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-lg border border-line bg-card px-3 py-1 text-xs font-medium text-muted"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
 
         {/* Photo */}
         <Reveal delay={160} className="flex justify-center md:justify-end">
           <div className="relative">
             <div className="glow animate-floaty absolute -inset-6 opacity-60" />
-            <div className="accent-bar absolute -inset-1 rounded-[1.75rem] opacity-70 blur-[2px]" />
-            <div className="relative h-64 w-64 overflow-hidden rounded-[1.6rem] border border-white/20 shadow-2xl sm:h-72 sm:w-72">
-              <Image
-                src={profile.photo}
-                alt={profile.name}
-                fill
-                priority
-                sizes="288px"
-                className="object-cover"
-              />
-            </div>
+            <TiltCard max={8} className="rounded-[1.75rem]">
+              <div className="accent-bar absolute -inset-1 rounded-[1.75rem] opacity-70 blur-[2px]" />
+              <div className="relative h-64 w-64 overflow-hidden rounded-[1.6rem] border border-white/20 shadow-2xl sm:h-72 sm:w-72">
+                <Image
+                  src={profile.photo}
+                  alt={profile.name}
+                  fill
+                  priority
+                  sizes="288px"
+                  className="object-cover"
+                />
+              </div>
+            </TiltCard>
           </div>
         </Reveal>
       </div>
@@ -95,17 +128,14 @@ export default function Hero() {
         <div className="relative mx-auto max-w-6xl px-6 pb-16">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {highlights.map((item) => (
-              <div
-                key={item.label}
-                className="card card-hover px-5 py-5 text-center"
-              >
+              <TiltCard key={item.label} className="card px-5 py-5 text-center">
                 <div className="font-display text-2xl font-bold text-gradient">
                   {item.value}
                 </div>
                 <div className="mt-1 text-xs font-medium text-muted">
                   {item.label}
                 </div>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>

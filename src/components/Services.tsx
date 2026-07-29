@@ -1,15 +1,18 @@
 import { services } from "@/data/profile";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import TiltCard from "@/components/TiltCard";
 
 // One line-icon per service, in display order
 const serviceIcons = [
-  "M5 13c0-5 4-9 9-11 1 6-1 10-5 12l-4-1zM5 13l-2 5 5-2M14 2c3 .5 5.5 3 6 6", // rocket
-  "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm8.5 4a8.5 8.5 0 0 1-.1 1.2l2 1.6-2 3.4-2.4-1a8.6 8.6 0 0 1-2 1.2l-.4 2.6h-4l-.4-2.6a8.6 8.6 0 0 1-2-1.2l-2.4 1-2-3.4 2-1.6a8.5 8.5 0 0 1 0-2.4l-2-1.6 2-3.4 2.4 1a8.6 8.6 0 0 1 2-1.2L10 3h4l.4 2.6a8.6 8.6 0 0 1 2 1.2l2.4-1 2 3.4-2 1.6c.1.4.1.8.1 1.2z", // gear
-  "M12 2 4 5v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V5l-8-3Zm-1 12-3-3 1.4-1.4L11 11.2l3.6-3.6L16 9l-5 5Z", // shield-check
-  "M4 20V10m5.5 10V4m5.5 16v-7M20.5 20V8M2 20h20", // bar chart
-  "M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1zm4 5h8M8 13h5", // message
-  "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-9 10h18M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10c-2.5-2.5-4-6-4-10s1.5-7.5 4-10z", // globe
+  "M2 9l10-5 10 5-10 5L2 9Zm4 3.2V16c0 1.2 2.7 2.6 6 2.6s6-1.4 6-2.6v-3.8", // graduation cap — Education CRM
+  "M6 4a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm12 11a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM8.5 6.5H14a3.5 3.5 0 0 1 3.5 3.5v5", // process route — Onboarding Design
+  "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 5.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7ZM5.6 5.6l3.2 3.2m6.4 6.4 3.2 3.2m0-12.8-3.2 3.2M8.8 15.2l-3.2 3.2", // lifebuoy — Rescue
+  "M8 3v3M16 3v3M4 8.5h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm4.5 9 2 2 3.5-3.5", // calendar-check — Fractional
+  "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm8.5 4a8.5 8.5 0 0 1-.1 1.2l2 1.6-2 3.4-2.4-1a8.6 8.6 0 0 1-2 1.2l-.4 2.6h-4l-.4-2.6a8.6 8.6 0 0 1-2-1.2l-2.4 1-2-3.4 2-1.6a8.5 8.5 0 0 1 0-2.4l-2-1.6 2-3.4 2.4 1a8.6 8.6 0 0 1 2-1.2L10 3h4l.4 2.6a8.6 8.6 0 0 1 2 1.2l2.4-1 2 3.4-2 1.6c.1.4.1.8.1 1.2z", // gear — Automation
+  "M12 2 4 5v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V5l-8-3Zm-1 12-3-3 1.4-1.4L11 11.2l3.6-3.6L16 9l-5 5Z", // shield-check — Testing
+  "M4 20V10m5.5 10V4m5.5 16v-7M20.5 20V8M2 20h20", // bar chart — Dashboards
+  "M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1zm4 5h8M8 13h5", // message — Compliance
 ];
 
 export default function Services() {
@@ -30,8 +33,8 @@ export default function Services() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => (
             <Reveal key={service.title} delay={(i % 3) * 90}>
-              <div className="card card-hover h-full p-6">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl accent-bar text-white">
+              <TiltCard className="card h-full p-6">
+                <span className="tilt-raise flex h-11 w-11 items-center justify-center rounded-xl accent-bar text-white">
                   <svg
                     className="h-5 w-5"
                     viewBox="0 0 24 24"
@@ -50,7 +53,7 @@ export default function Services() {
                 <p className="mt-2 text-sm leading-6 text-muted">
                   {service.desc}
                 </p>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

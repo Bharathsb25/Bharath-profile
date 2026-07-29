@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { href: "/#about", label: "About" },
@@ -51,23 +52,23 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden sm:block">
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
           <a
             href="/#contact"
-            className="rounded-full accent-bar px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
+            className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 sm:inline-block"
           >
             Let&apos;s talk
           </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground sm:hidden"
+            aria-label="Toggle menu"
+          >
+            {open ? "✕" : "☰"}
+          </button>
         </div>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground sm:hidden"
-          aria-label="Toggle menu"
-        >
-          {open ? "✕" : "☰"}
-        </button>
       </nav>
 
       {open && (

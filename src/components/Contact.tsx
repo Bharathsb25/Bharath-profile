@@ -2,7 +2,6 @@ import { profile } from "@/data/profile";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import RevealPhoneButton from "@/components/RevealPhoneButton";
-import DownloadCVButton from "@/components/DownloadCVButton";
 
 export default function Contact() {
   return (
@@ -42,7 +41,6 @@ export default function Contact() {
                 >
                   in LinkedIn
                 </a>
-                <DownloadCVButton variant="light" />
               </div>
             </div>
 

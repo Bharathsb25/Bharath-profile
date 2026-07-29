@@ -25,7 +25,25 @@ export const highlights = [
   { value: "Power BI", label: "Certified Analyst" },
 ];
 
-export const skillGroups = [
+export type SkillGroup = {
+  title: string;
+  skills: string[];
+  featured?: boolean;
+};
+
+export const skillGroups: SkillGroup[] = [
+  {
+    title: "AI & Intelligent Automation",
+    featured: true,
+    skills: [
+      "AI-Assisted Solution Design & Delivery (Claude, ChatGPT)",
+      "Prompt Engineering for Business Workflows",
+      "LLM-Powered Automation & Integrations",
+      "AI-Driven Documentation & Requirement Drafting",
+      "AI-Assisted Testing & Data Validation",
+      "Building AI Chat & Support Assistants",
+    ],
+  },
   {
     title: "Project & Delivery",
     skills: [
@@ -76,6 +94,7 @@ export const skillGroups = [
 export const toolsAndTech = [
   "Power BI",
   "Claude AI",
+  "ChatGPT",
   "MS Excel",
   "Jaspersoft",
   "Postman",
@@ -88,8 +107,20 @@ export const toolsAndTech = [
 
 export const services = [
   {
-    title: "End-to-End Implementation & Onboarding",
-    desc: "From kickoff to go-live: requirement gathering, configuration, data validation, user training, and hypercare — delivered on time.",
+    title: "Education CRM & Admissions Funnel",
+    desc: "End-to-end admissions setup for schools, colleges & ed-tech — enquiry capture, lead scoring, counselor routing, application-to-enrollment tracking, fee workflows, and SMS / WhatsApp / email journeys. Built on Meritto, Camu & LeadSquared.",
+  },
+  {
+    title: "Onboarding Process Design",
+    desc: "A self-service client intake wizard, section-level auto-task activation, and a tiered SLA escalation ladder (assignee → PM → senior) — replacing manual status-chasing with real-time visibility for every stakeholder.",
+  },
+  {
+    title: "Implementation Rescue",
+    desc: "Stalled, slipping, or over-budget rollout? I step in, diagnose where delivery broke down, re-baseline scope and timeline, and drive it to go-live — built for urgent, at-risk projects.",
+  },
+  {
+    title: "Fractional Implementation Manager",
+    desc: "Implementation leadership for small SaaS teams without a full-time hire — a few days a month owning delivery process, onboarding quality, and go-live readiness. Available on retainer.",
   },
   {
     title: "Business Process Automation",
@@ -106,10 +137,6 @@ export const services = [
   {
     title: "Messaging Compliance — DLT & SMS/WhatsApp",
     desc: "End-to-end DLT registration, template approvals, and SMS/WhatsApp gateway configuration — fully TRAI-compliant.",
-  },
-  {
-    title: "Business Website Setup",
-    desc: "A clean, professional web presence for your business — with lead capture, analytics, and easy self-editing built in.",
   },
 ];
 
@@ -169,6 +196,16 @@ export const featuredProject = {
   type: "End-to-end process automation",
   summary:
     "Designed and implemented an end-to-end automation for client onboarding — from deal closure to go-live — replacing manual status-chasing with a self-service intake system, automated task routing, and a tiered escalation engine. Cut onboarding friction and gave every stakeholder real-time visibility into progress.",
+  client: "B2B SaaS delivery team · multi-region client onboarding",
+  problem:
+    "Onboarding ran on manual status-chasing across email and spreadsheets — no single source of truth, slow handoffs between client and delivery, and SLA slips that only surfaced after the client complained.",
+  // Qualitative outcomes (swap for real figures once confirmed).
+  outcomes: [
+    { value: "Faster", label: "Onboarding cycle time" },
+    { value: "Real-time", label: "Stakeholder visibility" },
+    { value: "Fewer", label: "SLA breaches" },
+    { value: "Zero", label: "Manual status-chasing" },
+  ],
   flow: [
     {
       title: "Deal Close",

@@ -19,7 +19,11 @@ export default function ContactForm() {
         method: "POST",
         body: data,
       });
-      if (!res.ok) throw new Error("submit failed");
+      const json = await res.json().catch(() => null);
+      // Web3Forms returns HTTP 200 even on some failures — trust its `success` flag.
+      if (!res.ok || !json?.success) {
+        throw new Error(json?.message || "submit failed");
+      }
       setStatus("success");
       form.reset();
     } catch {
