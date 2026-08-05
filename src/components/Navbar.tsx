@@ -6,6 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 const links = [
   { href: "/#about", label: "About" },
   { href: "/#services", label: "Services" },
+  { href: "/freelance", label: "Hire Me" },
   { href: "/#experience", label: "Experience" },
   { href: "/#projects", label: "Projects" },
   { href: "/#blog", label: "Blog" },
@@ -39,7 +40,9 @@ export default function Navbar() {
           Bharath<span className="text-gradient"> Sathiskumar</span>
         </a>
 
-        <ul className="hidden gap-8 text-sm font-medium text-muted sm:flex">
+        {/* Desktop nav starts at md — at sm the full link row is wider than the
+            viewport and pushes the page sideways. */}
+        <ul className="hidden gap-6 text-sm font-medium text-muted md:flex lg:gap-8">
           {links.map((link) => (
             <li key={link.href}>
               <a
@@ -56,14 +59,14 @@ export default function Navbar() {
           <ThemeToggle />
           <a
             href="/#contact"
-            className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 sm:inline-block"
+            className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 md:inline-block"
           >
             Let&apos;s talk
           </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground sm:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground md:hidden"
             aria-label="Toggle menu"
           >
             {open ? "✕" : "☰"}
@@ -72,7 +75,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-line bg-background px-6 py-3 text-sm font-medium text-muted sm:hidden">
+        <ul className="flex flex-col gap-1 border-t border-line bg-background px-6 py-3 text-sm font-medium text-muted md:hidden">
           {links.map((link) => (
             <li key={link.href}>
               <a

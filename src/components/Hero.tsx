@@ -27,12 +27,15 @@ export default function Hero() {
                 <span className="h-2 w-2 rounded-full accent-bar" />
                 Available for Freelance
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3.5 py-1.5 text-xs font-semibold text-accent shadow-sm">
+              <a
+                href="#ai"
+                className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3.5 py-1.5 text-xs font-semibold text-accent shadow-sm transition-colors hover:bg-accent/20"
+              >
                 <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z" />
                 </svg>
-                AI-Assisted Delivery
-              </span>
+                AI Tools Certified — be10x
+              </a>
             </div>
           </Reveal>
 
@@ -82,8 +85,8 @@ export default function Hero() {
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {[
-                  "Meritto",
-                  "Camu",
+                  "CRM",
+                  "ERP",
                   "LeadSquared",
                   "Power BI",
                   "Jira",
@@ -105,10 +108,11 @@ export default function Hero() {
         {/* Photo */}
         <Reveal delay={160} className="flex justify-center md:justify-end">
           <div className="relative">
-            <div className="glow animate-floaty absolute -inset-6 opacity-60" />
-            <TiltCard max={8} className="rounded-[1.75rem]">
-              <div className="accent-bar absolute -inset-1 rounded-[1.75rem] opacity-70 blur-[2px]" />
-              <div className="relative h-64 w-64 overflow-hidden rounded-[1.6rem] border border-white/20 shadow-2xl sm:h-72 sm:w-72">
+            <div className="aura animate-floaty absolute -inset-8 opacity-60" />
+            <TiltCard max={8} className="rounded-[1.9rem]">
+              {/* rotating gradient ring */}
+              <div className="ring-conic absolute -inset-[3px] rounded-[1.9rem] opacity-90 blur-[0.5px]" />
+              <div className="relative h-64 w-64 overflow-hidden rounded-[1.75rem] border-2 border-background shadow-2xl sm:h-72 sm:w-72">
                 <Image
                   src={profile.photo}
                   alt={profile.name}
@@ -118,6 +122,11 @@ export default function Hero() {
                   className="object-cover"
                 />
               </div>
+              {/* techy status chip */}
+              <span className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full border border-line bg-card px-3.5 py-1.5 font-mono text-[0.7rem] font-medium text-foreground shadow-sm">
+                <span className="mr-1.5 text-accent">●</span>
+                available_for_projects
+              </span>
             </TiltCard>
           </div>
         </Reveal>

@@ -23,7 +23,7 @@ export default function About() {
                 "Functional & regression testing",
                 "Client onboarding & stakeholder management",
                 "API integrations & workflow optimization",
-                "AI-assisted delivery using tools like Claude",
+                "AI-assisted delivery — certified in AI tools, applied daily",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <svg

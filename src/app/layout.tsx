@@ -75,6 +75,21 @@ const personSchema = {
   url: siteUrl,
   email: "Sbharath23@outlook.com",
   sameAs: ["https://www.linkedin.com/in/bharath-sb-4a9834146"],
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "AI Tools & ChatGPT Workshop",
+      credentialCategory: "certificate",
+      recognizedBy: { "@type": "Organization", name: "be10x" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Power BI",
+      credentialCategory: "certificate",
+      identifier: "559407733",
+      recognizedBy: { "@type": "Organization", name: "Mind Luster" },
+    },
+  ],
   knowsAbout: [
     "SaaS Implementation",
     "Education CRM & Admissions",

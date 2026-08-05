@@ -62,7 +62,7 @@ export default function Services() {
         <Reveal delay={120}>
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             <a
-              href="#contact"
+              href="/freelance"
               className="group flex items-center justify-between rounded-2xl accent-bar p-6 text-white transition-transform hover:-translate-y-1"
             >
               <div>
@@ -70,7 +70,7 @@ export default function Services() {
                   Business owner with a project in mind?
                 </p>
                 <p className="mt-1 text-sm text-white/85">
-                  Tell me what's slowing you down — I'll propose a fix.
+                  See freelance packages, process and pricing →
                 </p>
               </div>
               <span className="ml-4 shrink-0 text-xl transition-transform group-hover:translate-x-1">

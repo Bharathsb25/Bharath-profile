@@ -5,7 +5,20 @@ import { profile } from "@/data/profile";
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export default function ContactForm() {
+export default function ContactForm({
+  /** Email subject line, so I can tell which page the enquiry came from. */
+  subject = "💼 New enquiry from your portfolio",
+  formName = "Portfolio — Contact Form",
+  messageLabel = "Message",
+  messagePlaceholder = "Tell me about the role or project…",
+  submitLabel = "Send Message",
+}: {
+  subject?: string;
+  formName?: string;
+  messageLabel?: string;
+  messagePlaceholder?: string;
+  submitLabel?: string;
+} = {}) {
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -60,12 +73,8 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="card p-6 text-left">
       <input type="hidden" name="access_key" value={profile.web3formsKey} />
-      <input
-        type="hidden"
-        name="subject"
-        value="💼 New enquiry from your portfolio"
-      />
-      <input type="hidden" name="from_name" value="Portfolio — Contact Form" />
+      <input type="hidden" name="subject" value={subject} />
+      <input type="hidden" name="from_name" value={formName} />
       {/* Honeypot spam filter */}
       <input
         type="checkbox"
@@ -145,14 +154,14 @@ export default function ContactForm() {
           htmlFor="c-message"
           className="mb-1 block text-xs font-medium text-muted"
         >
-          Message <span className="text-accent">*</span>
+          {messageLabel} <span className="text-accent">*</span>
         </label>
         <textarea
           id="c-message"
           name="message"
           required
           rows={4}
-          placeholder="Tell me about the role or project…"
+          placeholder={messagePlaceholder}
           className={`${field} resize-y`}
         />
       </div>
@@ -168,7 +177,7 @@ export default function ContactForm() {
         disabled={status === "sending"}
         className="mt-4 w-full rounded-full accent-bar px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 disabled:opacity-60"
       >
-        {status === "sending" ? "Sending…" : "Send Message"}
+        {status === "sending" ? "Sending…" : submitLabel}
       </button>
 
       <p className="mt-3 text-center text-[11px] leading-4 text-muted">

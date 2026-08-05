@@ -1,6 +1,7 @@
 import { education, certifications, training } from "@/data/profile";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import CertificateGallery from "@/components/CertificateGallery";
 
 export default function Education() {
   return (
@@ -69,6 +70,14 @@ export default function Education() {
                   >
                     <span className="text-sm text-foreground/85">
                       {cert.name}
+                      {cert.issuer && (
+                        <span className="text-muted"> — {cert.issuer}</span>
+                      )}
+                      {cert.credentialId && (
+                        <span className="mt-0.5 block font-mono text-[11px] text-muted/80">
+                          No. {cert.credentialId}
+                        </span>
+                      )}
                     </span>
                     <span className="shrink-0 text-xs font-medium text-muted">
                       {cert.date}
@@ -79,6 +88,19 @@ export default function Education() {
             </div>
           </Reveal>
         </div>
+
+        {/* Certificate wall — click any tile to read the full certificate */}
+        <Reveal delay={140}>
+          <div className="mt-12">
+            <div className="mb-5 flex items-baseline justify-between gap-4">
+              <h3 className="font-display text-sm font-semibold text-foreground">
+                Certificates
+              </h3>
+              <span className="text-xs text-muted">Click to view full size</span>
+            </div>
+            <CertificateGallery />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

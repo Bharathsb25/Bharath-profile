@@ -2,7 +2,7 @@ export const profile = {
   name: "Bharath Sathiskumar",
   title: "Implementation Specialist — Delivery & Testing",
   tagline:
-    "I help SaaS and enterprise teams turn complex product rollouts into smooth, on-time deliveries — and help businesses automate the workflows that slow them down.",
+    "I help SaaS and enterprise teams turn complex product rollouts into smooth, on-time deliveries — and I use AI to strip the busywork out of the workflows that slow businesses down.",
   availability:
     "Open to full-time opportunities and available for freelance / contract projects.",
   photo: "/profile.jpg",
@@ -108,7 +108,7 @@ export const toolsAndTech = [
 export const services = [
   {
     title: "Education CRM & Admissions Funnel",
-    desc: "End-to-end admissions setup for schools, colleges & ed-tech — enquiry capture, lead scoring, counselor routing, application-to-enrollment tracking, fee workflows, and SMS / WhatsApp / email journeys. Built on Meritto, Camu & LeadSquared.",
+    desc: "End-to-end admissions setup for schools, colleges & ed-tech — enquiry capture, lead scoring, counselor routing, application-to-enrollment tracking, fee workflows, and SMS / WhatsApp / email journeys. Built on LeadSquared and other leading education CRM platforms.",
   },
   {
     title: "Onboarding Process Design",
@@ -139,6 +139,201 @@ export const services = [
     desc: "End-to-end DLT registration, template approvals, and SMS/WhatsApp gateway configuration — fully TRAI-compliant.",
   },
 ];
+
+/* ---------------------------------------------------------------
+   Freelance page (/freelance) — hire-me-for-a-project content.
+   NOTE: no rupee/dollar figures anywhere on purpose. Every package
+   quotes after a scoping call. Swap `price` for real numbers once
+   you've settled on rates.
+---------------------------------------------------------------- */
+export const freelance = {
+  kicker: "Freelance & Contract",
+  headline: "Your rollout is stuck. I get it live.",
+  subhead:
+    "I'm an Implementation Specialist who does this full-time for a SaaS company — and takes on a small number of freelance projects on the side. Education CRM & admissions funnels, client onboarding, workflow automation, and rescuing implementations that have stalled.",
+  availability:
+    "Taking on a limited number of projects at a time, so each one gets real attention.",
+  responseTime: "Replies within 24 hours",
+  facts: [
+    { value: "4+ yrs", label: "SaaS implementation & delivery" },
+    { value: "Multi-region", label: "Concurrent rollouts delivered" },
+    { value: "Fixed scope", label: "Quoted in writing before we start" },
+    { value: "IST", label: "Overlaps EMEA & APAC hours" },
+  ],
+  packages: [
+    {
+      name: "Admissions Funnel Sprint",
+      ideal: "Schools, colleges & ed-tech with a leaky enquiry-to-enrollment process",
+      price: "Fixed quote after scoping call",
+      timeline: "2–4 weeks",
+      featured: true,
+      includes: [
+        "Enquiry capture across every source — forms, calls, walk-ins, campaigns",
+        "Lead scoring and counselor routing rules that match how your team actually works",
+        "Application-to-enrollment stage tracking with drop-off visibility",
+        "Fee workflows plus SMS / WhatsApp / email journeys",
+        "Counselor training and a written handover doc",
+      ],
+    },
+    {
+      name: "Implementation Rescue",
+      ideal: "A rollout that has slipped its date, blown its budget, or gone quiet",
+      price: "Diagnostic first, then a fixed quote",
+      timeline: "1 week diagnostic",
+      includes: [
+        "Diagnostic on where delivery actually broke down — scope, data, ownership or comms",
+        "Honest re-baselined scope and timeline you can show your stakeholders",
+        "A prioritised path to go-live, with what to cut and what to keep",
+        "Optional: I stay on and drive it to go-live myself",
+      ],
+    },
+    {
+      name: "Automation Build",
+      ideal: "Teams still running a core process on spreadsheets, email and chasing",
+      price: "Fixed quote after scoping call",
+      timeline: "2–5 weeks",
+      includes: [
+        "Current-state process map — every handoff, wait and manual step, written down",
+        "Rebuilt flow with auto-routing, reminders and tiered SLA escalation",
+        "Real-time status visibility for everyone involved, internal and client-side",
+        "Built and shipped faster with AI tooling (Claude) — you keep the documentation",
+      ],
+    },
+    {
+      name: "Fractional Implementation Manager",
+      ideal: "Small SaaS teams that need delivery leadership but not a full-time hire",
+      price: "Monthly retainer",
+      timeline: "A few days a month, ongoing",
+      includes: [
+        "I own your delivery process, onboarding quality and go-live readiness",
+        "Templates, checklists and SLA structure your team keeps for good",
+        "Weekly checkpoint plus a written status your founders can read",
+        "Escalation cover when a client rollout starts wobbling",
+      ],
+    },
+  ],
+  addOns: [
+    "Functional & regression testing pass",
+    "UAT coordination and go-live quality gate",
+    "Power BI dashboards & MIS reporting",
+    "DLT registration + SMS/WhatsApp gateway setup (TRAI-compliant)",
+    "API & webhook integration testing (Postman)",
+    "Data validation & migration checks",
+  ],
+  process: [
+    {
+      title: "Discovery call",
+      desc: "30 minutes, free. You tell me what's broken and what 'done' looks like. If I'm not the right person, I'll say so on the call.",
+    },
+    {
+      title: "Scope & fixed quote",
+      desc: "You get deliverables, timeline, dependencies and price in writing — before any money or work changes hands.",
+    },
+    {
+      title: "Build in checkpoints",
+      desc: "Weekly demo and a written update. No month-long silences, and no nasty surprise at the end.",
+    },
+    {
+      title: "UAT & handover",
+      desc: "We test against the scope, your team gets trained, and you get the documentation. No black boxes only I can operate.",
+    },
+    {
+      title: "Post-go-live support",
+      desc: "An agreed support window after launch to catch the things real usage always surfaces.",
+    },
+  ],
+  principles: [
+    {
+      title: "A specialist, not a generalist",
+      desc: "This is my day job, not a side skill I picked up. CRM delivery, onboarding and go-live are what I do all week.",
+    },
+    {
+      title: "Fixed scope, fixed price",
+      desc: "You know the number before we start. If scope genuinely changes, we re-quote in writing — no creeping invoices.",
+    },
+    {
+      title: "You own everything",
+      desc: "Process maps, configuration notes, training material and admin access are all handed over. You are never locked in to me.",
+    },
+    {
+      title: "I'll tell you when it's not worth it",
+      desc: "If the fix is smaller than the project you asked for, I'll say that — and quote the smaller thing.",
+    },
+  ],
+  faqs: [
+    {
+      q: "How do we start?",
+      a: "Send the form at the bottom of this page with a couple of lines on what's stuck. I reply within 24 hours and we set up a 30-minute call. You get a written scope and quote after that call.",
+    },
+    {
+      q: "How do you charge?",
+      a: "Fixed price per project for defined scope, or a monthly retainer for fractional work. I share the number after the scoping call, once I actually know what the work involves — never a blind rate card.",
+    },
+    {
+      q: "Which platforms do you work in?",
+      a: "LeadSquared and other leading education CRM and admissions platforms; Freshdesk and Jira for support and delivery tracking; Power BI and Jaspersoft for reporting; Postman for API and webhook testing; DLT portals and SMS/WhatsApp gateways for messaging compliance. If you're on a platform I haven't named, the delivery process transfers — say which one and I'll tell you honestly how much ramp-up it needs.",
+    },
+    {
+      q: "Can you work alongside my existing team or vendor?",
+      a: "Yes — a lot of the work is exactly that. I plug into your delivery team or coordinate with your implementation vendor, and I'm comfortable being the one who chases the dependencies.",
+    },
+    {
+      q: "What about NDAs and access to our data?",
+      a: "Happy to sign an NDA before we discuss specifics. I work with the least access that gets the job done, prefer masked or sample data for testing, and hand back or drop credentials at the end of the engagement.",
+    },
+    {
+      q: "Do you also take full-time roles?",
+      a: "Yes. If you're hiring rather than contracting, the main site has my experience, case study and CV.",
+    },
+  ],
+  cta: {
+    title: "Tell me what's stuck",
+    text: "A couple of lines is enough to start — the platform you're on, what's not working, and when you need it live. I'll reply within 24 hours with either questions or a call slot.",
+  },
+};
+
+/* ---------------------------------------------------------------
+   The AI band on the homepage. No time/speed claims here on purpose —
+   these describe what AI is used for, not how fast it goes.
+---------------------------------------------------------------- */
+export const aiEdge = {
+  kicker: "AI-Accelerated Delivery",
+  headline: "Same delivery discipline. Less of the busywork.",
+  intro:
+    "AI hasn't changed what good implementation looks like — scope, testing, training and go-live still decide whether a rollout lands. What it changes is how much of the week goes into the paperwork around them. That effort goes back into the client.",
+  points: [
+    {
+      title: "Documentation that keeps up with delivery",
+      desc: "Kickoff decks, status packs, training material and process documentation drafted with AI — so paperwork is never the reason a review slips.",
+      // presentation board
+      icon: "M4 4h16v11H4V4Zm8 11v5m-4 0h8M9.5 11.5l2.5-3 2 2.2 2.5-3.2",
+    },
+    {
+      title: "Findings, not spreadsheets",
+      desc: "Onboarding data, SLA breaches, CSAT and usage trends analysed with AI — I bring the conclusion to the meeting, not the raw export.",
+      // bar chart with magnifier
+      icon: "M4 20V10m5 10V6m5 14v-6M20 20V4M2 20h20",
+    },
+    {
+      title: "Automations built and tested, not queued",
+      desc: "Workflow rules, integration scripts and validation checks written, tested and fixed with AI in the loop — which is why automation stopped being a big-ticket project.",
+      // code brackets
+      icon: "m9 8-4 4 4 4m6-8 4 4-4 4M13.5 5.5l-3 13",
+    },
+  ],
+  credential: {
+    text: "Certified — AI Tools & ChatGPT Workshop, be10x",
+    date: "August 2026",
+    href: "#education",
+  },
+  usedFor: [
+    "Requirement drafting & documentation",
+    "Test case generation & data validation",
+    "Client comms and status reporting",
+    "Workflow and integration design",
+    "Dashboard and report scaffolding",
+  ],
+};
 
 export const experience = [
   {
@@ -264,8 +459,47 @@ export const education = [
   },
 ];
 
-export const certifications = [
-  { name: "Power BI Certification", date: "Jul 2023" },
+export type Certification = {
+  name: string;
+  date: string;
+  issuer?: string;
+  /** Path under /public. Certs with an image also appear in the certificate wall. */
+  image?: string;
+  /** Intrinsic pixel size of `image` — required by next/image. */
+  width?: number;
+  height?: number;
+  /** What the certificate actually attests to, shown under the thumbnail. */
+  detail?: string;
+  /** Capability chips from the certificate itself. */
+  skills?: string[];
+  /** Certificate / credential number printed on the certificate. */
+  credentialId?: string;
+};
+
+export const certifications: Certification[] = [
+  {
+    name: "AI Tools & ChatGPT Workshop",
+    issuer: "be10x",
+    date: "Aug 2026",
+    image: "/certificates/be10x-ai-tools-workshop.png",
+    width: 1136,
+    height: 762,
+    detail:
+      "Building presentations, data analysis, and code with AI — applied to delivery and reporting work.",
+    skills: ["Presentations with AI", "Data analysis with AI", "Code & debugging with AI"],
+  },
+  {
+    name: "Power BI",
+    issuer: "Mind Luster",
+    date: "Jul 2023",
+    credentialId: "559407733",
+    image: "/certificates/mindluster-power-bi.jpg",
+    width: 1600,
+    height: 1131,
+    detail:
+      "Certificate of Achievement — dashboard building, data modelling and MIS reporting, used across client delivery.",
+    skills: ["Dashboards", "Data modelling", "MIS reporting"],
+  },
   {
     name: 'International Conference — "Opportunities and Challenges in Management, Economics and Accounting"',
     date: "Jan 2019",
