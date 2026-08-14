@@ -3,22 +3,17 @@
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 
-// The explicit annotation matters: without it TS infers a union where only the
-// Blog member has `mobileOnly`, and reading it off the others is an error.
-const links: { href: string; label: string; mobileOnly?: boolean }[] = [
+const links = [
   { href: "/#about", label: "About" },
   { href: "/#services", label: "Services" },
   { href: "/services", label: "For Business" },
   { href: "/freelance", label: "Hire Me" },
   { href: "/#experience", label: "Experience" },
   { href: "/#projects", label: "Projects" },
-  { href: "/#blog", label: "Blog", mobileOnly: true },
+  { href: "/#blog", label: "Blog" },
+  { href: "/samples", label: "Samples" },
   { href: "/#contact", label: "Contact" },
 ];
-
-// Blog is dropped from the desktop row purely for width — it stays in the
-// mobile menu and the footer.
-const desktopLinks = links.filter((link) => !link.mobileOnly);
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -47,11 +42,12 @@ export default function Navbar() {
           Bharath<span className="text-gradient"> Sathiskumar</span>
         </a>
 
-        {/* Desktop nav starts at lg, not md. At md the link row plus the logo
-            and the "Let's talk" button are wider than the viewport, which
-            silently wraps the logo onto two lines. Below lg: hamburger. */}
-        <ul className="hidden gap-6 text-sm font-medium text-muted lg:flex lg:gap-8">
-          {desktopLinks.map((link) => (
+        {/* Desktop nav starts at xl. Nine links plus the logo and "Let's talk"
+            button don't fit before that — lg wraps the logo, same failure
+            mode this had at md before Blog/Samples were added back in.
+            Below xl: hamburger. */}
+        <ul className="hidden gap-5 text-sm font-medium text-muted xl:flex xl:gap-7">
+          {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
@@ -67,14 +63,14 @@ export default function Navbar() {
           <ThemeToggle />
           <a
             href="/#contact"
-            className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5 lg:inline-block"
+            className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5 xl:inline-block"
           >
             Let&apos;s talk
           </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground xl:hidden"
             aria-label="Toggle menu"
           >
             {open ? "✕" : "☰"}
@@ -83,7 +79,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-line bg-background px-6 py-3 text-sm font-medium text-muted lg:hidden">
+        <ul className="flex flex-col gap-1 border-t border-line bg-background px-6 py-3 text-sm font-medium text-muted xl:hidden">
           {links.map((link) => (
             <li key={link.href}>
               <a
