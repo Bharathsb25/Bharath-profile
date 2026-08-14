@@ -18,7 +18,7 @@ export default function Footer() {
             Freelance
           </a>
           <a href="/samples" className="transition-colors hover:text-accent">
-            Samples
+            IPO Analysis
           </a>
           <a href="/#blog" className="transition-colors hover:text-accent">
             Blog
