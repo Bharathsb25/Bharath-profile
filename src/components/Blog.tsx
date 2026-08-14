@@ -31,7 +31,7 @@ export default function Blog() {
               className="card card-hover group flex h-full flex-col p-6"
             >
               <div className="flex items-center gap-2 text-xs font-medium text-muted">
-                <span className="rounded-full accent-bar px-2.5 py-0.5 text-white">
+                <span className="rounded-full accent-bar px-2.5 py-0.5 text-on-accent">
                   Article
                 </span>
                 <span>{post.date}</span>

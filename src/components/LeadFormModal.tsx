@@ -76,7 +76,7 @@ export default function LeadFormModal({
       aria-labelledby="lead-modal-title"
     >
       <div
-        className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm"
+        className="scrim absolute inset-0 backdrop-blur-sm"
         onClick={onClose}
       />
 
@@ -194,7 +194,7 @@ export default function LeadFormModal({
           <button
             type="submit"
             disabled={status === "sending"}
-            className="w-full rounded-full accent-bar px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+            className="w-full rounded-full accent-bar px-6 py-3 text-sm font-semibold text-on-accent transition-transform hover:-translate-y-0.5 disabled:opacity-60"
           >
             {status === "sending" ? "Please wait…" : submitLabel}
           </button>

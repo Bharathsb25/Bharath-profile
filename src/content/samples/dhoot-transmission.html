@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dhoot Transmission Limited — IPO Validation Report</title>
+<style>
+  @page { size: A4; margin: 12mm 10mm 17mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #1a1d23; background: #fff; margin: 0 auto; padding: 24px;
+    max-width: 900px; font-size: 13px; line-height: 1.55;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  h1 { font-size: 24px; margin: 0 0 2px; letter-spacing: -0.4px; }
+  h2 { font-size: 15px; margin: 0 0 12px; padding-bottom: 6px;
+       border-bottom: 2px solid #1a1d23; letter-spacing: -0.2px; }
+  h3 { font-size: 12px; margin: 16px 0 6px; color: #555c69;
+       text-transform: uppercase; letter-spacing: 0.6px; }
+  .sub { color: #5a6270; font-size: 13px; margin: 0 0 14px; }
+  .num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+  .badge { display: inline-block; padding: 2px 9px; border-radius: 3px;
+           font-size: 11px; font-weight: 700; letter-spacing: 0.4px;
+           text-transform: uppercase; margin-right: 5px; }
+  .b-main { background: #e8eefc; color: #1f47a8; }
+  .b-sme  { background: #fdeee0; color: #a3540d; }
+  .b-sect { background: #eef1f4; color: #454d59; }
+
+  section { margin-bottom: 24px; }
+  .card { border: 1px solid #dfe3e8; border-radius: 5px; padding: 16px; }
+
+  .verdict { width: 100%; border-collapse: separate; border-spacing: 10px 0; }
+  .verdict td { vertical-align: top; width: 33.33%; }
+  .vbox { border: 1px solid #dfe3e8; border-radius: 5px; padding: 14px;
+          text-align: center; height: 190px; }
+  .vlabel { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px;
+            color: #6b7280; margin-bottom: 8px; }
+  .vmain { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+  .vnote { font-size: 11px; color: #5a6270; margin-top: 6px; }
+
+  table.data { width: 100%; border-collapse: collapse; font-size: 12px; }
+  table.data th { text-align: left; background: #f5f7f9; font-weight: 600;
+                  padding: 7px 9px; border-bottom: 1px solid #dfe3e8;
+                  font-size: 11px; text-transform: uppercase;
+                  letter-spacing: 0.4px; color: #555d69; }
+  table.data td { padding: 7px 9px; border-bottom: 1px solid #eef1f4; }
+  table.data td.r, table.data th.r { text-align: right; }
+
+  .flag { padding: 9px 12px; border-left: 3px solid; margin-bottom: 7px;
+          background: #fafbfc; font-size: 12px; }
+  .f-red   { border-color: #c0392b; }
+  .f-amber { border-color: #d68910; }
+  .f-yellow{ border-color: #b7950b; }
+  .f-ok    { border-color: #1e8449; }
+  .sev { font-weight: 700; font-size: 10px; letter-spacing: 0.5px; margin-right: 6px; }
+
+  .src { font-size: 10.5px; color: #7a828e; }
+  .disclaimer { margin-top: 26px; padding: 12px 14px; background: #f5f7f9;
+                border-radius: 4px; font-size: 11px; color: #5a6270; }
+  .missing { color: #98a0ac; font-style: italic; }
+
+  table.cards { width: 100%; border-collapse: separate; border-spacing: 9px; margin: 0 -9px; }
+  table.cards td { width: 50%; vertical-align: top; border: 1px solid #dfe3e8;
+                   border-radius: 6px; padding: 13px 15px; }
+  .ctitle { font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px;
+            color: #555d69; font-weight: 700; margin-bottom: 3px; }
+  .cbig { font-size: 27px; font-weight: 700; letter-spacing: -0.8px; line-height: 1.1; }
+  .cunit { font-size: 14px; font-weight: 600; color: #5a6270; }
+  .csub { font-size: 10.5px; color: #7a828e; margin-top: 1px; }
+  .crule { border-top: 1px solid #eef1f4; margin: 9px 0 7px; }
+  .cpair { font-size: 11.5px; color: #3a424e; }
+  .cpair b { font-size: 15px; letter-spacing: -0.3px; }
+  .tick { font-size: 11.5px; margin-bottom: 4px; }
+  .stars td { padding: 5px 6px; border-bottom: 1px solid #eef1f4; vertical-align: middle;}
+  table.two { width: 100%; border-collapse: separate; border-spacing: 10px 0; }
+  table.two td { width: 50%; vertical-align: top; }
+  .sw { border: 1px solid #dfe3e8; border-radius: 5px; padding: 13px 15px; }
+  .sw h4 { margin: 0 0 9px; font-size: 12px; text-transform: uppercase;
+           letter-spacing: 0.6px; }
+  .sw li { margin-bottom: 7px; font-size: 12px; }
+  .sw ul { margin: 0; padding-left: 17px; }
+  .dp { border: 2px solid #1a1d23; border-radius: 6px; padding: 16px 18px; }
+  .dpbox { border: 1px solid #dfe3e8; border-radius: 5px; padding: 11px 13px;
+           height: 150px; vertical-align: top; }
+  .aithought { background: #f5f7f9; border-left: 3px solid #2b4c7e;
+               padding: 12px 15px; margin-top: 13px; font-size: 12.5px; }
+
+  svg { max-width: 100%; height: auto; }
+  .vbox svg { width: auto; }
+
+  @media print {
+    body { max-width: 100%; padding: 0; font-size: 11.5px; }
+    h2, h3 { page-break-after: avoid; }
+    .card, .vbox, .sw, .dp, .flag, table.cards tr { page-break-inside: avoid; }
+    svg, tr { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. HEADER -->
+<div style="font-size:10.5px;font-weight:700;letter-spacing:2.2px;color:#7a828e;text-transform:uppercase;margin-bottom:2px">IPO Analysis</div>
+<h1>Dhoot Transmission Limited</h1>
+<p class="sub">
+  <span class="badge b-main">Mainboard</span>
+  <span class="badge b-sect">Auto Ancillary — Wiring Harness &amp; EV Components</span>
+  <span class="badge b-sect">Small Cap</span><br>
+  Issue 10 Aug 2026 – 12 Aug 2026 &nbsp;·&nbsp; Band ₹829–871
+  &nbsp;·&nbsp; Lot 17 shares &nbsp;·&nbsp; Min ₹<span class="num">14,807</span>
+  &nbsp;·&nbsp; Listing 17 Aug 2026 (tentative)
+</p>
+
+<!-- 2. VERDICT -->
+<section>
+<table class="verdict"><tr>
+
+  <td><div class="vbox">
+    <div class="vlabel">Overall score</div>
+    <svg viewBox="0 0 160 90" width="160" height="90">
+      <path d="M15 80 A65 65 0 0 1 145 80" fill="none" stroke="#e6e9ed" stroke-width="12"/>
+      <path d="M15 80 A65 65 0 0 1 119.8 28.6" fill="none" stroke="#58a14e" stroke-width="12" stroke-linecap="round"/>
+      <text x="80" y="72" text-anchor="middle" font-size="26" font-weight="700" fill="#1a1d23">71</text>
+    </svg>
+    <div class="vnote" style="font-size:12px"><strong>Apply</strong><br>71/100</div>
+  </div></td>
+
+  <td><div class="vbox">
+    <div class="vlabel">Risk-o-meter</div>
+    <svg viewBox="0 0 150 46" width="150" height="46">
+      <rect x="0" y="10" width="26" height="16" fill="#1e8449" opacity="0.3"/>
+      <rect x="31" y="10" width="26" height="16" fill="#7fb069" opacity="0.3"/>
+      <rect x="62" y="10" width="26" height="16" fill="#e8b33a" opacity="0.3"/>
+      <rect x="93" y="10" width="26" height="16" fill="#e07b39" opacity="1"/>
+      <rect x="124" y="10" width="26" height="16" fill="#c0392b" opacity="0.3"/>
+      <polygon points="106,30 101,38 111,38" fill="#1a1d23"/>
+    </svg>
+    <div class="vmain" style="font-size:19px">High</div>
+    <div class="vnote">Customer/plant concentration + recent promoter restructuring</div>
+  </div></td>
+
+  <td><div class="vbox">
+    <div class="vlabel">How much to invest</div>
+    <div class="vmain" style="margin-top:26px">1 lot</div>
+    <div style="font-size:16px;font-weight:600" class="num">₹14,807</div>
+    <div class="vnote">Retail · this is 100% of the ₹14,807 you set aside — a "1 lot only" stated budget, above the ~10% (₹1,481) the Apply band would suggest on a larger pool</div>
+    <div class="vnote">Retail ran ~3x by Day 2 close — allotment roughly a lottery, not guaranteed</div>
+  </div></td>
+
+</tr></table>
+
+<div class="card" style="margin-top:12px">
+  <h3 style="margin-top:0">Verdict</h3>
+  <p style="margin:0"><strong>For:</strong> Market leader (41% share, ~70% in the EV segment) in a component whose value per vehicle rises 1.5–2.5x as two-wheelers electrify, priced at 44.9x — a genuine discount to the ~52–58x peer-set average.</p>
+  <p style="margin:6px 0 0"><strong>Against:</strong> Working capital days ballooned from 12 to 102 even as margins compressed (EBITDA 18.3%→15.7%), and the co-promoter (Bain Capital) only bought in ~16 months before this listing with no non-compete — this isn't a decades-long founder-only story being rewarded, it's a recent financial-sponsor exit dressed as a growth IPO.</p>
+</div>
+</section>
+
+<!-- 3. ISSUE SNAPSHOT -->
+<section>
+<h2>Issue snapshot</h2>
+<table class="data">
+  <tr><th>Issue size</th><td class="num">₹3,066.89 cr</td>
+      <th>Fresh issue</th><td class="num">₹1,400 cr (45.6%)</td></tr>
+  <tr><th>Offer for sale</th><td class="num">₹1,666.89 cr (54.4%)</td>
+      <th>Implied market cap</th><td class="num">~₹17,816 cr (upper band)</td></tr>
+  <tr><th>Retail quota</th><td class="num">35% (min.)</td>
+      <th>QIB / NII</th><td class="num">50% (max.) / 15% (min.)</td></tr>
+  <tr><th>Registrar</th><td>KFin Technologies Ltd.</td>
+      <th>Lead managers</th><td>Axis Capital, Jefferies India, Kotak Mahindra Capital, Nomura, SBI Capital Markets, 360 ONE WAM</td></tr>
+</table>
+</section>
+
+<!-- 4a. FUNDAMENTALS AT A GLANCE -->
+<section>
+<h2>Fundamentals at a glance</h2>
+<table class="cards">
+<tr>
+  <td>
+    <div class="ctitle">Revenue from operations</div>
+    <div class="cbig">₹4,525<span class="cunit"> cr</span></div>
+    <div class="csub">FY26 · 2-yr CAGR ~27.2%</div>
+    <svg viewBox="0 0 200 60" width="100%">
+      <rect x="20" y="41" width="30" height="19" fill="#b9c2ce"/>
+      <text x="35" y="38" font-size="9" text-anchor="middle">2,798</text>
+      <rect x="90" y="26" width="30" height="34" fill="#b9c2ce"/>
+      <text x="105" y="23" font-size="9" text-anchor="middle">3,445</text>
+      <rect x="160" y="10" width="30" height="50" fill="#2b4c7e"/>
+      <text x="175" y="7" font-size="9" text-anchor="middle">4,525</text>
+      <text x="35" y="72" font-size="8" text-anchor="middle" fill="#7a828e">FY24</text>
+      <text x="105" y="72" font-size="8" text-anchor="middle" fill="#7a828e">FY25</text>
+      <text x="175" y="72" font-size="8" text-anchor="middle" fill="#7a828e">FY26</text>
+    </svg>
+  </td>
+  <td>
+    <div class="ctitle">EBITDA (adjusted)</div>
+    <div class="cbig">₹711<span class="cunit"> cr</span></div>
+    <div class="csub">FY26 · +20.3% YoY</div>
+    <div class="crule"></div>
+    <div class="cpair">Margin FY26: <b>15.71%</b> — down from 18.31% in FY24</div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="ctitle">PAT</div>
+    <div class="cbig">₹397<span class="cunit"> cr</span></div>
+    <div class="csub">FY26 · +12.1% YoY (vs +18.5% FY25)</div>
+    <div class="crule"></div>
+    <div class="cpair">Margin FY26: <b>8.70–8.77%</b> — down from 10.68% in FY24</div>
+  </td>
+  <td>
+    <div class="ctitle">RoE vs RoCE</div>
+    <div class="cbig">16.3<span class="cunit">% / </span>19.1<span class="cunit">%</span></div>
+    <div class="csub">FY26 · both down sharply from FY25 (35.6% / 29.7%)</div>
+    <div class="crule"></div>
+    <div class="cpair">RoE below RoCE — returns are not leverage-inflated, but the FY25→FY26 fall reflects heavy fresh equity (Bain's buy-in) diluting the base, not a business problem</div>
+  </td>
+</tr>
+<tr>
+  <td>
+    <div class="ctitle">Debt &amp; leverage</div>
+    <div class="cbig">0.35<span class="cunit"> D/E</span></div>
+    <div class="csub">FY26 · improved from 0.78 (FY25); gross borrowings ₹841 cr, cash ₹1,084 cr</div>
+    <div class="crule"></div>
+    <div class="cpair">Net cash positive on a gross basis; ~55% of the fresh issue itself goes straight to further debt paydown</div>
+  </td>
+  <td>
+    <div class="ctitle">Key takeaway</div>
+    <div class="tick"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 2" stroke="#1e8449" stroke-width="2" fill="none"/></svg> #1/2 player, 41% share, ~70% in EV segment</div>
+    <div class="tick"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6 L5 9 L10 2" stroke="#1e8449" stroke-width="2" fill="none"/></svg> Priced at a discount to the peer set (44.9x vs ~52–58x)</div>
+    <div class="tick"><svg width="12" height="12" viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10" stroke="#c0392b" stroke-width="2"/><line x1="10" y1="2" x2="2" y2="10" stroke="#c0392b" stroke-width="2"/></svg> Working capital days 12 → 102; margins compressing</div>
+    <div class="tick"><svg width="12" height="12" viewBox="0 0 12 12"><line x1="2" y1="2" x2="10" y2="10" stroke="#c0392b" stroke-width="2"/><line x1="10" y1="2" x2="2" y2="10" stroke="#c0392b" stroke-width="2"/></svg> Top-5 customers = 71.6% of revenue; one plant = 50.5% of harness capacity</div>
+  </td>
+</tr>
+</table>
+</section>
+
+<!-- 4c. REVENUE MIX & COST STRUCTURE -->
+<section>
+<h2>Where the money comes from — and where it goes</h2>
+<table class="two"><tr>
+<td>
+<h3 style="margin-top:0">By product (FY26)</h3>
+<svg viewBox="0 0 220 160" width="100%">
+  <circle cx="80" cy="75" r="60" fill="none" stroke="#eef1f4" stroke-width="0"/>
+  <path d="M80 75 L80 15 A60 60 0 1 1 33.9 122.6 Z" fill="#2b4c7e"/>
+  <path d="M80 75 L33.9 122.6 A60 60 0 0 1 80 15 Z" fill="#b9c2ce"/>
+  <text x="80" y="78" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">77%</text>
+</svg>
+<div style="font-size:11.5px"><span style="color:#2b4c7e">■</span> Wiring harnesses — 77.08% (₹3,488 cr)<br>
+<span style="color:#b9c2ce">■</span> Battery packs, sensors/controllers, switches — 22.92% (₹1,037 cr, roughly doubled in 2 years)</div>
+</td>
+<td>
+<h3 style="margin-top:0">By vehicle segment (FY26)</h3>
+<svg viewBox="0 0 260 90" width="100%">
+  <text x="0" y="14" font-size="10">2-wheeler</text>
+  <rect x="90" y="4" width="140" height="14" fill="#2b4c7e"/>
+  <text x="235" y="14" font-size="10">65.5%</text>
+  <text x="0" y="38" font-size="10">3-wheeler</text>
+  <rect x="90" y="28" width="27" height="14" fill="#6b7fa3"/>
+  <text x="122" y="38" font-size="10">12.9%</text>
+  <text x="0" y="62" font-size="10">CV/tractor/other</text>
+  <rect x="90" y="52" width="46" height="14" fill="#b9c2ce"/>
+  <text x="141" y="62" font-size="10">21.7%</text>
+</svg>
+<p class="src" style="margin-top:6px">Geography split not found in secondary sources — company runs 22–23 plants across India, UK, Slovakia and Thailand, but a revenue-by-geography table wasn't located; check the RHP's "Our Business" chapter.</p>
+</td>
+</tr></table>
+
+<h3>Cost bifurcation — where every ₹100 of revenue goes (FY26)</h3>
+<svg viewBox="0 0 620 60" width="100%">
+  <rect x="0" y="15" width="339" height="30" fill="#8a5a3c"/>
+  <rect x="339" y="15" width="82" height="30" fill="#b98a5e"/>
+  <rect x="421" y="15" width="22" height="30" fill="#d6a97a"/>
+  <rect x="443" y="15" width="13" height="30" fill="#e0b98f"/>
+  <rect x="456" y="15" width="44" height="30" fill="#cfcfcf"/>
+  <rect x="500" y="15" width="44" height="30" fill="#1e8449"/>
+  <text x="169" y="35" font-size="10" fill="#fff" text-anchor="middle">Raw material 67.8</text>
+  <text x="380" y="12" font-size="9" text-anchor="middle">Other opex 16.5</text>
+  <text x="432" y="58" font-size="9" text-anchor="middle">D&amp;A~2</text>
+  <text x="449" y="12" font-size="9" text-anchor="middle">Fin.cost~2</text>
+  <text x="478" y="58" font-size="9" text-anchor="middle">Tax+exc 4.4</text>
+  <text x="522" y="35" font-size="10" fill="#fff" text-anchor="middle">PAT 8.8</text>
+</svg>
+<p style="margin-top:9px">Raw material (copper, brass, polymers) alone eats 67.82% of every ₹100 of revenue, up from 65.37% in FY24 — the single biggest driver of the margin compression. The employee/S&amp;D/other-opex, depreciation-and-finance-cost and tax splits above are <em>derived</em> from the disclosed margin bridge (revenue → EBITDA 15.71% → PBT 11.40% → PAT 8.77%), not itemised line-by-line in secondary sources — the RHP's restated P&amp;L has the exact employee-cost and S&amp;D figures.</p>
+</section>
+
+<!-- 4d. MARKET SHARE -->
+<section>
+<h2>Market share &amp; competition</h2>
+<table class="two"><tr>
+<td>
+<h3 style="margin-top:0">2W+3W wiring harness share (FY26, CRISIL)</h3>
+<svg viewBox="0 0 220 160" width="100%">
+  <path d="M80 75 L80 15 A60 60 0 0 1 133.6 106.5 Z" fill="#2b4c7e"/>
+  <path d="M80 75 L133.6 106.5 A60 60 0 1 1 80 15 Z" fill="#e6e9ed"/>
+  <text x="95" y="55" font-size="11" fill="#fff" font-weight="700">41%</text>
+</svg>
+<div style="font-size:11.5px"><span style="color:#2b4c7e">■</span> Dhoot Transmission — 41.03% (37.58% in 2W alone, &gt;70% in 3W)<br>
+<span style="color:#e6e9ed">■</span> Rest of market — 58.97%, not broken out by individual competitor in secondary sources</div>
+</td>
+<td>
+<h3 style="margin-top:0">EV 2W/3W harness share (FY26)</h3>
+<svg viewBox="0 0 220 160" width="100%">
+  <path d="M80 75 L80 15 A60 60 0 1 1 33.9 122.6 Z" fill="#1e8449"/>
+  <path d="M80 75 L33.9 122.6 A60 60 0 0 1 80 15 Z" fill="#e6e9ed"/>
+  <text x="80" y="78" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">~70%</text>
+</svg>
+<div style="font-size:11.5px"><span style="color:#1e8449">■</span> Dhoot Transmission — nearly 70%, clear leader<br>
+<span style="color:#e6e9ed">■</span> Rest of market — ~30%</div>
+</td>
+</tr></table>
+<p class="src" style="margin-top:4px">Both figures are drawn from a CRISIL report <strong>commissioned by the company for this offer</strong> — treat the precise percentages as the issuer's supplied claim, corroborated only by CRISIL's own methodology, not by an independent third party.</p>
+
+<h3>Who else is in this market</h3>
+<table class="data">
+<thead><tr><th>Company</th><th>Type</th><th>Portfolio focus</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>Motherson Sumi Wiring India</td><td>Listed</td><td>Wiring harness (mainly passenger vehicles)</td><td>Closest pure-play business model; ₹11,478 cr revenue, highest RoNW (28.92%) in the set</td></tr>
+<tr><td>Yazaki India Pvt Ltd</td><td>Unlisted (Japan MNC)</td><td>Wiring harness, all segments</td><td>Indian arm of the world's largest harness maker (~30% global share); 11 plants, ~12,000 employees in India — the real competitive benchmark, absent from the RHP's listed-peer table</td></tr>
+<tr><td>Spark Minda / Minda Corporation</td><td>Listed</td><td>Auto electricals incl. harness, switches, locks</td><td>₹6,185 cr revenue, 46.49x P/E</td></tr>
+<tr><td>Uno Minda Ltd</td><td>Listed</td><td>Diversified auto electricals</td><td>₹19,658 cr revenue — much larger, broader portfolio than pure harness</td></tr>
+<tr><td>LEONI India</td><td>Unlisted (German MNC)</td><td>Wiring harness, PV/CV/specialty</td><td>Part of global LEONI Group</td></tr>
+<tr><td>Sparsh Electronics, Miracle Electronic Devices, Radicon (Gaurav Industries)</td><td>Unlisted</td><td>Regional/niche harness makers</td><td>Smaller domestic players</td></tr>
+</tbody>
+</table>
+<p style="margin-top:9px"><strong>Market commentary:</strong> Dhoot's real competitive benchmark for the 2W/3W segment is Yazaki India — an unlisted MNC subsidiary — not the larger, more diversified listed names in the RHP's own peer table. That table flatters the comparison by including Uno Minda and Sona BLW, both bigger and in different product categories (Sona BLW makes EV drivetrain components, not harnesses).</p>
+</section>
+
+<!-- 4e. STRENGTHS VS WEAKNESSES -->
+<section>
+<h2>Core strengths vs weaknesses</h2>
+<table class="two"><tr>
+<td class="sw">
+<h4>Strengths</h4>
+<ul>
+<li><strong>Category leadership with real switching costs.</strong> #1/2 in 2W/3W wiring harness (41% share) and clear leader in the EV sub-segment (~70%), built on custom tooling per OEM platform that makes supplier switching expensive.</li>
+<li><strong>EV content tailwind, no new customers needed.</strong> An EV harness carries 1.5–2.5x the value of an ICE one; EV revenue already grew from 16.2% to 24.2% of sales in two years without Dhoot having to win a single new account.</li>
+<li><strong>Best-in-class margin among listed harness peers.</strong> FY26 adjusted EBITDA margin of 15.71% beats Minda Corporation (11.66%) and Motherson Sumi Wiring (9.24%).</li>
+<li><strong>Priced at a discount to the broader peer set.</strong> 44.9x post-issue P/E against a peer-set average commonly cited between 52x–58x.</li>
+<li><strong>Balance sheet actively de-risking.</strong> D/E improved from 0.78 to 0.35 in a year, and over half the fresh issue goes straight to further debt paydown at the company and its subsidiaries.</li>
+</ul>
+</td>
+<td class="sw">
+<h4>Weaknesses</h4>
+<ul>
+<li><strong>Cash conversion is deteriorating even as margins compress.</strong> Net working-capital days jumped from 12 to 102, and adjusted EBITDA margin fell from 18.31% to 15.71% in two years — growth is costing more cash and more margin at the same time.</li>
+<li><strong>Heavy customer and plant concentration.</strong> Top 5 customers = 71.56% of FY26 revenue (up from 66.17% in FY24); one manufacturing site alone accounts for 50.5% of wiring-harness capacity. No long-term volume contracts back any of it.</li>
+<li><strong>The "promoter" only bought in 16 months ago.</strong> Bain Capital's BC Asia Investments XV acquired its ~49–55% stake around April 2025 (CCI-approved March 2025); it has explicitly disclosed it lacks operating experience in the business and carries no non-compete with the company.</li>
+<li><strong>Nearly a quarter of the fresh issue has no named use.</strong> After debt repayment (₹766.6 cr) and the two new plants (₹150 cr), roughly ₹483 cr — about 34% of the fresh issue — is earmarked for unidentified acquisitions and general corporate purposes.</li>
+<li><strong>Related-party dealings and a disclosed cyberattack.</strong> A FY24 sale of ~₹81 cr of assets to a subsidiary, a recurring "business strategy" fee to Bain Capital, and a cybersecurity incident in FY25 are all called out in the RHP's own risk factors.</li>
+</ul>
+</td>
+</tr></table>
+</section>
+
+<!-- 4b. FINANCIALS -->
+<section>
+<h2>Financials — three years disclosed (FY24–FY26)</h2>
+<svg viewBox="0 0 640 190" width="100%">
+  <line x1="40" y1="170" x2="620" y2="170" stroke="#dfe3e8"/>
+  <rect x="70" y="77.3" width="18" height="92.7" fill="#2b4c7e"/>
+  <rect x="90" y="10" width="18" height="9.9" fill="#58a14e" y2="0"/>
+  <rect x="90" y="160.1" width="18" height="9.9" fill="#58a14e"/>
+  <text x="79" y="67" font-size="9" text-anchor="middle">2,798</text>
+  <text x="99" y="150" font-size="9" text-anchor="middle" fill="#fff"></text>
+  <text x="99" y="158" font-size="8" text-anchor="middle">299</text>
+  <text x="89" y="184" font-size="9" text-anchor="middle" fill="#7a828e">FY24</text>
+
+  <rect x="230" y="55.8" width="18" height="114.2" fill="#2b4c7e"/>
+  <rect x="250" y="158.3" width="18" height="11.7" fill="#58a14e"/>
+  <text x="239" y="46" font-size="9" text-anchor="middle">3,445</text>
+  <text x="259" y="156" font-size="8" text-anchor="middle">354</text>
+  <text x="249" y="184" font-size="9" text-anchor="middle" fill="#7a828e">FY25</text>
+
+  <rect x="390" y="20" width="18" height="150" fill="#2b4c7e"/>
+  <rect x="410" y="156.8" width="18" height="13.2" fill="#58a14e"/>
+  <text x="399" y="10" font-size="9" text-anchor="middle">4,525</text>
+  <text x="419" y="154" font-size="8" text-anchor="middle">397</text>
+  <text x="409" y="184" font-size="9" text-anchor="middle" fill="#7a828e">FY26</text>
+  <rect x="480" y="8" width="10" height="10" fill="#2b4c7e"/><text x="494" y="17" font-size="9">Revenue</text>
+  <rect x="480" y="24" width="10" height="10" fill="#58a14e"/><text x="494" y="33" font-size="9">PAT</text>
+</svg>
+<table class="data" style="margin-top:12px">
+  <thead><tr><th>₹ crore</th><th class="r">FY24</th><th class="r">FY25</th>
+    <th class="r">FY26</th><th class="r">2Y CAGR</th></tr></thead>
+  <tbody>
+    <tr><td>Revenue from operations</td><td class="r num">2,797.73</td><td class="r num">3,444.86</td><td class="r num">4,524.96</td><td class="r num">27.2%</td></tr>
+    <tr><td>EBITDA (adjusted)</td><td class="r num">512.40</td><td class="r num">590.96</td><td class="r num">710.99</td><td class="r num">17.8%</td></tr>
+    <tr><td>EBITDA margin</td><td class="r num">18.31%</td><td class="r num">~17.2%</td><td class="r num">15.71%</td><td class="r num">—</td></tr>
+    <tr><td>PAT</td><td class="r num">298.75</td><td class="r num">353.89</td><td class="r num">396.84</td><td class="r num">15.2%</td></tr>
+    <tr><td>PAT margin</td><td class="r num">10.68%</td><td class="r num">10.19%</td><td class="r num">8.77%</td><td class="r num">—</td></tr>
+    <tr><td>Net worth</td><td class="r num">741.01</td><td class="r num">978.18</td><td class="r num">2,397.15</td><td class="r num">80.0%</td></tr>
+    <tr><td>Total borrowings</td><td class="r num">554.90</td><td class="r num">776.06</td><td class="r num">841.39</td><td class="r num">23.2%</td></tr>
+    <tr><td>D/E ratio</td><td class="r num">0.75</td><td class="r num">0.78</td><td class="r num">0.35</td><td class="r num">—</td></tr>
+  </tbody>
+</table>
+<p class="src">Source: RHP-derived figures via Outlook Money, IndMoney, Tradebrains, SPTulsian &amp; ScanX coverage of the RHP · as of 12 Aug 2026. FY24 D/E of 0.75 is a computed estimate (borrowings/net worth) — the RHP's own FY24 D/E figure wasn't located in secondary sources.</p>
+
+<h3>Longer history — beyond the disclosed period</h3>
+<p class="missing">Not found / not disclosed. The RHP restates only FY24–FY26 (SEBI's standard three-year requirement); no pre-FY24 RoC filings or prior DRHP figures for Dhoot Transmission surfaced in the sources checked. The FY24 starting point is itself a high base (already profitable, already growing), so the ~27% revenue CAGR shown above is not inflated by a low-base effect the way some IPO CAGRs are.</p>
+
+<h3>Cash flow — does the profit turn into cash?</h3>
+<p>Operating cash flow is reported as <strong>positive and growing in all three disclosed years</strong> — the first cash-flow test (does profit convert to cash) is passed at a qualitative level. But the exact CFO ₹ figures per year, and therefore CFO/PAT and CFO/EBITDA ratios, were <span class="missing">not found in the secondary sources checked</span> — verify against the RHP's restated cash flow statement before relying on this. The second test (does the business fund its own growth) is harder to read cleanly: net working-capital days worsened sharply from 12 to 102 over the disclosed period, which by itself consumes cash even while the P&amp;L shows growing profit — a classic case where the two cash-flow questions can point in different directions. One source citing DRHP-stage numbers shows a FY26 net cash flow of ₹998.30 cr driven by a financing inflow of ₹1,912.33 cr — almost certainly reflecting Bain Capital's equity infusion into the company rather than organic operating cash generation, so it should not be read as an operating cash-flow strength.</p>
+
+<h3>Debt: before and after the IPO</h3>
+<table class="data">
+<thead><tr><th></th><th class="r">Current (FY26)</th><th class="r">Post fresh-issue (calculated)</th></tr></thead>
+<tbody>
+<tr><td>Gross borrowings</td><td class="r num">₹841.39 cr</td><td class="r num">~₹75 cr (after ₹766.57 cr repayment)</td></tr>
+<tr><td>Cash &amp; equivalents</td><td class="r num">₹1,084.28 cr</td><td class="r num">Reduced by amount actually deployed to repayment, offset by fresh-issue proceeds retained</td></tr>
+<tr><td>D/E ratio</td><td class="r num">0.35</td><td class="r num">Near-zero / net-cash on a standalone basis</td></tr>
+</tbody>
+</table>
+<p style="margin-top:6px">This is a calculation, not an RHP disclosure: ₹464.80 cr of the fresh issue repays the company's own borrowings and ₹301.77 cr funds three subsidiaries' debt repayment (₹766.57 cr combined, against ₹841.39 cr of FY26 gross borrowings). If executed as stated, the post-issue standalone balance sheet is close to debt-free — a materially different, and better, credit profile than the FY26 numbers alone suggest.</p>
+
+<h3>Forward outlook &amp; stated plans</h3>
+<p>The RHP commits ₹150 cr (of a ₹226.34 cr total project cost, balance from internal accruals) to two new wiring-harness plants at Jhajjar (Haryana) and Hosur (Tamil Nadu), adding a stated 30.6 lakh units of annual capacity. No brokerage-published forward EPS estimate was found in the sources checked, other than one independent analyst's own back-of-envelope FY27E EPS of ~₹25 (SPTulsian) — at a trailing 44.9x multiple, the absence of a house forward-EPS view from any of the subscribing brokerages is itself worth noting: several of the "Subscribe" calls are pricing the story on trailing FY26 earnings rather than a published forward number.</p>
+</section>
+
+<!-- 5. VALUATION -->
+<section>
+<h2>Valuation &amp; value for money</h2>
+<svg viewBox="0 0 620 170" width="100%">
+  <line x1="150" y1="10" x2="150" y2="160" stroke="#dfe3e8"/>
+  <text x="0" y="24" font-size="11" font-weight="700">Dhoot (upper band)</text>
+  <rect x="150" y="14" width="252.7" height="18" fill="#2b4c7e"/>
+  <text x="410" y="27" font-size="10">44.9x</text>
+
+  <text x="0" y="54" font-size="11">Motherson Sumi Wiring</text>
+  <rect x="150" y="44" width="243.3" height="18" fill="#b9c2ce"/>
+  <text x="400" y="57" font-size="10">43.2x</text>
+
+  <text x="0" y="84" font-size="11">Minda Corporation</text>
+  <rect x="150" y="74" width="261.6" height="18" fill="#b9c2ce"/>
+  <text x="418" y="87" font-size="10">46.5x</text>
+
+  <text x="0" y="114" font-size="11">Uno Minda</text>
+  <rect x="150" y="104" width="320" height="18" fill="#b9c2ce"/>
+  <text x="477" y="117" font-size="10">56.9x</text>
+
+  <text x="0" y="144" font-size="11">Sona BLW Precision Forgings</text>
+  <rect x="150" y="134" width="420" height="18" fill="#b9c2ce"/>
+  <text x="576" y="147" font-size="10">74.6x</text>
+
+  <line x1="443" y1="8" x2="443" y2="158" stroke="#d68910" stroke-dasharray="4 3"/>
+  <text x="443" y="168" font-size="9" text-anchor="middle" fill="#d68910">peer avg ~55x</text>
+</svg>
+<table class="data" style="margin-top:12px">
+  <thead><tr><th>Company</th><th class="r">P/E</th><th class="r">P/B</th>
+    <th class="r">EV/EBITDA</th><th class="r">RoNW %</th><th class="r">Revenue FY26 ₹cr</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Dhoot Transmission (upper band)</strong></td><td class="r num">44.9x</td><td class="r num">5.82x</td><td class="r num">~24.8x*</td><td class="r num">16.55%</td><td class="r num">4,524.96</td></tr>
+    <tr><td>Motherson Sumi Wiring India</td><td class="r num">43.24x</td><td class="r missing">n/a</td><td class="r missing">not found</td><td class="r num">28.92%</td><td class="r num">11,477.58</td></tr>
+    <tr><td>Minda Corporation</td><td class="r num">46.49x</td><td class="r missing">n/a</td><td class="r missing">not found</td><td class="r num">13.63%</td><td class="r num">6,185.34</td></tr>
+    <tr><td>Uno Minda</td><td class="r num">56.87x</td><td class="r missing">n/a</td><td class="r missing">not found</td><td class="r num">17.53%</td><td class="r num">19,657.59</td></tr>
+    <tr><td>Sona BLW Precision Forgings</td><td class="r num">74.64x</td><td class="r missing">n/a</td><td class="r missing">not found</td><td class="r num">10.70%</td><td class="r num">4,475.15</td></tr>
+  </tbody>
+</table>
+<p class="src">*Dhoot's EV/EBITDA of ~24.8x is a third-party analyst estimate (SPTulsian), computed after netting cash against enterprise value — not an RHP-disclosed figure. Peer P/B and EV/EBITDA were <span class="missing">not found</span> in the sources checked; the RHP's own "Basis for Issue Price" peer table (P/E, P/B, EV/EBITDA and RoNW at both band ends) is the authoritative source and should be checked directly. Peer P/E figures above are cited across multiple broker notes referencing the same RHP table; the peer average is reported variously as ₹51.7x–58.5x depending on which figures are weighted, so treat "~55x" as a rounded midpoint, not an exact RHP figure.</p>
+
+<h3>Leverage vs valuation — what you pay against what you carry</h3>
+<svg viewBox="0 0 400 220" width="100%">
+  <line x1="50" y1="10" x2="50" y2="190" stroke="#1a1d23"/>
+  <line x1="50" y1="190" x2="380" y2="190" stroke="#1a1d23"/>
+  <text x="10" y="15" font-size="9">P/E</text>
+  <text x="380" y="205" font-size="9" text-anchor="end">D/E →</text>
+  <rect x="215" y="10" width="165" height="180" fill="#fdeee0" opacity="0.5"/>
+  <text x="297" y="25" font-size="8" fill="#a3540d" text-anchor="middle">expensive &amp; leveraged</text>
+  <!-- Dhoot: D/E 0.35, P/E 44.9 -->
+  <circle cx="120" cy="70" r="6" fill="#2b4c7e"/><text x="130" y="73" font-size="9">Dhoot (0.35, 44.9x)</text>
+  <!-- Motherson Sumi Wiring: near-zero net debt, P/E 43.2 -->
+  <circle cx="65" cy="75" r="5" fill="#b9c2ce"/><text x="20" y="60" font-size="9">Motherson Sumi Wiring (~0, 43.2x)</text>
+  <!-- Minda Corp: D/E est ~0.3-0.4, P/E 46.5 -->
+  <circle cx="118" cy="65" r="5" fill="#b9c2ce"/><text x="130" y="50" font-size="9">Minda Corp (~0.35, 46.5x)</text>
+  <!-- Uno Minda: D/E est ~0.4, P/E 56.9 -->
+  <circle cx="122" cy="45" r="5" fill="#b9c2ce"/><text x="130" y="42" font-size="9" fill="#fff"></text>
+  <text x="240" y="45" font-size="9">Uno Minda (~0.4, 56.9x)</text>
+  <!-- Sona BLW: low debt, P/E 74.6 -->
+  <circle cx="70" cy="18" r="5" fill="#b9c2ce"/><text x="80" y="21" font-size="9">Sona BLW (low D/E, 74.6x)</text>
+</svg>
+<p class="src">D/E positions for peers are approximate placements based on their generally low-leverage profiles as described in coverage of this IPO (exact peer D/E figures were not independently sourced) — treat this chart as directional, not precise. Dhoot sits mid-pack on price and is not the most leveraged name in the set, but it is also not the cleanest balance sheet (Motherson Sumi Wiring's near-zero net debt beats it) while asking a similar multiple.</p>
+
+<h3>Peer heat map</h3>
+<table class="data">
+<thead><tr><th>Company</th><th class="r">P/E (lower=better)</th><th class="r">RoNW (higher=better)</th><th class="r">EBITDA margin</th><th class="r">Scale</th></tr></thead>
+<tbody style="font-size:11.5px">
+<tr><td>Dhoot Transmission</td>
+  <td class="r" style="background:#c8e6c0">44.9x</td>
+  <td class="r" style="background:#fde3c3">16.55%</td>
+  <td class="r" style="background:#c8e6c0">15.71%</td>
+  <td class="r" style="background:#f5c6c0">Small</td></tr>
+<tr><td>Motherson Sumi Wiring</td>
+  <td class="r" style="background:#c8e6c0">43.24x</td>
+  <td class="r" style="background:#c8e6c0">28.92%</td>
+  <td class="r" style="background:#f5c6c0">9.24%</td>
+  <td class="r" style="background:#fde3c3">Mid-large</td></tr>
+<tr><td>Minda Corporation</td>
+  <td class="r" style="background:#c8e6c0">46.49x</td>
+  <td class="r" style="background:#f5c6c0">13.63%</td>
+  <td class="r" style="background:#f5c6c0">11.66%</td>
+  <td class="r" style="background:#fde3c3">Mid</td></tr>
+<tr><td>Uno Minda</td>
+  <td class="r" style="background:#fde3c3">56.87x</td>
+  <td class="r" style="background:#fde3c3">17.53%</td>
+  <td class="r" style="background:#fde3c3">n/a</td>
+  <td class="r" style="background:#c8e6c0">Large</td></tr>
+<tr><td>Sona BLW</td>
+  <td class="r" style="background:#f5c6c0">74.64x</td>
+  <td class="r" style="background:#f5c6c0">10.70%</td>
+  <td class="r" style="background:#fde3c3">n/a</td>
+  <td class="r" style="background:#fde3c3">Mid</td></tr>
+</tbody>
+</table>
+<p style="margin-top:10px"><strong>Value for money:</strong> On P/E alone, Dhoot looks like the cheapest way into this theme after Motherson Sumi Wiring. But Motherson Sumi Wiring is a better business on almost every other axis at a nearly identical multiple — higher RoNW (28.92% vs 16.55%), effectively no net debt, and per one analyst comparison a much higher return on capital employed (39% vs Dhoot's 22%). Dhoot's discount to the broader peer average (Uno Minda, Sona BLW) is real, but its premium to the one peer that actually matches its product line is the number worth sitting with before applying.</p>
+</section>
+
+<!-- 6. PURPOSE OF ISSUE -->
+<section>
+<h2>Purpose of the issue</h2>
+<svg viewBox="0 0 620 50" width="100%">
+  <rect x="0" y="13" width="256" height="24" fill="#2b4c7e"/>
+  <text x="128" y="29" font-size="11" fill="#fff" text-anchor="middle">Fresh issue 45.6% (₹1,400 cr)</text>
+  <rect x="256" y="13" width="305" height="24" fill="#c0392b"/>
+  <text x="408" y="29" font-size="11" fill="#fff" text-anchor="middle">OFS 54.4% (₹1,666.89 cr)</text>
+</svg>
+<h3>Use of proceeds (of the ₹1,400 cr fresh issue)</h3>
+<svg viewBox="0 0 620 130" width="100%">
+  <text x="0" y="14" font-size="10">Repay company borrowings</text>
+  <rect x="230" y="4" width="139.4" height="16" fill="#2b4c7e"/><text x="375" y="16" font-size="9">₹464.80 cr (33.2%)</text>
+  <text x="0" y="39" font-size="10">Subsidiary debt repayment</text>
+  <rect x="230" y="29" width="90.5" height="16" fill="#5c7aa8"/><text x="326" y="41" font-size="9">₹301.77 cr (21.6%)</text>
+  <text x="0" y="64" font-size="10">New plants (Jhajjar + Hosur)</text>
+  <rect x="230" y="54" width="45" height="16" fill="#8ea6c9"/><text x="280" y="66" font-size="9">₹150.00 cr (10.7%)</text>
+  <text x="0" y="89" font-size="10">Acquisitions + general corporate</text>
+  <rect x="230" y="79" width="145" height="16" fill="#c0392b"/><text x="380" y="91" font-size="9">~₹483.43 cr (34.5%)</text>
+</svg>
+<p style="margin-top:10px"><strong>Commentary:</strong> This is not a pure-OFS red flag — 45.6% of the issue is fresh capital, above the 25% floor. But look at what the fresh capital actually does: ~55% of it (₹766.57 cr) repays debt at the company and its subsidiaries, only ~11% funds the two named capacity additions, and roughly a third (~34%) is earmarked for <em>unidentified</em> acquisitions and general corporate purposes — a blank cheque by definition. Combined with the 54.4% OFS, where BC Asia Investments XV (Bain Capital) and Mangalam Capital sell down, a meaningful share of what investors are paying for is Bain partially cashing out a ~16-month-old stake and the company deleveraging, not new growth capital being deployed into the business you'd be buying into.</p>
+</section>
+
+<!-- 7. PROMOTER LIFELINE -->
+<section>
+<h2>Promoter &amp; lifeline</h2>
+<p><strong>Rahul Radhavallabh Dhoot &amp; BC Asia Investments XV Limited (Bain Capital)</strong> — Rahul Dhoot (b. 5 Mar 1973, age 53) holds a bachelor's in electronics &amp; telecommunication engineering from Dr. Babasaheb Ambedkar Marathwada University, Aurangabad, and has been with the company since 28 April 1998 — 27+ years in the automotive sector, all at Dhoot. BC Asia Investments XV Limited is a Bain Capital investment vehicle that acquired its ~49–55% stake around April 2025 (CCI approval March 2025); the RHP itself discloses that BC Asia XV "does not possess adequate experience in the Company's line of business" and carries no non-compete with the company or its other directors.</p>
+<svg viewBox="0 0 700 220" width="100%">
+  <line x1="60" y1="110" x2="660" y2="110" stroke="#1a1d23"/>
+  <text x="60" y="126" font-size="9" text-anchor="middle">1973</text>
+  <text x="220" y="126" font-size="9" text-anchor="middle">1998</text>
+  <text x="480" y="126" font-size="9" text-anchor="middle">2025</text>
+  <text x="600" y="126" font-size="9" text-anchor="middle">2026</text>
+  <text x="660" y="126" font-size="9" text-anchor="middle">2026</text>
+
+  <!-- personal track above axis -->
+  <circle cx="60" cy="110" r="3" fill="#2b4c7e"/>
+  <line x1="60" y1="110" x2="60" y2="90" stroke="#2b4c7e"/>
+  <text x="60" y="85" font-size="9" text-anchor="middle">Rahul Dhoot born</text>
+
+  <circle cx="220" cy="110" r="3" fill="#2b4c7e"/>
+  <line x1="220" y1="110" x2="220" y2="70" stroke="#2b4c7e"/>
+  <text x="220" y="65" font-size="9" text-anchor="middle">Joins company (28 Apr)</text>
+
+  <!-- company track below axis -->
+  <circle cx="220" cy="110" r="3" fill="#6b7280"/>
+  <line x1="220" y1="110" x2="220" y2="150" stroke="#6b7280"/>
+  <text x="220" y="163" font-size="9" text-anchor="middle">Company incorporated (Apr 1998)</text>
+
+  <circle cx="480" cy="110" r="3" fill="#c0392b"/>
+  <line x1="480" y1="110" x2="480" y2="130" stroke="#c0392b"/>
+  <text x="480" y="145" font-size="9" text-anchor="middle" fill="#c0392b">Bain (BC Asia XV) acquires</text>
+  <text x="480" y="156" font-size="9" text-anchor="middle" fill="#c0392b">majority stake (~Apr 2025)</text>
+
+  <circle cx="580" cy="110" r="3" fill="#6b7280"/>
+  <line x1="580" y1="110" x2="580" y2="170" stroke="#6b7280"/>
+  <text x="580" y="183" font-size="9" text-anchor="middle">DRHP pre-filed (3 Feb 2026)</text>
+
+  <polygon points="660,105 665,110 660,115 655,110" fill="#1a1d23"/>
+  <text x="660" y="200" font-size="9" text-anchor="middle" font-weight="700">This IPO (Aug 2026)</text>
+</svg>
+<p class="src">Personal history shown from Rahul Dhoot's disclosed year of birth; education year and any career milestones before joining the company in 1998 were not disclosed in the RHP excerpts reviewed. BC Asia Investments XV Limited was itself only incorporated on 13 March 2023.</p>
+</section>
+
+<!-- 8. SHAREHOLDING -->
+<section>
+<h2>Shareholding: pre vs post issue</h2>
+<table class="two"><tr>
+<td>
+<h3 style="margin-top:0">Pre-issue</h3>
+<svg viewBox="0 0 200 160" width="100%">
+  <circle cx="80" cy="75" r="60" fill="none" stroke="#eef1f4" stroke-width="20"/>
+  <circle cx="80" cy="75" r="60" fill="none" stroke="#2b4c7e" stroke-width="20" stroke-dasharray="376.8 0.1"/>
+  <text x="80" y="80" text-anchor="middle" font-size="14" font-weight="700">100%</text>
+</svg>
+<p style="font-size:11px">Promoters &amp; promoter group (Rahul Dhoot + BC Asia Investments XV/Bain + Mangalam Capital)</p>
+</td>
+<td>
+<h3 style="margin-top:0">Post-issue</h3>
+<svg viewBox="0 0 200 160" width="100%">
+  <circle cx="80" cy="75" r="60" fill="none" stroke="#e6e9ed" stroke-width="20"/>
+  <circle cx="80" cy="75" r="60" fill="none" stroke="#2b4c7e" stroke-width="20"
+    stroke-dasharray="311.8 65" transform="rotate(-90 80 75)"/>
+  <text x="80" y="80" text-anchor="middle" font-size="14" font-weight="700">82.8%</text>
+</svg>
+<p style="font-size:11px"><span style="color:#2b4c7e">■</span> Promoters &amp; promoter group — 82.77% &nbsp; <span style="color:#e6e9ed">■</span> Public — 17.23%</p>
+</td>
+</tr></table>
+<p style="margin-top:10px">Promoter dilution: ~17.2 percentage points, driven mostly by the OFS rather than the fresh issue. Pledge: <span class="missing">none found in sources checked</span> — not confirmed against the RHP's capital-structure chapter directly.</p>
+</section>
+
+<!-- 8b. INSTITUTIONAL & BROKERAGE VIEW -->
+<section>
+<h2>What the institutions and brokerages think</h2>
+<h3>Anchor book — who actually put money in</h3>
+<p>₹918.27 cr raised from 72 anchor investors on 7 Aug 2026 at ₹871 (upper band), allocating 1,05,42,657 shares. Domestic mutual funds took 61.27% of the book across 8 fund houses and 46 schemes — SBI, ICICI Prudential, HDFC, Axis, Mirae Asset, Nippon India, Tata and HSBC Mutual Fund all participated. On the foreign side, BlackRock and the Abu Dhabi Investment Authority (a sovereign fund) both feature. ICICI Prudential Smallcap Fund was the single largest allottee at 7.81%, ahead of SBI Multicap Fund (5.99%) and Mirae Asset Focused Fund (4.90%). This is a genuinely long-only, quality anchor book by composition.</p>
+<h3>Brokerage calls</h3>
+<table class="data">
+<thead><tr><th>Brokerage</th><th>Call</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>Anand Rathi</td><td>Subscribe (long term)</td><td>44.9x FY26 post-issue earnings; flags customer concentration &amp; execution risk on expansion</td></tr>
+<tr><td>Choice Securities</td><td>Subscribe</td><td>44.9x FY26 post-issue EPS ₹19.4; 4Y revenue CAGR 28.6%, PAT CAGR 34.3%; flags customer (71.6%) &amp; single-plant (50.5%) concentration</td></tr>
+<tr><td>Ventura Securities</td><td>Subscribe</td><td>44.9x P/E, 24.6x EV/EBITDA; flags margin compression 18.4%→15.8%</td></tr>
+<tr><td>Sushil Finance</td><td>Subscribe</td><td>Peer diluted P/E ~55x vs Dhoot's ₹24.40 diluted EPS</td></tr>
+<tr><td>SBI Securities</td><td><em>No rating issued</em></td><td>SBI Capital Markets is a book-running lead manager on this issue — an explicitly disclosed conflict</td></tr>
+</tbody>
+</table>
+<p style="margin-top:9px"><strong>Brokerage commentary:</strong> Every rated call found in the sources checked is Subscribe — no Neutral or Avoid call surfaced. Treat that unanimity with some caution rather than as independent confirmation: several of these brokerages, and the wider IPO-note ecosystem, have a structural bias toward "Subscribe" on mainboard issues with a live anchor book and positive GMP, and this search did not turn up a dissenting view to weigh against them. SBI Securities' abstention over its own lead-manager conflict is the most informative single data point in this section — it's a reminder to read every other "Subscribe" against who is paid to sell the issue.</p>
+</section>
+
+<!-- 8c. LOCK-IN EXPIRY -->
+<section>
+<h2>Lock-in expiry — when supply hits the stock</h2>
+<table class="data">
+<thead><tr><th>Holder</th><th>Shares released</th><th>Unlock date</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>Anchor investors — 50% of allocation</td><td class="num">~52,71,329 shares</td><td>12 Sep 2026</td><td>Disclosed (30 days from listing)</td></tr>
+<tr><td>Anchor investors — remaining 50%</td><td class="num">~52,71,328 shares</td><td>11 Nov 2026</td><td>Disclosed (90 days from listing)</td></tr>
+<tr><td>Non-promoter pre-IPO shareholders</td><td class="missing">not quantified in sources checked</td><td>~13 Feb 2027 (calculated)</td><td>Standard SEBI ICDR 6-month lock-in from allotment (13 Aug 2026) — not RHP-confirmed</td></tr>
+<tr><td>Promoter holding above minimum contribution</td><td class="missing">not quantified in sources checked</td><td>~13 Feb 2027 (calculated)</td><td>Standard SEBI ICDR 6-month lock-in — not RHP-confirmed</td></tr>
+<tr><td>Promoter minimum contribution (20% of post-issue capital)</td><td class="missing">not quantified in sources checked</td><td>~13 Feb 2028 (calculated)</td><td>Standard SEBI ICDR 18-month lock-in — not RHP-confirmed</td></tr>
+</tbody>
+</table>
+<p style="margin-top:9px">Free float at listing is thin — public shareholding is only 17.23% of the post-issue base — so each of these unlocks, especially the 6-month promoter and pre-IPO tranches in February 2027, represents a proportionally large jump in tradeable supply relative to what's actually floating in the first six months. This is latent supply, not predicted selling, but it is worth having on the calendar for anyone planning to hold rather than flip.</p>
+</section>
+
+<!-- 9. GREY MARKET & SENTIMENT -->
+<section>
+<h2>Grey market &amp; sentiment</h2>
+<svg viewBox="0 0 300 70" width="100%">
+  <polyline points="20,10 100,18 180,28 260,32" fill="none" stroke="#2b4c7e" stroke-width="2"/>
+  <circle cx="260" cy="32" r="3" fill="#2b4c7e"/>
+  <text x="20" y="50" font-size="9">₹257</text>
+  <text x="100" y="58" font-size="9">₹250</text>
+  <text x="180" y="68" font-size="9">₹243</text>
+  <text x="240" y="45" font-size="9" font-weight="700">₹240</text>
+  <text x="20" y="8" font-size="8" fill="#7a828e">10 Aug</text>
+  <text x="255" y="8" font-size="8" fill="#7a828e">12 Aug (latest)</text>
+</svg>
+<p>GMP <strong>₹240</strong> (as of 12 Aug, 11:25 AM, closing day) → implied listing premium of <strong>~28%</strong> over the ₹871 upper band, trend <strong>softening slightly</strong> through the closing morning (down from a tracked peak of ₹253 and from ₹243 the same morning). Across the bidding window GMP ranged ₹90–253, so today's ₹240 sits well within — not at the top of — its own recent range.</p>
+<h3>Subscription (intraday, as bidding was still open at time of writing)</h3>
+<svg viewBox="0 0 500 130" width="100%">
+  <text x="0" y="18" font-size="10">Retail</text>
+  <rect x="60" y="8" width="126" height="16" fill="#2b4c7e"/><text x="192" y="20" font-size="9">~2.97x (Day 2 close)</text>
+  <text x="0" y="48" font-size="10">NII</text>
+  <rect x="60" y="38" width="300" height="16" fill="#2b4c7e"/><text x="366" y="50" font-size="9">~10.6x (Day 2 close)</text>
+  <text x="0" y="78" font-size="10">QIB</text>
+  <rect x="60" y="68" width="21" height="16" fill="#e07b39"/><text x="87" y="80" font-size="9">~0.5x (Day 2 close, weak)</text>
+  <text x="0" y="108" font-size="10">Overall</text>
+  <rect x="60" y="98" width="200" height="16" fill="#58a14e"/><text x="266" y="110" font-size="9">~8.6x (Day 3 morning, live)</text>
+</svg>
+<p>Anchor book: high quality by composition (see above), but the retail/NII surge on the final day is what pushed the overall figure from ~3.9x (Day 2 close) to ~8.6x (Day 3 morning) — QIB was still catching up as of the last reading checked, which is typical since institutional books often fill in the closing hours. <strong>These are not final numbers</strong> — bidding closes today (12 Aug); check the exchange's basis-of-allotment page for the confirmed close.</p>
+<div class="flag f-amber">Grey market premium is an unofficial, unregulated over-the-counter
+rate on a thin market with no settlement guarantee. It is easily moved on small issues.
+Treat it as a sentiment reading, never as a forecast of the listing price.</div>
+</section>
+
+<!-- 10. RED FLAGS -->
+<section>
+<h2>Red flags &amp; adverse findings</h2>
+<div class="flag f-amber"><span class="sev" style="color:#d68910">WATCH</span><strong>Co-promoter is a 16-month-old financial investor with no non-compete.</strong> BC Asia Investments XV (Bain Capital) acquired its majority stake around April 2025 and self-discloses it lacks industry experience; other Bain Capital affiliates remain free to back competing businesses. <span class="src">— multiple IPO-note sources, RHP promoter section</span></div>
+<div class="flag f-amber"><span class="sev" style="color:#d68910">WATCH</span><strong>Related-party dealings, including a fee to the co-promoter.</strong> A shareholder-approved FY24 sale of ~₹57.42 cr of current assets and ~₹23.75 cr of land/buildings to subsidiary Dhoot Auto-Components, rising board-approved intra-group transaction limits, and a ₹12 cr FY26 "business strategy" payment to Bain Capital. <span class="src">— IANS/Prokerala coverage of RHP risk factors; SPTulsian analysis</span></div>
+<div class="flag f-amber"><span class="sev" style="color:#d68910">WATCH</span><strong>Cyberattack disclosed for FY25.</strong> The company confirms it was subject to a cyberattack involving confidential data during FY25, disclosed as a risk factor. <span class="src">— IANS/Prokerala coverage of RHP</span></div>
+<div class="flag f-yellow"><span class="sev" style="color:#b7950b">MINOR</span><strong>Generic litigation boilerplate, no quantified material case found.</strong> The RHP discloses that the company, promoters, directors, KMPs and subsidiaries are parties to "outstanding litigation proceedings" — standard IPO disclosure language — but no specific case with a quantified financial exposure surfaced in the sources checked. <span class="src">— Groww IPO page citing RHP</span></div>
+<div class="flag f-yellow"><span class="sev" style="color:#b7950b">MINOR</span><strong>Working capital cycle has lengthened sharply.</strong> Net working-capital days rose from 12 to 102 over the disclosed period — not a regulatory or governance flag, but a real operating trend worth tracking against future results. <span class="src">— IndMoney IPO review</span></div>
+<p style="margin-top:8px">No SEBI, Income Tax, ED or CCI adverse action against the company or its promoters was found in the sources checked — the one CCI item located was an <em>approval</em> (of Bain's stake acquisition), not enforcement action. No auditor qualification or going-concern note was found. No pledge of promoter shares was found. This is not exhaustive — read the RHP's full "Outstanding Litigation" and "Risk Factors" chapters before applying.</p>
+</section>
+
+<!-- 11. SCORECARD -->
+<section>
+<h2>Scorecard breakdown</h2>
+<table class="data stars">
+<thead><tr><th>Module</th><th>Rating</th><th class="r">Points</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Growth track record</td><td><svg width="75" height="13" viewBox="0 0 75 13"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(15,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(30,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(45,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(60,0)"/></svg></td><td class="r num">16.0 / 20</td><td>27.2% 2Y revenue CAGR, PAT up all 3 years but decelerating, no pre-IPO spike, WC days worsened 12→102</td></tr>
+<tr><td>Valuation</td><td><svg width="75" height="13" viewBox="0 0 75 13"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(15,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(30,0)"/><g transform="translate(45,0)"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed"/><clipPath id="c1"><rect width="6.5" height="13"/></clipPath><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" clip-path="url(#c1)"/></g><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(60,0)"/></svg></td><td class="r num">14.0 / 20</td><td>44.9x vs ~19% discount to broad peer avg, but slight premium to closest peer (Motherson Sumi Wiring); P/B &amp; EV/EBITDA both rich</td></tr>
+<tr><td>Promoter &amp; governance</td><td><svg width="75" height="13" viewBox="0 0 75 13"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(15,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(30,0)"/><g transform="translate(45,0)"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed"/><clipPath id="c2"><rect width="6.5" height="13"/></clipPath><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" clip-path="url(#c2)"/></g><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(60,0)"/></svg></td><td class="r num">11.0 / 15</td><td>82.77% post-issue holding is strong, but co-promoter is a ~16-month-old PE entrant with disclosed RPTs and no non-compete</td></tr>
+<tr><td>Purpose of issue</td><td><svg width="75" height="13" viewBox="0 0 75 13"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(15,0)"/><g transform="translate(30,0)"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed"/><clipPath id="c3"><rect width="6.5" height="13"/></clipPath><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" clip-path="url(#c3)"/></g><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(45,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(60,0)"/></svg></td><td class="r num">6.0 / 12</td><td>Fresh issue only 45.6% of total; ~55% of that is debt repayment, only ~11% capex, ~34% unidentified acquisitions/GCP</td></tr>
+<tr><td>Balance sheet &amp; cash quality</td><td><svg width="75" height="13" viewBox="0 0 75 13"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(15,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(30,0)"/><g transform="translate(45,0)"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed"/><clipPath id="c4"><rect width="6.5" height="13"/></clipPath><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" clip-path="url(#c4)"/></g><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(60,0)"/></svg></td><td class="r num">7.0 / 10</td><td>D/E improved 0.78→0.35, net cash positive; but WC days ballooned and raw material is 68% of revenue</td></tr>
+<tr><td>Industry &amp; position</td><td><svg width="75" height="13" viewBox="0 0 75 13"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(15,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(30,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(45,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(60,0)"/></svg></td><td class="r num">8.0 / 10</td><td>EV harness segment growing 33-40% CAGR, #1/2 with 41% share; but heavy customer &amp; plant concentration, cyclical demand</td></tr>
+<tr><td>Market sentiment</td><td><svg width="75" height="13" viewBox="0 0 75 13"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(15,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(30,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(45,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(60,0)"/></svg></td><td class="r num">6.0 / 8</td><td>Quality anchor book, GMP +28% but softening; QIB subscription still muted at last reading</td></tr>
+<tr><td>Clean bill</td><td><svg width="75" height="13" viewBox="0 0 75 13"><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(15,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#d4a017" transform="translate(30,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(45,0)"/><polygon points="6.5,0 8.2,4.4 13,4.6 9.3,7.6 10.6,12.2 6.5,9.5 2.4,12.2 3.7,7.6 0,4.6 4.8,4.4" fill="#e6e9ed" transform="translate(60,0)"/></svg></td><td class="r num">3.0 / 5</td><td>No SEBI/auditor issues found, but recent PE restructuring + RPTs + FY25 cyberattack all deducted</td></tr>
+</tbody>
+</table>
+<p style="margin-top:10px"><strong>Total: 71.0/100 → Apply</strong> (3.55/5 on the same scale). This is the <em>weighted</em> score rescaled to 5 — module weights are 20/20/15/12/10/10/8/5, not equal, so averaging the eight star ratings above by hand will give a different (and wrong) number.</p>
+</section>
+
+<!-- 11b. DECISION PANEL -->
+<section>
+<h2>Decision panel</h2>
+<div class="dp">
+<table class="verdict"><tr>
+<td><div class="dpbox" style="text-align:center">
+  <div class="vlabel">Score</div>
+  <svg viewBox="0 0 120 120" width="90" height="90">
+    <circle cx="60" cy="60" r="46" fill="none" stroke="#e6e9ed" stroke-width="13"/>
+    <circle cx="60" cy="60" r="46" fill="none" stroke="#58a14e" stroke-width="13"
+      stroke-dasharray="205.2 83.8" stroke-dashoffset="72.3" transform="rotate(-180 60 60)"/>
+    <text x="60" y="66" text-anchor="middle" font-size="22" font-weight="700">71</text>
+  </svg>
+  <div class="vnote">Apply</div>
+</div></td>
+<td><div class="dpbox" style="text-align:center">
+  <div class="vlabel">Risk</div>
+  <div style="font-size:20px;font-weight:700;margin-top:26px">High</div>
+  <div class="vnote">Concentration + recent promoter change</div>
+</div></td>
+<td><div class="dpbox" style="text-align:center">
+  <div class="vlabel">Money at stake</div>
+  <div style="font-size:20px;font-weight:700;margin-top:26px">1 lot</div>
+  <div class="vnote num">₹14,807 · Retail</div>
+</div></td>
+</tr></table>
+
+<table class="two" style="margin-top:14px"><tr>
+<td class="sw"><h4 style="color:#1e8449">Apply for listing gains</h4>
+<p style="font-size:11.5px;margin:0">If GMP holds near current levels (~28%) into allotment and you're comfortable with a lottery on ~3x retail subscription — the anchor book and NII demand suggest reasonable Day-1 pop odds, but this is a bet on sentiment holding for five more days, not on the business.</p></td>
+<td class="sw"><h4 style="color:#2b4c7e">Apply and hold</h4>
+<p style="font-size:11.5px;margin:0">If you believe the EV-content tailwind (1.5–2.5x harness value per EV) plays out over 3+ years and you can look past a 16-month-old PE promoter and a still-unidentified ~34% of the fresh issue — the post-issue balance sheet is genuinely cleaner, and the discount to the broad peer set is real.</p></td>
+</tr></table>
+<table class="two" style="margin-top:10px"><tr>
+<td class="sw" style="grid-column:span 2"><h4 style="color:#c0392b">Skip</h4>
+<p style="font-size:11.5px;margin:0">If you weigh the co-promoter's short tenure and the OFS-heavy structure as more important than the EV story, or if you specifically want Motherson Sumi Wiring's cleaner balance sheet and higher RoNW at a near-identical multiple instead.</p></td>
+</tr></table>
+
+<h3>Who this is for</h3>
+<table class="two"><tr>
+<td class="sw"><h4>Suits you if</h4>
+<ul style="font-size:11.5px;margin:0;padding-left:16px">
+<li>You want direct exposure to India's 2W/3W EV-content growth story through the segment leader</li>
+<li>You can tolerate a High-risk, concentrated small-cap position sized at a single retail lot</li>
+<li>You're comfortable holding through a co-promoter's first 16 months of ownership without a long track record to judge them by</li>
+</ul></td>
+<td class="sw"><h4>Does not suit you if</h4>
+<ul style="font-size:11.5px;margin:0;padding-left:16px">
+<li>You need low customer/plant concentration or a clean, uncomplicated promoter history</li>
+<li>You'd rather pay a similar multiple for Motherson Sumi Wiring's stronger balance sheet and RoNW</li>
+<li>You're not prepared to sit through the Feb 2027 / Feb 2028 lock-in unlocks as a small-float stock</li>
+</ul></td>
+</tr></table>
+</div>
+
+<div class="aithought"><strong>Summary:</strong> The single figure that most supports applying is the 44.9x post-issue P/E against a peer-set average commonly cited near 55x — a real, quantifiable discount for the category leader in a segment with a structural EV tailwind. The single figure that most argues against it is that ~34% of the fresh issue (roughly ₹483 cr) has no named use, layered on top of a co-promoter who has held the stake for barely 16 months and takes a disclosed annual fee from the company — which is a very different investment case from "buy the market leader's growth capital" even though the headline multiple looks similar either way. Both are true at the same time, and the ₹14,807 stake you've set for this one won't turn on resolving that tension either way.</div>
+</section>
+
+<!-- 12. SOURCES -->
+<section>
+<h2>Sources</h2>
+<ol class="src">
+<li>IPO Watch — Dhoot Transmission IPO Date, Review, Price, Allotment Details — ipowatch.in — 11 Aug 2026</li>
+<li>India IPO — Dhoot Transmission Ltd. Date, Price Band, GMP, Subscription & Allotment — indiaipo.in — 11 Aug 2026</li>
+<li>Chittorgarh — Dhoot Transmission IPO Date, Price, GMP, Review, Details — chittorgarh.com — 11 Aug 2026</li>
+<li>India Infoline — Dhoot Transmission IPO Opens Today — indiainfoline.com — 10 Aug 2026</li>
+<li>Investorgain — Dhoot Transmission IPO Details 2026 — investorgain.com — ~5 Aug 2026</li>
+<li>IPO Ji — Dhoot Transmission IPO GMP, Details, Price, Dates & Subscription Status — ipoji.com — 12 Aug 2026</li>
+<li>Yashasvi Finvest — Dhoot Transmission IPO GMP, Date & Price — yashasvifinvest.com — 11 Aug 2026</li>
+<li>Kotak Neo — Dhoot Transmission IPO: Check Day 2 Subscription Status — kotakneo.com — 11 Aug 2026</li>
+<li>Outlook Money — Dhoot Transmission IPO Opens For Bidding — outlookmoney.com — 10 Aug 2026</li>
+<li>Sushil Finance — Dhoot Transmission Limited IPO Analysis — sushilfinance.com — 7 Aug 2026</li>
+<li>Anand Rathi — Dhoot Transmission IPO Date, Price & Details — anandrathi.com — 6 Aug 2026</li>
+<li>Prokerala/IANS — Dhoot Transmission IPO: 71 pc of revenue from top 5 customers — prokerala.com — 11 Aug 2026</li>
+<li>IndMoney — Dhoot Transmission IPO Review, GMP: Apply or Avoid? — indmoney.com/blog — 10 Aug 2026</li>
+<li>Rupeezy — Is Dhoot Transmission IPO Good or Bad — rupeezy.in — 10 Aug 2026</li>
+<li>Tradebrains — Dhoot Transmission IPO: From Issue Details to Financials — tradebrains.in — 7 Aug 2026</li>
+<li>Equity Research India — Dhoot Transmission IPO (10-12 August) Analysis — equityresearchindia.com — 11 Aug 2026</li>
+<li>SPTulsian.com — Dhoot Transmission IPO Analysis — sptulsian.com — 10 Aug 2026</li>
+<li>Value Research — Dhoot Transmission IPO: Should you subscribe at 45x earnings? — valueresearchonline.com — 11 Aug 2026</li>
+<li>IPO Station — Dhoot Transmission IPO 2026 GMP & Subscription — ipostation.in — undated (~Aug 2026)</li>
+<li>IPO Central — Dhoot Transmission IPO: Brokers Recommend Subscribe — ipocentral.in — 11 Aug 2026</li>
+<li>Zee Business — Dhoot Transmission IPO Day 2: Subscription hits 1.28x — zeebiz.com — 11 Aug 2026</li>
+<li>HDFC Sky — Dhoot Transmission IPO Subscribed 3.94× on Day 2 — hdfcsky.com — 11 Aug 2026</li>
+<li>ICFM India — Dhoot Transmission IPO Day 2: GMP, Review — icfmindia.com — 11 Aug 2026</li>
+<li>ScanX — Dhoot Transmission IPO: Check Day 2 Subscription Status — scanx.trade — 11 Aug 2026</li>
+<li>ScanX — Dhoot Transmission IPO: Check Price Band, Timeline & Key Details — scanx.trade — 6 Aug 2026</li>
+<li>Groww — Dhoot Transmission IPO — Check Subscription Status, Price Band & Last Date — groww.in — 11 Aug 2026</li>
+<li>SEBI — Dhoot Transmission Limited RHP/Abridged Prospectus excerpt — sebi.gov.in — Aug 2026</li>
+<li>Upstox — Dhoot Transmission IPO fully subscribed on Day 2 — upstox.com — 11 Aug 2026</li>
+<li>Electrical Mirror — Bain Capital-Backed Dhoot Transmission Files IPO DRHP — electricalmirror.net — 26 May 2026</li>
+<li>IMARC Group — Top Companies in the India Automotive Wiring Harness Industry — imarcgroup.com — 25 May 2026</li>
+<li>SkyQuest — Automotive Wiring Harness Market Companies — skyquestt.com — undated</li>
+<li>Yazaki India — About Us — companies.naukri.com — undated</li>
+<li>IPOGyani — Dhoot Transmission IPO GMP, Price, AI Prediction & Allotment — ipogyani.com — 7 Aug 2026</li>
+<li>Mata Securities — AMFI's Stock Categorization Update (July 2026) — matasec.com/substack — 5–6 Jul 2026</li>
+</ol>
+</section>
+
+<div class="disclaimer">
+  Data-derived analysis, not investment advice. Every figure should be verified against
+  the RHP before applying. IPO investing carries risk of capital loss, allotment is not
+  guaranteed, and listing performance cannot be predicted.
+  Generated 12 Aug 2026, ahead of the 12 Aug 2026 bid close — subscription and GMP figures were live/intraday at time of writing.
+  <div style="margin-top:9px;padding-top:9px;border-top:1px solid #dfe3e8">
+    Prepared by <strong>Bharath</strong>
+  </div>
+</div>
+
+</body>
+</html>

@@ -45,7 +45,7 @@ export default function Skills() {
 
               <div className="relative flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
                 <div className="flex items-center gap-4 md:w-64 md:shrink-0 md:flex-col md:items-start">
-                  <span className="tilt-raise flex h-14 w-14 items-center justify-center rounded-2xl accent-bar text-white shadow-lg shadow-accent/30">
+                  <span className="tilt-raise flex h-14 w-14 items-center justify-center rounded-2xl accent-bar text-on-accent shadow-lg shadow-accent/30">
                     <svg
                       className="h-7 w-7"
                       viewBox="0 0 24 24"
@@ -82,7 +82,7 @@ export default function Skills() {
             <Reveal key={group.title} delay={i * 90}>
               <TiltCard className="card h-full p-6">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl accent-bar text-white">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl accent-bar text-on-accent">
                     <svg
                       className="h-5 w-5"
                       viewBox="0 0 24 24"

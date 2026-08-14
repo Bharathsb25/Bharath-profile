@@ -1,7 +1,11 @@
-import Link from "next/link";
-import { freelance } from "@/data/profile";
+import { businessServices } from "@/data/profile";
 
-export default function FreelanceHero() {
+/**
+ * Hero for /services. Audience is small & local business, so the copy stays
+ * plain — no job title, no "SaaS"/"enterprise". The fact tiles deliberately
+ * carry NO price: see the pricing rule on `businessServices` in profile.ts.
+ */
+export default function BusinessHero() {
   return (
     <section className="relative overflow-hidden">
       <div className="bg-grid pointer-events-none absolute inset-0" />
@@ -10,33 +14,26 @@ export default function FreelanceHero() {
       <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 sm:pt-20">
         <div className="flex flex-wrap items-center gap-3">
           <span className="rounded-full border border-line bg-card px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-            {freelance.kicker}
+            {businessServices.kicker}
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            Available for projects
+            Taking on new work
           </span>
-          <Link
-            href="/#ai"
-            className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent transition-colors hover:bg-accent/20"
-          >
-            <svg className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z" />
-            </svg>
-            AI Tools Certified
-          </Link>
         </div>
 
         <h1 className="mt-6 max-w-3xl font-display text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl">
-          Your rollout is stuck.{" "}
-          <span className="text-gradient">I get it live.</span>
+          {businessServices.headline}{" "}
+          <span className="text-gradient">
+            {businessServices.headlineAccent}
+          </span>
         </h1>
 
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted">
-          {freelance.subhead}
+          {businessServices.subhead}
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -44,25 +41,37 @@ export default function FreelanceHero() {
             href="#start"
             className="rounded-full accent-bar px-6 py-3 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5"
           >
-            Start a project →
+            Tell me what you need →
           </a>
           <a
-            href="#packages"
+            href="#bundle"
             className="rounded-full border border-line bg-card px-6 py-3 text-sm font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-accent"
           >
-            See what I build
+            Starting a new business?
           </a>
           <span className="text-xs font-medium text-muted">
-            {freelance.responseTime}
+            {businessServices.responseTime}
           </span>
         </div>
 
         <p className="mt-6 max-w-xl border-l-2 border-accent pl-4 text-sm leading-6 text-muted">
-          {freelance.availability}
+          {businessServices.availability}
         </p>
 
+        {/* Who this is for */}
+        <ul className="mt-8 flex flex-wrap gap-2">
+          {businessServices.audience.map((item) => (
+            <li
+              key={item}
+              className="rounded-full border border-line bg-card px-3 py-1.5 text-xs font-medium text-muted"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+
         <dl className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {freelance.facts.map((fact) => (
+          {businessServices.facts.map((fact) => (
             <div key={fact.label} className="card p-5">
               <dt className="font-display text-xl font-bold text-gradient">
                 {fact.value}

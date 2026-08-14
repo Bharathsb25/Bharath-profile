@@ -31,7 +31,7 @@ export default function FreelancePackages() {
                     {pkg.name}
                   </h3>
                   {pkg.featured && (
-                    <span className="tilt-raise shrink-0 rounded-full accent-bar px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+                    <span className="tilt-raise shrink-0 rounded-full bg-highlight px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-on-accent">
                       Most asked for
                     </span>
                   )}

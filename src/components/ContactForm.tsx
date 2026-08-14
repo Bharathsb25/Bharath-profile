@@ -47,7 +47,7 @@ export default function ContactForm({
   if (status === "success") {
     return (
       <div className="card p-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full accent-bar text-white">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full accent-bar text-on-accent">
           ✓
         </div>
         <h3 className="mt-4 font-display text-lg font-bold text-foreground">
@@ -175,7 +175,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-4 w-full rounded-full accent-bar px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+        className="mt-4 w-full rounded-full accent-bar px-6 py-3 text-sm font-semibold text-on-accent transition-transform hover:-translate-y-0.5 disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : submitLabel}
       </button>

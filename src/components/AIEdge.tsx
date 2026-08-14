@@ -57,7 +57,7 @@ export default function AIEdge() {
                 href={aiEdge.credential.href}
                 className="mt-7 inline-flex items-center gap-3 rounded-xl border border-line bg-card px-4 py-3 transition-all hover:-translate-y-0.5 hover:border-accent"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full accent-bar text-white">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full accent-bar text-on-accent">
                   <svg
                     className="h-4 w-4"
                     viewBox="0 0 24 24"
@@ -90,7 +90,7 @@ export default function AIEdge() {
               <Reveal key={point.title} delay={i * 90}>
                 <TiltCard max={5} className="card h-full p-5 sm:p-6">
                   <div className="flex items-start gap-4">
-                    <span className="tilt-raise flex h-10 w-10 shrink-0 items-center justify-center rounded-xl accent-bar text-white">
+                    <span className="tilt-raise flex h-10 w-10 shrink-0 items-center justify-center rounded-xl accent-bar text-on-accent">
                       <svg
                         className="h-5 w-5"
                         viewBox="0 0 24 24"

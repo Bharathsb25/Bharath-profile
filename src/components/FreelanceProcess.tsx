@@ -24,7 +24,7 @@ export default function FreelanceProcess() {
             {freelance.process.map((step, i) => (
               <Reveal key={step.title} delay={i * 70}>
                 <li className="relative flex gap-5">
-                  <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full accent-bar font-display text-xs font-bold text-white">
+                  <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full accent-bar font-display text-xs font-bold text-on-accent">
                     {i + 1}
                   </span>
                   <div className="pt-1">

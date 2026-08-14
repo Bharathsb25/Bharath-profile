@@ -63,7 +63,7 @@ export default function Hero() {
             <div className="flex flex-wrap gap-3 pt-1">
               <a
                 href="#contact"
-                className="rounded-full accent-bar px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-transform hover:-translate-y-0.5"
+                className="rounded-full accent-bar px-6 py-3 text-sm font-semibold text-on-accent shadow-lg shadow-accent/20 transition-transform hover:-translate-y-0.5"
               >
                 Hire / Work With Me
               </a>

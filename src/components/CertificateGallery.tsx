@@ -74,8 +74,8 @@ export default function CertificateGallery() {
                 }
                 className="object-contain transition-transform duration-300 group-hover:scale-[1.03]"
               />
-              <span className="absolute inset-0 flex items-center justify-center bg-slate-950/0 opacity-0 transition-all duration-300 group-hover:bg-slate-950/45 group-hover:opacity-100">
-                <span className="rounded-full bg-white/95 px-4 py-2 text-xs font-semibold text-slate-900">
+              <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/45 group-hover:opacity-100">
+                <span className="rounded-full bg-white/95 px-4 py-2 text-xs font-semibold text-ink">
                   View certificate
                 </span>
               </span>
@@ -147,7 +147,7 @@ export default function CertificateGallery() {
           aria-label={`${open.name} certificate`}
         >
           <div
-            className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
+            className="scrim-strong absolute inset-0 backdrop-blur-sm"
             onClick={close}
           />
 

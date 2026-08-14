@@ -25,7 +25,7 @@ export default function Services() {
         <Reveal>
           <SectionHeading
             index="02"
-            kicker="For Businesses"
+            kicker="What I Deliver"
             title="Services I Offer"
           />
         </Reveal>
@@ -34,7 +34,7 @@ export default function Services() {
           {services.map((service, i) => (
             <Reveal key={service.title} delay={(i % 3) * 90}>
               <TiltCard className="card h-full p-6">
-                <span className="tilt-raise flex h-11 w-11 items-center justify-center rounded-xl accent-bar text-white">
+                <span className="tilt-raise flex h-11 w-11 items-center justify-center rounded-xl accent-bar text-on-accent">
                   <svg
                     className="h-5 w-5"
                     viewBox="0 0 24 24"
@@ -58,22 +58,40 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Dual-audience CTA */}
+        {/* Three audiences: small business → /services, project → /freelance,
+            hiring → stay on this page. The gradient card is the small-business
+            route, since that's the one the rest of this page doesn't serve. */}
         <Reveal delay={120}>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <a
-              href="/freelance"
-              className="group flex items-center justify-between rounded-2xl accent-bar p-6 text-white transition-transform hover:-translate-y-1"
+              href="/services"
+              className="group flex items-center justify-between rounded-2xl accent-bar p-6 text-on-accent transition-transform hover:-translate-y-1"
             >
               <div>
                 <p className="font-display text-base font-bold">
-                  Business owner with a project in mind?
+                  Running a shop, clinic, school or small firm?
                 </p>
-                <p className="mt-1 text-sm text-white/85">
-                  See freelance packages, process and pricing →
+                <p className="mt-1 text-sm text-on-accent">
+                  Websites, automation and branding — from ₹500.
                 </p>
               </div>
               <span className="ml-4 shrink-0 text-xl transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </a>
+            <a
+              href="/freelance"
+              className="group flex items-center justify-between rounded-2xl border border-line bg-card p-6 transition-all hover:-translate-y-1 hover:border-accent"
+            >
+              <div>
+                <p className="font-display text-base font-bold text-foreground">
+                  Mid-rollout and stuck?
+                </p>
+                <p className="mt-1 text-sm text-muted">
+                  Freelance packages, process and how I quote.
+                </p>
+              </div>
+              <span className="ml-4 shrink-0 text-xl text-accent transition-transform group-hover:translate-x-1">
                 →
               </span>
             </a>

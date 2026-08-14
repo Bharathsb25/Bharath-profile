@@ -88,21 +88,21 @@ export default function FreelancePage() {
               <div className="glow pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 opacity-20" />
 
               <div className="relative grid items-start gap-10 md:grid-cols-2">
-                <div className="text-white">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+                <div className="text-on-accent">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-on-accent">
                     Start a project
                   </p>
                   <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
                     {freelance.cta.title}
                   </h2>
-                  <p className="mt-4 max-w-md text-white/85">
+                  <p className="mt-4 max-w-md text-on-accent">
                     {freelance.cta.text}
                   </p>
 
                   <div className="mt-8 flex flex-wrap gap-3">
                     <a
                       href={`mailto:${profile.email}?subject=Freelance%20project%20enquiry`}
-                      className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition-transform hover:-translate-y-0.5"
+                      className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition-transform hover:-translate-y-0.5"
                     >
                       ✉ {profile.email}
                     </a>
@@ -111,13 +111,13 @@ export default function FreelancePage() {
                       href={profile.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                      className="rounded-full border border-on-accent/40 px-6 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-on-accent/10"
                     >
                       in LinkedIn
                     </a>
                   </div>
 
-                  <p className="mt-6 text-xs text-white/70">
+                  <p className="mt-6 text-xs text-on-accent">
                     {freelance.responseTime} · NDA on request · No obligation
                     after the scoping call
                   </p>

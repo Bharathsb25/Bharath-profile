@@ -12,7 +12,7 @@ export default function RevealPhoneButton() {
     return (
       <a
         href={`tel:${profile.phone.replace(/\s+/g, "")}`}
-        className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+        className="rounded-full border border-on-accent/40 px-6 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-on-accent/10"
       >
         ☎ {profile.phone}
       </a>
@@ -24,7 +24,7 @@ export default function RevealPhoneButton() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="group inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+        className="group inline-flex items-center gap-2 rounded-full border border-on-accent/40 px-6 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-on-accent/10"
         aria-label="Reveal phone number"
       >
         <svg

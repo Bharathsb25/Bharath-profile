@@ -10,9 +10,18 @@ export default function Footer() {
         <p className="text-xs text-muted">
           &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
-        <div className="flex gap-4 text-xs font-medium text-muted">
+        <div className="flex flex-wrap justify-center gap-4 text-xs font-medium text-muted">
+          <a href="/services" className="transition-colors hover:text-accent">
+            For Business
+          </a>
           <a href="/freelance" className="transition-colors hover:text-accent">
             Freelance
+          </a>
+          <a href="/samples" className="transition-colors hover:text-accent">
+            Samples
+          </a>
+          <a href="/#blog" className="transition-colors hover:text-accent">
+            Blog
           </a>
           <a href="/privacy" className="transition-colors hover:text-accent">
             Privacy

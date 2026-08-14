@@ -34,7 +34,7 @@ export default function Projects() {
 
           {/* Header */}
           <div className="relative flex flex-wrap items-center gap-2">
-            <span className="rounded-full accent-bar px-3 py-1 text-xs font-semibold text-white">
+            <span className="rounded-full accent-bar px-3 py-1 text-xs font-semibold text-on-accent">
               {p.type}
             </span>
             <span className="rounded-full border border-line px-3 py-1 text-xs font-medium text-muted">
@@ -76,7 +76,7 @@ export default function Projects() {
                   key={o.label}
                   className="rounded-xl border border-line bg-background p-4 text-center"
                 >
-                  <span className="mx-auto mb-2.5 flex h-9 w-9 items-center justify-center rounded-full accent-bar text-white">
+                  <span className="mx-auto mb-2.5 flex h-9 w-9 items-center justify-center rounded-full accent-bar text-on-accent">
                     <svg
                       className="h-4.5 w-4.5"
                       viewBox="0 0 24 24"
@@ -110,7 +110,7 @@ export default function Projects() {
                 >
                   <div className="group relative flex-1 rounded-xl border border-line bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-lg hover:shadow-accent/10">
                     <div className="flex items-center justify-between">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl accent-bar text-white">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl accent-bar text-on-accent">
                         <svg
                           className="h-5 w-5"
                           viewBox="0 0 24 24"
@@ -184,20 +184,20 @@ export default function Projects() {
           </div>
 
           {/* Business CTA */}
-          <div className="accent-bar relative mt-8 overflow-hidden rounded-2xl p-6 text-white sm:p-8">
+          <div className="accent-bar relative mt-8 overflow-hidden rounded-2xl p-6 text-on-accent sm:p-8">
             <div className="glow pointer-events-none absolute -right-10 -top-10 h-44 w-44 opacity-30" />
             <div className="relative flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h4 className="font-display text-lg font-bold sm:text-xl">
                   {p.businessCta.title}
                 </h4>
-                <p className="mt-1.5 max-w-xl text-sm leading-6 text-white/90">
+                <p className="mt-1.5 max-w-xl text-sm leading-6 text-on-accent">
                   {p.businessCta.text}
                 </p>
               </div>
               <a
                 href="#contact"
-                className="shrink-0 rounded-full bg-white px-6 py-3 text-sm font-semibold text-teal-700 shadow-sm transition-transform hover:-translate-y-0.5"
+                className="shrink-0 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition-transform hover:-translate-y-0.5"
               >
                 {p.businessCta.button}
               </a>

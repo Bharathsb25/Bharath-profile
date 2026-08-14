@@ -13,14 +13,14 @@ export default function Contact() {
 
           <div className="relative grid items-start gap-10 md:grid-cols-2">
             {/* Left: pitch + direct actions */}
-            <div className="text-white">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+            <div className="text-on-accent">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-on-accent">
                 Let&apos;s work together
               </p>
               <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
                 Open to full-time roles &amp; freelance projects
               </h2>
-              <p className="mt-4 max-w-md text-white/85">
+              <p className="mt-4 max-w-md text-on-accent">
                 Have a CRM rollout, implementation, or delivery challenge?
                 Send me a message and I&apos;ll get back to you quickly.
               </p>
@@ -28,7 +28,7 @@ export default function Contact() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={`mailto:${profile.email}`}
-                  className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition-transform hover:-translate-y-0.5"
+                  className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition-transform hover:-translate-y-0.5"
                 >
                   ✉ {profile.email}
                 </a>
@@ -37,7 +37,7 @@ export default function Contact() {
                   href={profile.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                  className="rounded-full border border-on-accent/40 px-6 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-on-accent/10"
                 >
                   in LinkedIn
                 </a>
