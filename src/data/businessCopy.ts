@@ -473,6 +473,8 @@ const en: BusinessCopy = {
       { quote: "[Client name, business type] — result achieved", name: "[Client name]", role: "[Business type]" },
       { quote: "[Client name, business type] — result achieved", name: "[Client name]", role: "[Business type]" },
       { quote: "[Client name, business type] — result achieved", name: "[Client name]", role: "[Business type]" },
+      { quote: "[Client name, business type] — result achieved", name: "[Client name]", role: "[Business type]" },
+      { quote: "[Client name, business type] — result achieved", name: "[Client name]", role: "[Business type]" },
     ],
   },
 
@@ -853,6 +855,8 @@ const ta: BusinessCopy = {
     intro: "நிஜமான ப்ராஜெக்ட்களில் இருந்து நிஜமான கருத்துக்கள், முடிந்தவுடன்.",
     todoNote: "TODO — கீழே உள்ளவை ப்ளேஸ்ஹோல்டர்கள், நிஜ கிளையண்ட் கருத்துக்களுக்காக காத்திருக்கிறோம். இந்த பகுதி முடிந்தது என்று கருதும் முன் மாற்றவும்.",
     items: [
+      { quote: "[கிளையண்ட் பெயர், தொழில் வகை] — அடைந்த முடிவு", name: "[கிளையண்ட் பெயர்]", role: "[தொழில் வகை]" },
+      { quote: "[கிளையண்ட் பெயர், தொழில் வகை] — அடைந்த முடிவு", name: "[கிளையண்ட் பெயர்]", role: "[தொழில் வகை]" },
       { quote: "[கிளையண்ட் பெயர், தொழில் வகை] — அடைந்த முடிவு", name: "[கிளையண்ட் பெயர்]", role: "[தொழில் வகை]" },
       { quote: "[கிளையண்ட் பெயர், தொழில் வகை] — அடைந்த முடிவு", name: "[கிளையண்ட் பெயர்]", role: "[தொழில் வகை]" },
       { quote: "[கிளையண்ட் பெயர், தொழில் வகை] — அடைந்த முடிவு", name: "[கிளையண்ட் பெயர்]", role: "[தொழில் வகை]" },
