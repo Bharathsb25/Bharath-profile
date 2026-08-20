@@ -30,7 +30,7 @@ export const samplesIntro = {
   kicker: "Sample work",
   headline: "IPO validation reports",
   subhead:
-    "Three worked examples of the research I do — pulling apart a company's filings, financials and risk disclosures, and turning several hundred pages into something you can read in ten minutes and act on.",
+    "Worked examples of the research I do — pulling apart a company's filings, financials and risk disclosures, and turning several hundred pages into something you can read in ten minutes and act on.",
   note: "Published to show the method, not to sell a tip. Read the note below before the reports.",
 };
 
@@ -87,6 +87,38 @@ export const samples: WorkSample[] = [
       "Gaps in the filing history",
       "Customer concentration",
       "Lock-in and selling-shareholder detail",
+    ],
+  },
+  {
+    slug: "lalithaa-jewellery-mart",
+    title: "Lalithaa Jewellery Mart Limited — IPO Validation Report",
+    company: "Lalithaa Jewellery Mart Limited",
+    file: "lalithaa-jewellery-mart.html",
+    date: "August 2026",
+    kind: "Jewellery Retail · Mainboard IPO",
+    summary:
+      "A 40-year jewellery retailer priced at a steep discount to listed peers, with a record profit year that hasn't yet converted to cash. The RHP's own numbers pulled apart line by line.",
+    covers: [
+      "Valuation vs Titan, Kalyan and Thangamayil",
+      "Cash-flow quality behind the FY26 profit spike",
+      "Promoter background and a related-party disclosure gap",
+      "Lock-in schedule and anchor book quality",
+    ],
+  },
+  {
+    slug: "seven-ipo-comparison",
+    title: "7 Live / Upcoming IPO Comparison — August 2026",
+    company: "Gaja AMC, Tempsens, Shankesh, Lalithaa, Horizon, Sunshine Pictures, Fascinate",
+    file: "seven-ipo-comparison.html",
+    date: "August 2026",
+    kind: "Cross-IPO comparison · 7 issues",
+    summary:
+      "The same fixed 8-module, 100-point rubric applied to seven live and upcoming IPOs across completely different sectors, ranked on one leaderboard so the scores are directly comparable.",
+    covers: [
+      "Ranked leaderboard across all seven issues",
+      "Risk-vs-score positioning",
+      "Module-by-module scorecard breakdown",
+      "Where each source figure came from, and where they disagreed",
     ],
   },
 ];

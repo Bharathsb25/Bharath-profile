@@ -58,7 +58,7 @@ export default function SamplesPage() {
               <SectionHeading
                 index="01"
                 kicker="The reports"
-                title="Three IPOs, taken apart"
+                title="IPOs, taken apart"
               />
             </Reveal>
 
