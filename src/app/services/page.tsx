@@ -1,29 +1,38 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Reveal from "@/components/Reveal";
-import ContactForm from "@/components/ContactForm";
-import RevealPhoneButton from "@/components/RevealPhoneButton";
+import LanguageProvider from "@/components/LanguageProvider";
+import LanguageToggle from "@/components/LanguageToggle";
 import BusinessHero from "@/components/BusinessHero";
 import BusinessBundle from "@/components/BusinessBundle";
 import BusinessWebsites from "@/components/BusinessWebsites";
 import BusinessCatalogue from "@/components/BusinessCatalogue";
 import BusinessProcess from "@/components/BusinessProcess";
+import BusinessTestimonials from "@/components/BusinessTestimonials";
 import BusinessFAQ from "@/components/BusinessFAQ";
-import { businessServices, profile } from "@/data/profile";
+import BusinessClosing from "@/components/BusinessClosing";
+import { businessCopy } from "@/data/businessCopy";
+import { profile } from "@/data/profile";
 
-const title = "Business Solutions for Small & Local Businesses";
+// Metadata and JSON-LD are server-rendered, so they always use the English
+// tree — this is what search engines see regardless of what a visitor's
+// browser later toggles to. See businessCopy.ts / the plan's SEO note: a
+// client-side language toggle can't put Tamil into the indexed HTML.
+const copy = businessCopy.en;
+
+const title = "Website Design, CRM & WhatsApp Setup for Small Business India";
 const description =
-  "Websites from ₹500, plus CRM setup, business automation, dashboards, MIS and financial reporting, WhatsApp & SMS, and branding — for shops, clinics, schools, small firms and individual professionals. Fixed price in writing before any work starts.";
+  "Websites from ₹500, CRM setup (Zoho, HubSpot, Freshsales), SMS & WhatsApp Business API integration, payment gateways, dashboards and financial reporting, and branding — for shops, clinics, schools, small firms and individual professionals in India. Fixed price in writing before any work starts.";
 
 export const metadata: Metadata = {
   title,
   description,
   keywords: [
-    "website design for small business",
+    "website design for small business India",
     "affordable website India",
     "CRM setup Zoho HubSpot Freshsales",
     "WhatsApp Business API setup",
+    "SMS integration DLT registration India",
     "Google Business Profile setup",
     "business automation India",
     "small business software",
@@ -64,21 +73,19 @@ const catalogueSchema = {
     itemListElement: [
       {
         "@type": "Offer",
-        name: businessServices.bundle.headline,
+        name: copy.bundle.headline,
         url: "/services#bundle",
         itemOffered: {
           "@type": "Service",
-          name: businessServices.bundle.headline,
-          description: businessServices.bundle.intro,
-          serviceType: businessServices.bundle.items
-            .map((item) => item.title)
-            .join(", "),
+          name: copy.bundle.headline,
+          description: copy.bundle.intro,
+          serviceType: copy.bundle.items.map((item) => item.title).join(", "),
         },
       },
       {
         "@type": "OfferCatalog",
-        name: businessServices.websites.kicker,
-        itemListElement: businessServices.websites.tiers.map((tier) => ({
+        name: copy.websites.kicker,
+        itemListElement: copy.websites.tiers.map((tier) => ({
           "@type": "Offer",
           name: `Website — ${tier.name}`,
           url: "/services#websites",
@@ -97,7 +104,7 @@ const catalogueSchema = {
           }),
         })),
       },
-      ...businessServices.categories.map((category) => ({
+      ...copy.categories.map((category) => ({
         "@type": "OfferCatalog",
         name: category.title,
         itemListElement: category.items.map((item) => ({
@@ -105,7 +112,7 @@ const catalogueSchema = {
           itemOffered: {
             "@type": "Service",
             name: item.title,
-            description: item.desc,
+            description: item.outcome,
           },
         })),
       })),
@@ -116,17 +123,17 @@ const catalogueSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: businessServices.faqs.map((faq) => ({
+  mainEntity: copy.faq.items.map((item) => ({
     "@type": "Question",
-    name: faq.q,
-    acceptedAnswer: { "@type": "Answer", text: faq.a },
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
   })),
 };
 
 export default function ServicesPage() {
   return (
-    <>
-      <Navbar />
+    <LanguageProvider>
+      <Navbar extra={<LanguageToggle />} />
       <main className="flex-1">
         <script
           type="application/ld+json"
@@ -140,55 +147,11 @@ export default function ServicesPage() {
         <BusinessWebsites />
         <BusinessCatalogue />
         <BusinessProcess />
+        <BusinessTestimonials />
         <BusinessFAQ />
-
-        {/* Enquiry */}
-        <section id="start" className="mx-auto max-w-6xl px-6 py-20">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-line accent-bar px-6 py-12 sm:px-10 sm:py-14">
-              <div className="glow pointer-events-none absolute -right-16 -top-16 h-64 w-64 opacity-30" />
-              <div className="glow pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 opacity-20" />
-
-              <div className="relative grid items-start gap-10 md:grid-cols-2">
-                <div className="text-on-accent">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-on-accent">
-                    Start here
-                  </p>
-                  <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                    {businessServices.cta.title}
-                  </h2>
-                  <p className="mt-4 max-w-md text-on-accent">
-                    {businessServices.cta.text}
-                  </p>
-
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <a
-                      href={`mailto:${profile.email}?subject=Business%20services%20enquiry`}
-                      className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition-transform hover:-translate-y-0.5"
-                    >
-                      ✉ {profile.email}
-                    </a>
-                    <RevealPhoneButton />
-                  </div>
-
-                  <p className="mt-6 text-xs text-on-accent">
-                    {businessServices.cta.note}
-                  </p>
-                </div>
-
-                <ContactForm
-                  subject="🏢 New BUSINESS SERVICES enquiry"
-                  formName="Portfolio — Business Services"
-                  messageLabel="What's slowing you down?"
-                  messagePlaceholder="What your business does, what's taking too much time, and when you need it…"
-                  submitLabel="Send my enquiry"
-                />
-              </div>
-            </div>
-          </Reveal>
-        </section>
+        <BusinessClosing />
       </main>
       <Footer />
-    </>
+    </LanguageProvider>
   );
 }

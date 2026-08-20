@@ -15,7 +15,13 @@ const links = [
   { href: "/#contact", label: "Contact" },
 ];
 
-export default function Navbar() {
+/**
+ * `extra` is an optional slot rendered next to ThemeToggle, for page-specific
+ * controls that don't belong in every page's header (e.g. the language
+ * toggle on /services). Navbar itself stays fully generic — it renders
+ * whatever it's given without knowing what that control does or needs.
+ */
+export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -60,6 +66,7 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          {extra}
           <ThemeToggle />
           <a
             href="/#contact"

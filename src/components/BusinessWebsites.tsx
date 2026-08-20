@@ -1,10 +1,15 @@
-import { businessServices } from "@/data/profile";
+"use client";
+
+import { useCopy } from "@/components/LanguageProvider";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import TiltCard from "@/components/TiltCard";
 
 /**
- * The three website tiers — the only priced offering on the site.
+ * The three website tiers — doubles as the site's pricing table (brief
+ * section 4). A separate, near-identical Basic/Standard/Premium table
+ * right below this one would just be the same information twice; the
+ * `guarantee` line below does the job a standalone pricing block would.
  *
  * The price block is structurally identical on all three cards (amount →
  * priceNote → timeline chip) so "Scoped, then quoted" lands in the same slot,
@@ -12,32 +17,28 @@ import TiltCard from "@/components/TiltCard";
  * the priced one, which is what stops it reading as an omission.
  */
 export default function BusinessWebsites() {
+  const { websites } = useCopy();
+
   return (
     <section id="websites" className="border-y border-line bg-card/40 py-20">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <SectionHeading
-            index="02"
-            kicker={businessServices.websites.kicker}
-            title={businessServices.websites.title}
-          />
+          <SectionHeading index="02" kicker={websites.kicker} title={websites.title} />
         </Reveal>
 
         <Reveal>
           <p className="-mt-4 mb-8 max-w-2xl text-sm leading-7 text-muted">
-            {businessServices.websites.intro}
+            {websites.intro}
           </p>
         </Reveal>
 
         {/* Three tiers: stack, then straight to 3-up. A 2-col breakpoint
             would orphan the third card. */}
         <div className="grid gap-5 lg:grid-cols-3">
-          {businessServices.websites.tiers.map((tier, i) => (
+          {websites.tiers.map((tier, i) => (
             <Reveal key={tier.name} delay={i * 90}>
               <TiltCard
-                className={`card h-full p-6 ${
-                  tier.featured ? "border-accent/60" : ""
-                }`}
+                className={`card h-full p-6 ${tier.featured ? "border-accent/60" : ""}`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="font-display text-lg font-bold text-foreground">
@@ -51,13 +52,11 @@ export default function BusinessWebsites() {
                 </div>
 
                 <p className="mt-2 text-sm leading-6 text-muted">
-                  <span className="font-semibold text-foreground">
-                    Best for:{" "}
-                  </span>
+                  <span className="font-semibold text-foreground">Best for: </span>
                   {tier.ideal}
                 </p>
 
-                {/* Fixed 3-row price block — identical structure on every tier. */}
+                {/* Fixed price block — identical structure on every tier. */}
                 <div className="mt-5 border-t border-line pt-5">
                   <p className="font-display text-xl font-bold text-gradient">
                     {tier.price}
@@ -65,9 +64,17 @@ export default function BusinessWebsites() {
                   <p className="mt-1.5 text-xs leading-5 text-muted">
                     {tier.priceNote}
                   </p>
-                  <span className="mt-3 inline-block rounded-md border border-line bg-background px-2.5 py-1 text-xs font-medium text-muted">
-                    ⏱ {tier.timeline}
-                  </span>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <span className="inline-block rounded-md border border-line bg-background px-2.5 py-1 text-xs font-medium text-muted">
+                      ⏱ {tier.timeline}
+                    </span>
+                    <span className="inline-block rounded-md border border-line bg-background px-2.5 py-1 text-xs font-medium text-muted">
+                      {tier.pages}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-xs leading-5 text-muted">
+                    {tier.revisions}
+                  </p>
                 </div>
 
                 <ul className="mt-5 space-y-2.5">
@@ -94,18 +101,24 @@ export default function BusinessWebsites() {
                   href="#start"
                   className="mt-6 inline-block text-sm font-semibold text-accent transition-colors hover:underline"
                 >
-                  Ask about the {tier.name} plan →
+                  {websites.tierCta}
                 </a>
               </TiltCard>
             </Reveal>
           ))}
         </div>
 
-        <Reveal delay={120}>
-          <div className="card mt-6 p-6">
-            <p className="text-sm leading-7 text-muted">
-              {businessServices.websites.note}
+        <Reveal delay={110}>
+          <div className="mt-6 rounded-2xl border border-accent/30 bg-accent/5 p-5 text-center">
+            <p className="text-sm font-semibold text-foreground">
+              {websites.guarantee}
             </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <div className="card mt-4 p-6">
+            <p className="text-sm leading-7 text-muted">{websites.note}</p>
           </div>
         </Reveal>
       </div>

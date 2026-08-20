@@ -1,8 +1,8 @@
-import { businessServices } from "@/data/profile";
+"use client";
+
+import { useCopy } from "@/components/LanguageProvider";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-
-const { bundle } = businessServices;
 
 /**
  * The launch bundle — logo + packaging + website sold as one job.
@@ -11,14 +11,12 @@ const { bundle } = businessServices;
  * offer rather than a fourth category.
  */
 export default function BusinessBundle() {
+  const { bundle } = useCopy();
+
   return (
     <section id="bundle" className="mx-auto max-w-6xl px-6 py-20">
       <Reveal>
-        <SectionHeading
-          index="01"
-          kicker={bundle.kicker}
-          title={bundle.headline}
-        />
+        <SectionHeading index="01" kicker={bundle.kicker} title={bundle.headline} />
       </Reveal>
 
       <Reveal>

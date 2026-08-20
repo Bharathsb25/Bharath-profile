@@ -95,6 +95,18 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Tamil (set on /services via LanguageProvider): neither Inter nor Sora
+   carry Tamil glyphs. Noto Sans Tamil covers both the body copy and the
+   font-display headings — one Tamil-safe face standing in for two Latin
+   ones, since there's no separate "display weight" Tamil face in use here. */
+html[lang="ta"] body {
+  font-family: var(--font-tamil), "Noto Sans Tamil", system-ui, sans-serif;
+}
+
+html[lang="ta"] .font-display {
+  font-family: var(--font-tamil), "Noto Sans Tamil", system-ui, sans-serif;
+}
+
 ::selection {
   background: color-mix(in srgb, var(--accent) 28%, transparent);
 }

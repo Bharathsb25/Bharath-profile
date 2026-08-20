@@ -1,11 +1,16 @@
-import { businessServices } from "@/data/profile";
+"use client";
+
+import { useCopy } from "@/components/LanguageProvider";
 
 /**
  * Hero for /services. Audience is small & local business, so the copy stays
  * plain — no job title, no "SaaS"/"enterprise". The fact tiles deliberately
- * carry NO price: see the pricing rule on `businessServices` in profile.ts.
+ * carry NO price: numbers here would need to be real and verified, and none
+ * exist yet (see businessCopy.ts hero.facts — qualitative on purpose).
  */
 export default function BusinessHero() {
+  const { hero } = useCopy();
+
   return (
     <section className="relative overflow-hidden">
       <div className="bg-grid pointer-events-none absolute inset-0" />
@@ -14,26 +19,23 @@ export default function BusinessHero() {
       <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 sm:pt-20">
         <div className="flex flex-wrap items-center gap-3">
           <span className="rounded-full border border-line bg-card px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-            {businessServices.kicker}
+            {hero.kicker}
           </span>
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-muted">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            Taking on new work
+            {hero.availabilityBadge}
           </span>
         </div>
 
         <h1 className="mt-6 max-w-3xl font-display text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl">
-          {businessServices.headline}{" "}
-          <span className="text-gradient">
-            {businessServices.headlineAccent}
-          </span>
+          {hero.headline} <span className="text-gradient">{hero.headlineAccent}</span>
         </h1>
 
         <p className="mt-5 max-w-2xl text-base leading-7 text-muted">
-          {businessServices.subhead}
+          {hero.subhead}
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -41,26 +43,26 @@ export default function BusinessHero() {
             href="#start"
             className="rounded-full accent-bar px-6 py-3 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5"
           >
-            Tell me what you need →
+            {hero.primaryCta} →
           </a>
           <a
-            href="#bundle"
+            href="#websites"
             className="rounded-full border border-line bg-card px-6 py-3 text-sm font-semibold text-foreground transition-all hover:-translate-y-0.5 hover:border-accent"
           >
-            Starting a new business?
+            {hero.pricingCta}
           </a>
           <span className="text-xs font-medium text-muted">
-            {businessServices.responseTime}
+            {hero.responseTime}
           </span>
         </div>
 
         <p className="mt-6 max-w-xl border-l-2 border-accent pl-4 text-sm leading-6 text-muted">
-          {businessServices.availability}
+          {hero.availability}
         </p>
 
         {/* Who this is for */}
         <ul className="mt-8 flex flex-wrap gap-2">
-          {businessServices.audience.map((item) => (
+          {hero.audience.map((item) => (
             <li
               key={item}
               className="rounded-full border border-line bg-card px-3 py-1.5 text-xs font-medium text-muted"
@@ -71,7 +73,7 @@ export default function BusinessHero() {
         </ul>
 
         <dl className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {businessServices.facts.map((fact) => (
+          {hero.facts.map((fact) => (
             <div key={fact.label} className="card p-5">
               <dt className="font-display text-xl font-bold text-gradient">
                 {fact.value}

@@ -1,5 +1,7 @@
-import type { BusinessCategory } from "@/data/profile";
-import { businessServices } from "@/data/profile";
+"use client";
+
+import { useCopy } from "@/components/LanguageProvider";
+import type { BusinessCategory } from "@/data/businessCopy";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 
@@ -36,7 +38,7 @@ function CategoryBlock({ category }: { category: BusinessCategory }) {
       <div className={gridFor[category.cols]}>
         {category.items.map((item, i) => (
           <Reveal key={item.title} delay={(i % category.cols) * 90}>
-            {/* Pure-CSS hover rather than TiltCard — 17 cards of pointer
+            {/* Pure-CSS hover rather than TiltCard — up to 21 cards of pointer
                 handlers is a lot of JS for the phones this page targets. */}
             <div className="card card-hover flex h-full flex-col p-6">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl accent-bar text-on-accent">
@@ -54,17 +56,21 @@ function CategoryBlock({ category }: { category: BusinessCategory }) {
                 </svg>
               </span>
 
-              <h4 className="mt-4 font-display text-base font-semibold text-foreground">
-                {item.title}
+              {/* Outcome-first: this is the headline. The old plain service
+                  name becomes a small subline underneath, not the title. */}
+              <h4 className="mt-4 font-display text-base font-semibold leading-snug text-foreground">
+                {item.outcome}
               </h4>
 
+              <p className="mt-1.5 text-xs font-medium leading-5 text-muted">
+                {item.title}
+              </p>
+
               {item.tagline && (
-                <p className="mt-1 text-xs font-semibold text-accent">
+                <p className="mt-2 text-xs font-semibold text-accent">
                   {item.tagline}
                 </p>
               )}
-
-              <p className="mt-2 text-sm leading-6 text-muted">{item.desc}</p>
 
               {item.href && (
                 <a
@@ -83,43 +89,37 @@ function CategoryBlock({ category }: { category: BusinessCategory }) {
 }
 
 export default function BusinessCatalogue() {
+  const { catalogue, categories } = useCopy();
+
   return (
     <section id="catalogue" className="mx-auto max-w-6xl px-6 py-20">
       <Reveal>
-        <SectionHeading
-          index="03"
-          kicker="Everything I do"
-          title="Pick the piece you actually need"
-        />
+        <SectionHeading index="03" kicker={catalogue.kicker} title={catalogue.title} />
       </Reveal>
 
       <Reveal>
         <p className="-mt-4 mb-10 max-w-2xl text-sm leading-7 text-muted">
-          Nothing here is a bundle you have to buy whole. Most businesses start
-          with one thing that&apos;s hurting, and add later only if it&apos;s
-          worth it.
+          {catalogue.intro}
         </p>
       </Reveal>
 
-      {businessServices.categories.map((category) => (
+      {categories.map((category) => (
         <CategoryBlock key={category.id} category={category} />
       ))}
 
       <Reveal delay={120}>
         <div className="mt-12 rounded-2xl border border-line bg-card p-6 text-center">
           <p className="font-display text-base font-bold text-foreground">
-            Not sure which of these you need?
+            {catalogue.helpTitle}
           </p>
           <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-muted">
-            That&apos;s normal — most people describe the problem, not the
-            solution. Tell me what&apos;s taking too much time and I&apos;ll
-            tell you which of these fixes it, or whether it needs fixing at all.
+            {catalogue.helpText}
           </p>
           <a
             href="#start"
             className="mt-5 inline-block rounded-full accent-bar px-6 py-3 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5"
           >
-            Describe your problem →
+            {catalogue.helpCta}
           </a>
         </div>
       </Reveal>

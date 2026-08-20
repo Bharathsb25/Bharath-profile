@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sora, Inter } from "next/font/google";
+import { Sora, Inter, Noto_Sans_Tamil } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -12,6 +12,16 @@ const sora = Sora({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+// Only reachable via the /services language toggle — Inter has no Tamil
+// glyphs, so without this Tamil falls back to a system font and looks
+// broken. Applied through the html[lang="ta"] rule in globals.css, not a
+// className here, since which font is active depends on client-side state.
+const notoSansTamil = Noto_Sans_Tamil({
+  variable: "--font-tamil",
+  subsets: ["tamil"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -111,7 +121,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${inter.variable} h-full antialiased`}
+      className={`${sora.variable} ${inter.variable} ${notoSansTamil.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
