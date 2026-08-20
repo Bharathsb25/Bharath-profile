@@ -8,7 +8,7 @@ import BusinessBundle from "@/components/BusinessBundle";
 import BusinessWebsites from "@/components/BusinessWebsites";
 import BusinessCatalogue from "@/components/BusinessCatalogue";
 import BusinessProcess from "@/components/BusinessProcess";
-import BusinessTestimonials from "@/components/BusinessTestimonials";
+// BusinessTestimonials: kept, currently not rendered — see page body below.
 import BusinessFAQ from "@/components/BusinessFAQ";
 import BusinessClosing from "@/components/BusinessClosing";
 import { businessCopy } from "@/data/businessCopy";
@@ -147,7 +147,10 @@ export default function ServicesPage() {
         <BusinessWebsites />
         <BusinessCatalogue />
         <BusinessProcess />
-        <BusinessTestimonials />
+        {/* Hidden until real client quotes replace the TODO placeholders —
+            component and its copy stay in place, just not rendered. See
+            BusinessTestimonials.tsx / businessCopy.ts testimonials. */}
+        {/* <BusinessTestimonials /> */}
         <BusinessFAQ />
         <BusinessClosing />
       </main>

@@ -15,7 +15,7 @@ export default function BusinessFAQ() {
   return (
     <section id="faq" className="mx-auto max-w-3xl px-6 py-20">
       <Reveal>
-        <SectionHeading index="06" kicker={faq.kicker} title={faq.title} />
+        <SectionHeading index="05" kicker={faq.kicker} title={faq.title} />
       </Reveal>
 
       <div className="space-y-3">
