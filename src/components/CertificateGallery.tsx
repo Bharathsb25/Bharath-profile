@@ -2,12 +2,18 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-import { certifications } from "@/data/profile";
+import { certifications, type Certification } from "@/data/profile";
 
 // Only certificates with a scan/screenshot get a tile.
-const certificates = certifications.filter((cert) => cert.image);
+const defaultCertificates = certifications.filter((cert) => cert.image);
 
-export default function CertificateGallery() {
+export default function CertificateGallery({
+  items,
+}: {
+  /** Defaults to the profile's own certifications when omitted. */
+  items?: Certification[];
+} = {}) {
+  const certificates = (items ?? defaultCertificates).filter((cert) => cert.image);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const open = openIndex === null ? null : certificates[openIndex];
 
@@ -17,7 +23,7 @@ export default function CertificateGallery() {
       setOpenIndex((i) =>
         i === null ? i : (i + delta + certificates.length) % certificates.length
       ),
-    []
+    [certificates.length]
   );
 
   useEffect(() => {

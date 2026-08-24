@@ -1,6 +1,7 @@
 import { awards, languages } from "@/data/profile";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import CertificateGallery from "@/components/CertificateGallery";
 
 export default function Achievements() {
   return (
@@ -13,29 +14,30 @@ export default function Achievements() {
         />
       </Reveal>
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid items-start gap-6 sm:grid-cols-2">
         <Reveal>
-          <div className="card h-full p-6">
-            <h3 className="font-display text-sm font-semibold text-foreground">
-              Awards
-            </h3>
-            <ul className="mt-4 space-y-2.5 text-sm text-muted">
-              {awards.map((award) => (
-                <li key={award} className="flex items-start gap-2.5">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full accent-bar" />
-                  <span>{award}</span>
-                </li>
-              ))}
-            </ul>
+          <div>
+            <div className="mb-4 flex items-baseline justify-between gap-4">
+              <h3 className="font-display text-sm font-semibold text-foreground">
+                Awards
+              </h3>
+              <span className="text-xs text-muted">Click to view full size</span>
+            </div>
+            <CertificateGallery items={awards} />
           </div>
         </Reveal>
 
         <Reveal delay={90}>
-          <div className="card h-full p-6">
-            <h3 className="font-display text-sm font-semibold text-foreground">
-              Languages
-            </h3>
-            <div className="mt-4 flex flex-wrap gap-2">
+          <div>
+            <div className="mb-4 flex items-baseline justify-between gap-4">
+              <h3 className="font-display text-sm font-semibold text-foreground">
+                Languages
+              </h3>
+              <span className="text-xs text-transparent select-none" aria-hidden="true">
+                Click to view full size
+              </span>
+            </div>
+            <div className="card inline-flex w-fit max-w-full flex-wrap gap-2 p-6">
               {languages.map((lang) => (
                 <span
                   key={lang}

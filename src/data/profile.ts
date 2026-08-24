@@ -519,7 +519,18 @@ export const training = {
   ],
 };
 
-export const awards = ["Camu Star Award"];
+export const awards: Certification[] = [
+  {
+    name: "Camu Star Award",
+    issuer: "Camu Genius Squad",
+    date: "2026",
+    image: "/certificates/camu-star-award.png",
+    width: 910,
+    height: 628,
+    detail:
+      "For outstanding performance — presented by AR Swaminathan, Co-Founder & CEO.",
+  },
+];
 
 export const languages = ["Tamil", "English", "Telugu", "Hindi"];
 
