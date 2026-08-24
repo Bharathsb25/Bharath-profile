@@ -45,6 +45,11 @@ export const metadata: Metadata = {
     title: `${title} — Bharath Sathiskumar`,
     description,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${title} — Bharath Sathiskumar`,
+    description,
+  },
 };
 
 // Bookable services, not just page copy.

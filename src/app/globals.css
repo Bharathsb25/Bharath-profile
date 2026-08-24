@@ -95,6 +95,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 /* Tamil (set on /services via LanguageProvider): neither Inter nor Sora
    carry Tamil glyphs. Noto Sans Tamil covers both the body copy and the
    font-display headings — one Tamil-safe face standing in for two Latin

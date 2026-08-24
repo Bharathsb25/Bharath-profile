@@ -48,6 +48,11 @@ export async function generateMetadata({
       title: `${sample.title} — Bharath Sathiskumar`,
       description,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${sample.title} — Bharath Sathiskumar`,
+      description,
+    },
   };
 }
 

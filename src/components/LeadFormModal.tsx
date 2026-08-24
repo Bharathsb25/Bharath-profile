@@ -205,6 +205,7 @@ export default function LeadFormModal({
             <a
               href="/privacy"
               target="_blank"
+              rel="noopener noreferrer"
               className="font-medium text-accent hover:underline"
             >
               Privacy policy

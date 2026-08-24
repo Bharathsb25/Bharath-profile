@@ -226,6 +226,7 @@ export default function ContactForm({
         <a
           href="/privacy"
           target="_blank"
+          rel="noopener noreferrer"
           className="font-medium text-accent hover:underline"
         >
           {l.privacyLinkText}

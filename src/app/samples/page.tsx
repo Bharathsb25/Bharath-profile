@@ -8,8 +8,7 @@ import SampleDisclaimer from "@/components/SampleDisclaimer";
 import { samples, samplesIntro } from "@/data/samples";
 
 const title = "Sample Work — IPO Validation Reports";
-const description =
-  "Three worked examples of research: IPO validation reports pulling apart company filings, financials and risk disclosures. Personal analysis published as samples — not investment advice.";
+const description = `${samples.length} worked examples of research: IPO validation reports pulling apart company filings, financials and risk disclosures. Personal analysis published as samples — not investment advice.`;
 
 export const metadata: Metadata = {
   title,
@@ -21,13 +20,18 @@ export const metadata: Metadata = {
     title: `${title} — Bharath Sathiskumar`,
     description,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${title} — Bharath Sathiskumar`,
+    description,
+  },
 };
 
 export default function SamplesPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <section className="relative overflow-hidden">
           <div className="bg-grid pointer-events-none absolute inset-0" />
           <div className="glow pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 opacity-20" />

@@ -1,19 +1,120 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 
-const links = [
+type NavLink = { href: string; label: string };
+
+const primary: NavLink[] = [
   { href: "/#about", label: "About" },
-  { href: "/#services", label: "Services" },
-  { href: "/services", label: "For Business" },
-  { href: "/freelance", label: "Hire Me" },
   { href: "/#experience", label: "Experience" },
+];
+
+const work: NavLink[] = [
   { href: "/#projects", label: "Projects" },
   { href: "/#blog", label: "Blog" },
   { href: "/samples", label: "IPO Analysis" },
-  { href: "/#contact", label: "Contact" },
 ];
+
+const hire: NavLink[] = [
+  { href: "/#services", label: "Services" },
+  { href: "/services", label: "For Business" },
+  { href: "/freelance", label: "Hire Me" },
+];
+
+function MenuLink({
+  href,
+  label,
+  onNavigate,
+  className,
+}: NavLink & { onNavigate?: () => void; className?: string }) {
+  return (
+    <a
+      href={href}
+      onClick={onNavigate}
+      className={className ?? "transition-colors hover:text-foreground"}
+    >
+      {label}
+    </a>
+  );
+}
+
+function DesktopDropdown({
+  label,
+  items,
+}: {
+  label: string;
+  items: NavLink[];
+}) {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLLIElement>(null);
+  const menuId = useId();
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <li className="relative" ref={wrapRef}>
+      <button
+        type="button"
+        className="inline-flex items-center gap-1 transition-colors hover:text-foreground"
+        aria-expanded={open}
+        aria-haspopup="menu"
+        aria-controls={menuId}
+        onClick={() => setOpen((v) => !v)}
+      >
+        {label}
+        <svg
+          className={`h-3 w-3 opacity-70 transition-transform ${open ? "rotate-180" : ""}`}
+          viewBox="0 0 12 12"
+          aria-hidden="true"
+        >
+          <path
+            d="M2.5 4.5 6 8l3.5-3.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+      {open && (
+        <ul
+          id={menuId}
+          role="menu"
+          className="absolute left-0 top-full z-50 mt-2 min-w-[11.5rem] rounded-xl border border-line bg-background p-1.5 shadow-lg"
+        >
+          {items.map((item) => (
+            <li key={item.href} role="none">
+              <a
+                role="menuitem"
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-card hover:text-foreground"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  );
+}
 
 /**
  * `extra` is an optional slot rendered next to ThemeToggle, for page-specific
@@ -24,6 +125,7 @@ const links = [
 export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuId = useId();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -31,6 +133,17 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const close = () => setOpen(false);
 
   return (
     <header
@@ -40,7 +153,10 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <nav
+        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
+        aria-label="Primary"
+      >
         <a
           href="/#top"
           className="font-display text-sm font-bold tracking-tight text-foreground"
@@ -48,21 +164,18 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
           Bharath<span className="text-gradient"> Sathiskumar</span>
         </a>
 
-        {/* Desktop nav starts at xl. Nine links plus the logo and "Let's talk"
-            button don't fit before that — lg wraps the logo, same failure
-            mode this had at md before Blog/Samples were added back in.
-            Below xl: hamburger. */}
-        <ul className="hidden gap-5 text-sm font-medium text-muted xl:flex xl:gap-7">
-          {links.map((link) => (
+        {/* Grouped links fit from lg (1024px). Below that: hamburger. */}
+        <ul className="hidden items-center gap-6 text-sm font-medium text-muted lg:flex lg:gap-7">
+          {primary.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </a>
+              <MenuLink {...link} />
             </li>
           ))}
+          <DesktopDropdown label="Work" items={work} />
+          <DesktopDropdown label="Hire" items={hire} />
+          <li>
+            <MenuLink href="/#contact" label="Contact" />
+          </li>
         </ul>
 
         <div className="flex items-center gap-2">
@@ -70,15 +183,17 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
           <ThemeToggle />
           <a
             href="/#contact"
-            className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5 xl:inline-block"
+            className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5 lg:inline-block"
           >
             Let&apos;s talk
           </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground xl:hidden"
-            aria-label="Toggle menu"
+            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground lg:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls={menuId}
           >
             {open ? "✕" : "☰"}
           </button>
@@ -86,22 +201,43 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
       </nav>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-line bg-background px-6 py-3 text-sm font-medium text-muted xl:hidden">
-          {links.map((link) => (
+        <ul
+          id={menuId}
+          className="flex flex-col gap-1 border-t border-line bg-background px-6 py-3 text-sm font-medium text-muted lg:hidden"
+        >
+          {primary.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block py-2"
-              >
-                {link.label}
-              </a>
+              <MenuLink {...link} onNavigate={close} className="block py-2" />
+            </li>
+          ))}
+          <li className="pt-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-muted/80">
+            Work
+          </li>
+          {work.map((link) => (
+            <li key={link.href}>
+              <MenuLink {...link} onNavigate={close} className="block py-2" />
+            </li>
+          ))}
+          <li className="pt-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-muted/80">
+            Hire
+          </li>
+          {hire.map((link) => (
+            <li key={link.href}>
+              <MenuLink {...link} onNavigate={close} className="block py-2" />
             </li>
           ))}
           <li>
+            <MenuLink
+              href="/#contact"
+              label="Contact"
+              onNavigate={close}
+              className="block py-2"
+            />
+          </li>
+          <li>
             <a
               href="/#contact"
-              onClick={() => setOpen(false)}
+              onClick={close}
               className="mt-1 block rounded-full accent-bar px-4 py-2 text-center font-semibold text-on-accent"
             >
               Let&apos;s talk

@@ -96,10 +96,13 @@ npm run dev
 Then open http://localhost:3000 in your browser. Edits appear instantly when
 you save a file. (Do a hard refresh with Ctrl+Shift+R if you don't see a change.)
 
-**Once the site is deployed online (e.g. Vercel):**
-Save your changes, then push them to GitHub — the live site rebuilds and
-updates automatically within a minute or two. (Full deploy steps can be added
-here once we deploy.)
+**Once the site is on Vercel (or another host):**
+
+1. Commit your edits and push to the Git remote this project uses.
+2. The host rebuilds from `main`. Wait for the deployment to finish, then hard-refresh the live URL (Ctrl+Shift+R).
+3. Set `NEXT_PUBLIC_SITE_URL` to the production origin (for example `https://your-domain.com`, no trailing slash) so Open Graph tags, canonical URLs, and `sitemap.xml` point at the live site rather than localhost.
+
+If the project is not connected to a host yet, create a Vercel project from this repo, add that env var, and deploy. The first production URL is what you paste into `NEXT_PUBLIC_SITE_URL`.
 
 ---
 

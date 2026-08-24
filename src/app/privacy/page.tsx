@@ -4,9 +4,17 @@ import Footer from "@/components/Footer";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Bharath Sathiskumar",
+  title: "Privacy Policy",
   description:
     "How personal data submitted through this portfolio site is collected, used, and stored.",
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    type: "website",
+    url: "/privacy",
+    title: "Privacy Policy — Bharath Sathiskumar",
+    description:
+      "How personal data submitted through this portfolio site is collected, used, and stored.",
+  },
 };
 
 function Section({
@@ -32,7 +40,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
             Privacy
