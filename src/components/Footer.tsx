@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { profile } from "@/data/profile";
 
 export default function Footer() {
@@ -19,21 +20,21 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
         <div className="flex flex-wrap justify-center gap-4 text-xs font-medium text-muted">
-          <a href="/services" className="transition-colors hover:text-accent">
+          <Link href="/services" className="transition-colors hover:text-accent">
             For Business
-          </a>
-          <a href="/freelance" className="transition-colors hover:text-accent">
+          </Link>
+          <Link href="/freelance" className="transition-colors hover:text-accent">
             Freelance
-          </a>
-          <a href="/samples" className="transition-colors hover:text-accent">
+          </Link>
+          <Link href="/samples" className="transition-colors hover:text-accent">
             IPO Analysis
-          </a>
-          <a href="/#blog" className="transition-colors hover:text-accent">
+          </Link>
+          <Link href="/#blog" className="transition-colors hover:text-accent">
             Blog
-          </a>
-          <a href="/privacy" className="transition-colors hover:text-accent">
+          </Link>
+          <Link href="/privacy" className="transition-colors hover:text-accent">
             Privacy
-          </a>
+          </Link>
           <a
             href={`mailto:${profile.email}`}
             className="transition-colors hover:text-accent"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
 
 type NavLink = { href: string; label: string };
@@ -29,13 +30,13 @@ function MenuLink({
   className,
 }: NavLink & { onNavigate?: () => void; className?: string }) {
   return (
-    <a
+    <Link
       href={href}
       onClick={onNavigate}
       className={className ?? "transition-colors hover:text-foreground"}
     >
       {label}
-    </a>
+    </Link>
   );
 }
 
@@ -100,14 +101,14 @@ function DesktopDropdown({
         >
           {items.map((item) => (
             <li key={item.href} role="none">
-              <a
+              <Link
                 role="menuitem"
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className="block rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-card hover:text-foreground"
               >
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -157,12 +158,12 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
         className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
         aria-label="Primary"
       >
-        <a
+        <Link
           href="/#top"
           className="font-display text-sm font-bold tracking-tight text-foreground"
         >
           Bharath<span className="text-gradient"> Sathiskumar</span>
-        </a>
+        </Link>
 
         {/* Grouped links fit from lg (1024px). Below that: hamburger. */}
         <ul className="hidden items-center gap-6 text-sm font-medium text-muted lg:flex lg:gap-7">
@@ -181,12 +182,12 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
         <div className="flex items-center gap-2">
           {extra}
           <ThemeToggle />
-          <a
+          <Link
             href="/#contact"
             className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5 lg:inline-block"
           >
             Let&apos;s talk
-          </a>
+          </Link>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -235,13 +236,13 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
             />
           </li>
           <li>
-            <a
+            <Link
               href="/#contact"
               onClick={close}
               className="mt-1 block rounded-full accent-bar px-4 py-2 text-center font-semibold text-on-accent"
             >
               Let&apos;s talk
-            </a>
+            </Link>
           </li>
         </ul>
       )}

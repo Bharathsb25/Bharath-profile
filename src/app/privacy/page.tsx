@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { profile } from "@/data/profile";
@@ -11,6 +12,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/privacy",
+    title: "Privacy Policy — Bharath Sathiskumar",
+    description:
+      "How personal data submitted through this portfolio site is collected, used, and stored.",
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Privacy Policy — Bharath Sathiskumar",
     description:
       "How personal data submitted through this portfolio site is collected, used, and stored.",
@@ -135,12 +142,12 @@ export default function PrivacyPage() {
           </Section>
 
           <div className="mt-12">
-            <a
+            <Link
               href="/"
               className="text-sm font-semibold text-accent hover:underline"
             >
               ← Back to homepage
-            </a>
+            </Link>
           </div>
         </div>
       </main>

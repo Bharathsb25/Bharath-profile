@@ -12,6 +12,8 @@ export default function ThemeToggle() {
     const current = document.documentElement.getAttribute(
       "data-theme"
     ) as Theme | null;
+    // Client-only read of the no-flash script on <html>.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate icon from already-applied theme
     setTheme(
       current ??
         (window.matchMedia("(prefers-color-scheme: dark)").matches

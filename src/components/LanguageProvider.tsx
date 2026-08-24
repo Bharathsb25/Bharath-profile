@@ -30,6 +30,8 @@ export default function LanguageProvider({
 
   useEffect(() => {
     const saved = localStorage.getItem("services-lang");
+    // Restore a saved EN/TA preference after hydration (SSR is always English).
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage is client-only
     if (saved === "en" || saved === "ta") setLangState(saved);
   }, []);
 
