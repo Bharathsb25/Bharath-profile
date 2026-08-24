@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, Inter, Noto_Sans_Tamil } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { getSiteUrl } from "@/lib/site";
 import "./globals.css";
 
 const sora = Sora({
@@ -24,9 +25,14 @@ const notoSansTamil = Noto_Sans_Tamil({
   weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "http://localhost:3000";
+const siteUrl = getSiteUrl();
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fbfcfd" },
+    { media: "(prefers-color-scheme: dark)", color: "#070b14" },
+  ],
+};
 
 const title = "Bharath Sathiskumar — Implementation Specialist";
 const description =
@@ -83,6 +89,7 @@ const personSchema = {
   name: "Bharath Sathiskumar",
   jobTitle: "Implementation Specialist",
   url: siteUrl,
+  image: `${siteUrl}/profile.jpg`,
   email: "Sbharath23@outlook.com",
   sameAs: ["https://www.linkedin.com/in/bharath-sb-4a9834146"],
   hasCredential: [
@@ -135,6 +142,12 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-foreground focus:shadow-lg"
+        >
+          Skip to content
+        </a>
         {children}
         <Analytics />
       </body>

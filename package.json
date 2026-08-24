@@ -2,6 +2,11 @@
   "name": "bharath-portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://bharath-profile.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bharathsb25/Bharath-profile.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",

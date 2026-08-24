@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bharath Sathiskumar — portfolio
 
-## Getting Started
+Personal site for **Bharath Sathiskumar**, Implementation Specialist (SaaS delivery, education CRM & admissions, client onboarding, testing, and workflow automation).
 
-First, run the development server:
+Built with Next.js (App Router), React, and Tailwind CSS.
+
+| Path | What it is |
+| --- | --- |
+| `/` | Portfolio homepage |
+| `/freelance` | Freelance / contract engagements |
+| `/services` | Small-business solutions (English / Tamil) |
+| `/samples` | IPO analysis work samples |
+| `/privacy` | Privacy policy |
+
+Content is data-driven. Do not invent testimonials or unhide the testimonials block until real quotes exist.
+
+## Prerequisites
+
+- Node.js 20+
+- npm
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Script | Purpose |
+| --- | --- |
+| `npm run dev` | Local development |
+| `npm run lint` | ESLint |
+| `npm run build` | Production build (webpack, as configured) |
+| `npm run start` | Serve the production build |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing content
 
-## Learn More
+**[EDITING-GUIDE.md](./EDITING-GUIDE.md)** is the source of truth for day-to-day edits:
 
-To learn more about Next.js, take a look at the following resources:
+- Copy, contact details, experience → `src/data/profile.ts`
+- Small-business page (EN/TA) → `src/data/businessCopy.ts`
+- IPO samples → `src/data/samples.ts` and `src/content/samples/`
+- Photo → `public/profile.jpg`
+- CV PDF → `public/Bharath-Sathiskumar-CV.pdf` (source in `cv-source/`)
+- Favicon letter → `src/app/icon.svg`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Social preview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open Graph and Twitter cards use `src/app/opengraph-image.png` (and the matching Twitter image). Next.js serves these automatically.
 
-## Deploy on Vercel
+Set `NEXT_PUBLIC_SITE_URL` to the live origin (no trailing slash) so canonical URLs, JSON-LD, and `sitemap.xml` are not `localhost`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Connect this Git remote to [Vercel](https://vercel.com) (or another Next.js host). After the first project is created, pushing to `main` rebuilds the site.
+
+Until a production domain is attached, set `NEXT_PUBLIC_SITE_URL` (and/or rely on Vercel’s `VERCEL_PROJECT_PRODUCTION_URL`) so metadata does not fall back to localhost.
+
+Framework notes for this Next.js version live under `node_modules/next/dist/docs/` after install.
