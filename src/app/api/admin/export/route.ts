@@ -1,0 +1,71 @@
+import { NextResponse } from "next/server";
+import { getRecentSessions, type DashboardFilters } from "@/lib/db/queries/analytics";
+
+const MAX_ROWS = 5000;
+
+const COLUMNS = [
+  "session_id",
+  "visitor_id",
+  "started_at",
+  "type",
+  "entry_page",
+  "device_type",
+  "browser",
+  "country",
+  "active_seconds",
+  "page_view_count",
+  "max_scroll_depth",
+] as const;
+
+function csvEscape(value: unknown): string {
+  const s = String(value ?? "");
+  if (/[",\n]/.test(s)) return `"${s.replace(/"/g, '""')}"`;
+  return s;
+}
+
+// Auth is enforced by src/middleware.ts for every /api/admin/* route.
+export async function GET(req: Request) {
+  const url = new URL(req.url);
+  const filters: DashboardFilters = {
+    from: url.searchParams.get("from") ?? undefined,
+    to: url.searchParams.get("to") ?? undefined,
+    event: url.searchParams.get("event") ?? undefined,
+    page: url.searchParams.get("page") ?? undefined,
+    country: url.searchParams.get("country") ?? undefined,
+    device: url.searchParams.get("device") ?? undefined,
+  };
+
+  try {
+    const { rows } = await getRecentSessions(filters, MAX_ROWS, 0);
+    const lines = [COLUMNS.join(",")];
+    for (const r of rows) {
+      lines.push(
+        [
+          r.id,
+          r.visitorId,
+          r.startedAt,
+          r.isReturning ? "returning" : "new",
+          r.entryPage ?? "",
+          r.deviceType ?? "",
+          r.browser ?? "",
+          r.country ?? "",
+          r.activeSeconds,
+          r.pageViewCount,
+          r.maxScrollDepth,
+        ]
+          .map(csvEscape)
+          .join(","),
+      );
+    }
+
+    return new NextResponse(lines.join("\n"), {
+      headers: {
+        "Content-Type": "text/csv; charset=utf-8",
+        "Content-Disposition": `attachment; filename="analytics-sessions-${new Date().toISOString().slice(0, 10)}.csv"`,
+      },
+    });
+  } catch (err) {
+    console.error("admin export: query failed", err);
+    return NextResponse.json({ error: "Export failed" }, { status: 500 });
+  }
+}

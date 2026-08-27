@@ -197,6 +197,9 @@ export default function Projects() {
               </div>
               <a
                 href="#contact"
+                data-track-event="project_click"
+                data-track-section="projects"
+                data-track-label={p.businessCta.button}
                 className="shrink-0 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition-transform hover:-translate-y-0.5"
               >
                 {p.businessCta.button}

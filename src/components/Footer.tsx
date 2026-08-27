@@ -1,4 +1,5 @@
 import { profile } from "@/data/profile";
+import CopyEmailButton from "@/components/CopyEmailButton";
 
 export default function Footer() {
   return (
@@ -18,32 +19,65 @@ export default function Footer() {
         <p className="text-xs text-muted">
           &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
-        <div className="flex flex-wrap justify-center gap-4 text-xs font-medium text-muted">
-          <a href="/services" className="transition-colors hover:text-accent">
-            For Business
-          </a>
-          <a href="/freelance" className="transition-colors hover:text-accent">
-            Freelance
-          </a>
-          <a href="/samples" className="transition-colors hover:text-accent">
-            IPO Analysis
-          </a>
-          <a href="/#blog" className="transition-colors hover:text-accent">
-            Blog
-          </a>
-          <a href="/privacy" className="transition-colors hover:text-accent">
-            Privacy
-          </a>
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-muted">
           <a
-            href={`mailto:${profile.email}`}
+            href="/services"
+            data-track-event="nav_click"
+            data-track-label="For Business (footer)"
             className="transition-colors hover:text-accent"
           >
-            Email
+            For Business
           </a>
+          <a
+            href="/freelance"
+            data-track-event="nav_click"
+            data-track-label="Freelance (footer)"
+            className="transition-colors hover:text-accent"
+          >
+            Freelance
+          </a>
+          <a
+            href="/samples"
+            data-track-event="nav_click"
+            data-track-label="IPO Analysis (footer)"
+            className="transition-colors hover:text-accent"
+          >
+            IPO Analysis
+          </a>
+          <a
+            href="/#blog"
+            data-track-event="nav_click"
+            data-track-label="Blog (footer)"
+            className="transition-colors hover:text-accent"
+          >
+            Blog
+          </a>
+          <a
+            href="/privacy"
+            data-track-event="nav_click"
+            data-track-label="Privacy (footer)"
+            className="transition-colors hover:text-accent"
+          >
+            Privacy
+          </a>
+          <span className="inline-flex items-center gap-1.5">
+            <a
+              href={`mailto:${profile.email}`}
+              data-track-event="cta_click"
+              data-track-label="Email (footer)"
+              className="transition-colors hover:text-accent"
+            >
+              Email
+            </a>
+            <span className="text-line">·</span>
+            <CopyEmailButton email={profile.email} />
+          </span>
           <a
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            data-track-event="social_click"
+            data-track-label="LinkedIn"
             className="transition-colors hover:text-accent"
           >
             LinkedIn

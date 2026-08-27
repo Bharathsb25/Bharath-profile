@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { profile } from "@/data/profile";
 import LeadFormModal from "@/components/LeadFormModal";
+import { trackEvent } from "@/lib/analytics/track";
 
 export default function DownloadCVButton({
   variant = "ghost",
@@ -12,6 +13,11 @@ export default function DownloadCVButton({
   const [open, setOpen] = useState(false);
 
   function download() {
+    trackEvent("download", {
+      label: "Download CV",
+      destination_url: profile.resume,
+      metadata: { filename: "Bharath-Sathiskumar-CV.pdf" },
+    });
     const a = document.createElement("a");
     a.href = profile.resume;
     a.download = "Bharath-Sathiskumar-CV.pdf";

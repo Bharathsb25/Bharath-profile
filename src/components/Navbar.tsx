@@ -57,6 +57,8 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
             <li key={link.href}>
               <a
                 href={link.href}
+                data-track-event="nav_click"
+                data-track-label={link.label}
                 className="transition-colors hover:text-foreground"
               >
                 {link.label}
@@ -70,6 +72,8 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
           <ThemeToggle />
           <a
             href="/#contact"
+            data-track-event="cta_click"
+            data-track-label="Let's talk (nav)"
             className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5 xl:inline-block"
           >
             Let&apos;s talk
@@ -92,6 +96,8 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
               <a
                 href={link.href}
                 onClick={() => setOpen(false)}
+                data-track-event="nav_click"
+                data-track-label={link.label}
                 className="block py-2"
               >
                 {link.label}
@@ -102,6 +108,8 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
             <a
               href="/#contact"
               onClick={() => setOpen(false)}
+              data-track-event="cta_click"
+              data-track-label="Let's talk (nav mobile)"
               className="mt-1 block rounded-full accent-bar px-4 py-2 text-center font-semibold text-on-accent"
             >
               Let&apos;s talk
