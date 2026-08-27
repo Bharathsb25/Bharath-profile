@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PrivacyAnalyticsToggle from "@/components/analytics/PrivacyAnalyticsToggle";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
@@ -68,15 +69,41 @@ export default function PrivacyPage() {
 
           <Section title="2. Anonymous usage analytics">
             <p>
-              I use Vercel Web Analytics to see how many people visit, which
-              pages they view, roughly which country or city they are in, and
-              how they found the site (for example, LinkedIn or Google).
+              I run first-party analytics on this site (alongside Vercel Web
+              Analytics) to see how many people visit, which pages and
+              sections they use, roughly which country or city they&apos;re in,
+              and how they found the site (for example, LinkedIn or Google).
+              This helps me understand what&apos;s useful and what to improve.
             </p>
             <p>
-              This is aggregated and anonymous. It does not use tracking
-              cookies, does not build a profile of you, and does not identify
-              you personally.
+              It&apos;s built to collect as little as possible:
             </p>
+            <ul className="ml-4 list-disc space-y-2">
+              <li>
+                You&apos;re identified only by a random, anonymous ID stored in
+                your browser — never your name, email, or account.
+              </li>
+              <li>
+                Your IP address is <strong className="text-foreground">hashed</strong>{" "}
+                (one-way, irreversible) before it&apos;s stored, purely as an
+                internal technical key — I don&apos;t keep or see your raw IP.
+              </li>
+              <li>
+                Location (country/city) and device type are recorded, but not
+                anything that identifies you personally — no fingerprinting,
+                no cross-site tracking, no ad networks.
+              </li>
+              <li>
+                I never capture what you type into forms — only that a form
+                was started, submitted, or failed.
+              </li>
+              <li>Data is kept for about 400 days, then automatically deleted.</li>
+            </ul>
+            <p>
+              Only I can see this data, through a password-protected
+              dashboard.
+            </p>
+            <PrivacyAnalyticsToggle />
           </Section>
 
           <Section title="3. Who else handles your data">
@@ -86,13 +113,15 @@ export default function PrivacyPage() {
                 your form submission on to my email inbox.
               </li>
               <li>
-                <strong className="text-foreground">Vercel</strong> — hosts this
-                site and provides the anonymous analytics described above.
+                <strong className="text-foreground">Vercel</strong> — hosts
+                this site, provides its own anonymous Web Analytics, and
+                hosts the database (via its Neon Postgres integration) that
+                stores the first-party analytics described above.
               </li>
             </ul>
             <p>
-              Both are used purely to operate this site. No one else receives
-              your information.
+              These are used purely to operate this site. No one else
+              receives your information.
             </p>
           </Section>
 

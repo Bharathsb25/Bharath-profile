@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, Inter, Noto_Sans_Tamil } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
 import "./globals.css";
 
 const sora = Sora({
@@ -137,6 +138,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         {children}
         <Analytics />
+        <AnalyticsProvider />
       </body>
     </html>
   );

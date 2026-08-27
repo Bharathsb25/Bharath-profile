@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { profile } from "@/data/profile";
+import { trackEvent } from "@/lib/analytics/track";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -63,12 +64,20 @@ export default function ContactForm({
 } = {}) {
   const l = { ...defaultLabels, ...labels };
   const [status, setStatus] = useState<Status>("idle");
+  const startedRef = useRef(false);
+
+  function handleFormFocus() {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    trackEvent("form_start", { label: formName });
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    trackEvent("form_submit", { label: formName });
     setStatus("sending");
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -81,9 +90,11 @@ export default function ContactForm({
         throw new Error(json?.message || "submit failed");
       }
       setStatus("success");
+      trackEvent("form_success", { label: formName });
       form.reset();
     } catch {
       setStatus("error");
+      trackEvent("form_failure", { label: formName });
     }
   }
 
@@ -112,7 +123,11 @@ export default function ContactForm({
     "w-full rounded-lg border border-line bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted/60 focus:border-accent";
 
   return (
-    <form onSubmit={handleSubmit} className="card p-6 text-left">
+    <form
+      onSubmit={handleSubmit}
+      onFocus={handleFormFocus}
+      className="card p-6 text-left"
+    >
       <input type="hidden" name="access_key" value={profile.web3formsKey} />
       <input type="hidden" name="subject" value={subject} />
       <input type="hidden" name="from_name" value={formName} />
