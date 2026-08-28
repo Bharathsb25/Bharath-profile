@@ -101,6 +101,12 @@ export default function PrivacyPage() {
               Only I can see this data, through a password-protected
               dashboard.
             </p>
+            <p>
+              I also use Google Tag Manager to load Google Analytics (GA4)
+              for basic, aggregate pageview and traffic-source tracking. This
+              is separate from the first-party analytics above and follows
+              Google&apos;s standard cookie-based analytics practices.
+            </p>
             <PrivacyAnalyticsToggle />
           </Section>
 
