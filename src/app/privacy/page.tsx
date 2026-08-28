@@ -84,9 +84,7 @@ export default function PrivacyPage() {
                 your browser — never your name, email, or account.
               </li>
               <li>
-                Your IP address is <strong className="text-foreground">hashed</strong>{" "}
-                (one-way, irreversible) before it&apos;s stored, purely as an
-                internal technical key — I don&apos;t keep or see your raw IP.
+                Your IP address is encrypted (AES-256) before it&apos;s stored, used only to help detect abuse, and is automatically deleted with everything else after ~400 days — never shown to anyone but me.
               </li>
               <li>
                 Location (country/city) and device type are recorded, but not
