@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSessionEvents } from "@/lib/db/queries/analytics";
 import { isUuid } from "@/lib/analytics/validate";
 
-// Auth is enforced by src/middleware.ts for every /api/admin/* route.
+// Auth is enforced by src/proxy.ts for every /api/admin/* route.
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   if (!isUuid(id)) {

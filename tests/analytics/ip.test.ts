@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { randomBytes } from "node:crypto";
-import { hashIp, encryptIp, decryptIp, extractClientIp } from "../../src/lib/analytics/ip.ts";
+import { hashIp, encryptIp, decryptIp, extractClientIp, tryDecryptIp } from "../../src/lib/analytics/ip.ts";
 
 test("hashIp is deterministic and irreversible-looking (hex digest, not the IP)", () => {
   const secret = "test-secret";
@@ -50,4 +50,19 @@ test("extractClientIp falls back to x-real-ip", () => {
 
 test("extractClientIp returns null when no IP header is present", () => {
   assert.equal(extractClientIp(new Headers()), null);
+});
+
+test("tryDecryptIp round-trips like decryptIp when given a valid key", () => {
+  const key = randomBytes(32).toString("hex");
+  const encrypted = encryptIp("198.51.100.7", key);
+  assert.equal(tryDecryptIp(encrypted, key), "198.51.100.7");
+});
+
+test("tryDecryptIp returns null instead of throwing on a missing key, missing value, or bad data", () => {
+  const key = randomBytes(32).toString("hex");
+  const encrypted = encryptIp("198.51.100.7", key);
+  assert.equal(tryDecryptIp(null, key), null);
+  assert.equal(tryDecryptIp(encrypted, undefined), null);
+  assert.equal(tryDecryptIp(encrypted, randomBytes(32).toString("hex")), null);
+  assert.equal(tryDecryptIp("not-valid-ciphertext", key), null);
 });

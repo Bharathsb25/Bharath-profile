@@ -12,6 +12,7 @@ const COLUMNS = [
   "device_type",
   "browser",
   "country",
+  "ip_address",
   "active_seconds",
   "page_view_count",
   "max_scroll_depth",
@@ -23,7 +24,7 @@ function csvEscape(value: unknown): string {
   return s;
 }
 
-// Auth is enforced by src/middleware.ts for every /api/admin/* route.
+// Auth is enforced by src/proxy.ts for every /api/admin/* route.
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const filters: DashboardFilters = {
@@ -49,6 +50,7 @@ export async function GET(req: Request) {
           r.deviceType ?? "",
           r.browser ?? "",
           r.country ?? "",
+          r.ip ?? "",
           r.activeSeconds,
           r.pageViewCount,
           r.maxScrollDepth,

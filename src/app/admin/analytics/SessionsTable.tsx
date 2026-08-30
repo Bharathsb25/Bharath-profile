@@ -60,13 +60,14 @@ function Row({ session }: { session: SessionRow }) {
         <td className="px-3 py-2.5">{session.deviceType ?? "—"}</td>
         <td className="px-3 py-2.5">{session.browser ?? "—"}</td>
         <td className="px-3 py-2.5">{session.country ?? "—"}</td>
+        <td className="px-3 py-2.5 font-mono text-xs">{session.ip ?? "—"}</td>
         <td className="px-3 py-2.5">{formatDuration(session.activeSeconds)}</td>
         <td className="px-3 py-2.5">{session.pageViewCount}</td>
         <td className="px-3 py-2.5">{session.maxScrollDepth}%</td>
       </tr>
       {open && (
         <tr className="border-t border-line bg-background/60">
-          <td colSpan={9} className="px-3 py-3">
+          <td colSpan={10} className="px-3 py-3">
             {loading && <p className="text-xs text-muted">Loading timeline…</p>}
             {error && <p className="text-xs text-red-600 dark:text-red-400">Failed to load events.</p>}
             {events && events.length === 0 && (
@@ -116,6 +117,7 @@ export default function SessionsTable({ rows }: { rows: SessionRow[] }) {
             <th className="px-3 py-2.5">Device</th>
             <th className="px-3 py-2.5">Browser</th>
             <th className="px-3 py-2.5">Country</th>
+            <th className="px-3 py-2.5">IP address</th>
             <th className="px-3 py-2.5">Active time</th>
             <th className="px-3 py-2.5">Views</th>
             <th className="px-3 py-2.5">Scroll</th>

@@ -35,6 +35,21 @@ export function decryptIp(encrypted: string, keyHex: string): string {
   return Buffer.concat([decipher.update(ciphertext), decipher.final()]).toString("utf8");
 }
 
+/**
+ * Best-effort decryptIp for admin-facing display: returns null instead of
+ * throwing when the key is missing/wrong or the value can't be decrypted
+ * (e.g. rows written before ANALYTICS_IP_ENCRYPTION_KEY was set), so one
+ * bad row never breaks the whole dashboard.
+ */
+export function tryDecryptIp(encrypted: string | null, keyHex: string | undefined): string | null {
+  if (!encrypted || !keyHex) return null;
+  try {
+    return decryptIp(encrypted, keyHex);
+  } catch {
+    return null;
+  }
+}
+
 /** Reads the real client IP from Vercel's forwarding headers. Server-only — never trust a client-supplied IP field. */
 export function extractClientIp(headers: Headers): string | null {
   const forwardedFor = headers.get("x-forwarded-for");
