@@ -9,6 +9,8 @@ import { dbQuery } from "@/lib/db/client";
  * (e.g. a "run now" button). Both paths are enforced by src/proxy.ts
  * before this handler ever runs.
  */
+export const dynamic = "force-dynamic";
+
 async function runRetention() {
   const days = Number(process.env.ANALYTICS_RETENTION_DAYS) || 400;
 
