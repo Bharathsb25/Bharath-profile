@@ -25,6 +25,10 @@ function csvEscape(value: unknown): string {
 }
 
 // Auth is enforced by src/proxy.ts for every /api/admin/* route.
+// Always re-run against current data — never serve a cached (possibly
+// stale/empty) response for what's meant to be a live export.
+export const dynamic = "force-dynamic";
+
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const filters: DashboardFilters = {
@@ -64,10 +68,14 @@ export async function GET(req: Request) {
       headers: {
         "Content-Type": "text/csv; charset=utf-8",
         "Content-Disposition": `attachment; filename="analytics-sessions-${new Date().toISOString().slice(0, 10)}.csv"`,
+        "Cache-Control": "no-store, no-cache, must-revalidate",
       },
     });
   } catch (err) {
     console.error("admin export: query failed", err);
-    return NextResponse.json({ error: "Export failed" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Export failed" },
+      { status: 500, headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } },
+    );
   }
 }
