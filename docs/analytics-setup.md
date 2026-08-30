@@ -75,7 +75,9 @@ and Vercel will send it as the `Authorization: Bearer` header).
 - Raw-IP storage is **off by default**. Turning on
   `ANALYTICS_STORE_RAW_IP` additionally AES-256-GCM encrypts the IP into
   an admin-only column (`visitors.ip_encrypted`), which is purged by the
-  same retention job as everything else.
+  same retention job as everything else. When it's on, the decrypted IP
+  is shown to the logged-in admin in the sessions table and CSV export —
+  visitors are never shown their own or anyone else's IP.
 - Geolocation (country/region/city/timezone) comes from Vercel's edge
   request headers — no external API call, no third-party data sharing.
 - Bots/crawlers/known tooling User-Agents are flagged (`is_bot`) and
@@ -111,7 +113,12 @@ and Vercel will send it as the `Authorization: Bearer` header).
   `src/proxy.ts`), server-rendered from direct SQL aggregate
   queries (`src/lib/db/queries/analytics.ts`), with date-range/event/page/
   device/country filters, CSV export, and a recent-sessions table with a
-  per-session event timeline.
+  per-session event timeline. The sessions table and CSV export also show a
+  visitor's real IP address, decrypted server-side, **only when**
+  `ANALYTICS_STORE_RAW_IP=true` and `ANALYTICS_IP_ENCRYPTION_KEY` are both
+  set — otherwise that column just shows "—". Sessions recorded before
+  those were set stay blank permanently (the encrypted value was never
+  written for them).
 
 ## Manual verification checklist
 
@@ -141,6 +148,10 @@ and Vercel will send it as the `Authorization: Bearer` header).
       dashboard's totals don't move when you `curl` the collect endpoint).
 - [ ] Confirm `ANALYTICS_STORE_RAW_IP` is unset/`false` in production
       unless you deliberately opted in.
+- [ ] If `ANALYTICS_STORE_RAW_IP=true`: browse the site once, then confirm
+      the "IP address" column in the sessions table (and the CSV export)
+      shows a real IP for that new session — older sessions from before the
+      flag was set will correctly show "—".
 
 ## Automated tests
 

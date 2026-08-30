@@ -1,4 +1,5 @@
 import { dbQuery } from "../client.ts";
+import { tryDecryptIp } from "../../analytics/ip.ts";
 
 export interface DashboardFilters {
   from?: string; // ISO date (inclusive)
@@ -314,6 +315,12 @@ export interface SessionRow {
   browser: string | null;
   entryPage: string | null;
   isReturning: boolean;
+  /**
+   * Decrypted IP address, admin-view only. Null unless ANALYTICS_STORE_RAW_IP
+   * was on (and ANALYTICS_IP_ENCRYPTION_KEY is set here) at the time this
+   * visitor was recorded — rows from before that stay null permanently.
+   */
+  ip: string | null;
 }
 
 /** Optional `EXISTS (... events ...)` fragment narrowing sessions by event name and/or page — reused by the main query and its count query with independently-numbered placeholders. */
@@ -358,9 +365,11 @@ export async function getRecentSessions(
     browser: string | null;
     entry_page: string | null;
     is_returning: boolean;
+    ip_encrypted: string | null;
   }>(
     `SELECT s.id, s.visitor_id, s.started_at, s.active_seconds, s.page_view_count,
-            s.max_scroll_depth, v.country, s.device_type, s.browser, s.entry_page, v.is_returning
+            s.max_scroll_depth, v.country, s.device_type, s.browser, s.entry_page, v.is_returning,
+            v.ip_encrypted
      FROM sessions s
      JOIN visitors v ON v.id = s.visitor_id
      WHERE ${where.sql}${exists.sql}
@@ -368,6 +377,7 @@ export async function getRecentSessions(
      LIMIT $1 OFFSET $2`,
     [limit, offset, ...where.params, ...exists.params],
   );
+  const ipKey = process.env.ANALYTICS_IP_ENCRYPTION_KEY;
   const countWhere = sessionWhere(filters, 1);
   const countExists = eventExistsClause(filters, countWhere.nextIndex);
   const countRows = await dbQuery<{ count: string }>(
@@ -387,6 +397,7 @@ export async function getRecentSessions(
       browser: r.browser,
       entryPage: r.entry_page,
       isReturning: r.is_returning,
+      ip: tryDecryptIp(r.ip_encrypted, ipKey),
     })),
     total: Number(countRows[0]?.count ?? 0),
   };

@@ -6,7 +6,7 @@ import { dbQuery } from "@/lib/db/client";
  * (default 400). Intended to be called daily by the Vercel Cron configured
  * in vercel.json — Vercel Cron sends a GET request, authenticated via
  * CRON_SECRET — and is also reachable via POST by an authenticated admin
- * (e.g. a "run now" button). Both paths are enforced by src/middleware.ts
+ * (e.g. a "run now" button). Both paths are enforced by src/proxy.ts
  * before this handler ever runs.
  */
 async function runRetention() {
