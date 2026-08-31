@@ -24,6 +24,7 @@ import DeviceCard from "./DeviceCard";
 import SessionsTable from "./SessionsTable";
 import FilterBar from "./FilterBar";
 import LogoutButton from "./LogoutButton";
+import ExportCsvButton from "./ExportCsvButton";
 
 export const metadata: Metadata = { title: "Analytics — Admin" };
 export const dynamic = "force-dynamic";
@@ -118,12 +119,7 @@ export default async function AdminAnalyticsPage({
             </h1>
           </div>
           <div className="flex items-center gap-2">
-            <a
-              href={`/api/admin/export?${exportQuery}`}
-              className="rounded-full border border-line px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              Export CSV
-            </a>
+            <ExportCsvButton query={exportQuery} />
             <LogoutButton />
           </div>
         </div>
