@@ -1,6 +1,7 @@
 "use client";
 
 import { trackingAllowed } from "./consent.ts";
+import { pushToDataLayer } from "./gtm.ts";
 import type { AnalyticsEvent, EventName, SessionMeta } from "./types.ts";
 
 const VISITOR_KEY = "analytics_visitor_id";
@@ -157,7 +158,7 @@ class AnalyticsClient {
     try {
       if (!trackingAllowed() || typeof window === "undefined") return;
       touchSession();
-      this.queue.push({
+      const event: AnalyticsEvent = {
         event_name: eventName,
         page: opts.page ?? window.location.pathname,
         section: opts.section,
@@ -166,7 +167,13 @@ class AnalyticsClient {
         destination_url: opts.destination_url,
         metadata: opts.metadata,
         ts: Date.now(),
-      });
+      };
+      this.queue.push(event);
+      // Every event our own analytics tracks also feeds GTM's dataLayer —
+      // one instrumentation point for both. Gated by the same opt-out as
+      // everything else above, so a visitor who opts out is opted out of
+      // both, not just our own collection.
+      pushToDataLayer(event);
       if (this.queue.length >= MAX_QUEUE_SIZE) this.flush();
     } catch {
       // Analytics must never break the app.
