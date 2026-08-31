@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getRecentSessions, type DashboardFilters } from "@/lib/db/queries/analytics";
+import { getRecentSessions, getSummary, rangeOrDefault, type DashboardFilters } from "@/lib/db/queries/analytics";
 
 const MAX_ROWS = 5000;
 
@@ -39,6 +39,35 @@ export async function GET(req: Request) {
     country: url.searchParams.get("country") ?? undefined,
     device: url.searchParams.get("device") ?? undefined,
   };
+
+  // One-time diagnostic mode: /api/admin/export?debug=1 — returns JSON
+  // showing exactly what filters/counts this request computed, instead of
+  // a CSV, so a blank-export report can be root-caused without guessing.
+  // TODO: remove once the blank-CSV report is resolved.
+  if (url.searchParams.get("debug") === "1") {
+    try {
+      const [{ rows, total }, summary] = await Promise.all([
+        getRecentSessions(filters, MAX_ROWS, 0),
+        getSummary(filters),
+      ]);
+      return NextResponse.json(
+        {
+          rawSearchParams: Object.fromEntries(url.searchParams),
+          resolvedFilters: filters,
+          resolvedDateRange: rangeOrDefault(filters),
+          recentSessions: { total, rowsReturned: rows.length, firstRow: rows[0] ?? null },
+          summary,
+          serverNow: new Date().toISOString(),
+        },
+        { headers: { "Cache-Control": "no-store, no-cache, must-revalidate" } },
+      );
+    } catch (err) {
+      return NextResponse.json(
+        { debugError: err instanceof Error ? err.message : String(err) },
+        { status: 500 },
+      );
+    }
+  }
 
   try {
     const { rows } = await getRecentSessions(filters, MAX_ROWS, 0);
