@@ -102,10 +102,13 @@ export default function PrivacyPage() {
               dashboard.
             </p>
             <p>
-              I also use Google Tag Manager to load Google Analytics (GA4)
-              for basic, aggregate pageview and traffic-source tracking. This
-              is separate from the first-party analytics above and follows
-              Google&apos;s standard cookie-based analytics practices.
+              I also use Google Tag Manager, which can load Google Analytics
+              (GA4) and follows Google&apos;s standard cookie-based analytics
+              practices. It receives the same anonymous events described
+              above (pages viewed, sections, button/link clicks, downloads,
+              form outcomes) — never raw form contents, passwords, or your
+              IP address. Turning off analytics above (the toggle below)
+              also stops these events from reaching Google.
             </p>
             <PrivacyAnalyticsToggle />
           </Section>

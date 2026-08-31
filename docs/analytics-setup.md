@@ -67,6 +67,25 @@ no extra setup beyond `CRON_SECRET` being set (Vercel sets it for you on
 paid plans — on Hobby, set any random string yourself as a Project env var
 and Vercel will send it as the `Authorization: Bearer` header).
 
+## Google Tag Manager (dataLayer mirroring)
+
+`NEXT_PUBLIC_GTM_ID` loads GTM (`src/app/layout.tsx`). Every event this
+system tracks — page views, section views, clicks, downloads, form
+outcomes, everything — is also pushed to `window.dataLayer`
+(`src/lib/analytics/gtm.ts`, called from the single choke point in
+`src/lib/analytics/track.ts`), gated by the same opt-out as the rest of
+this analytics system. This is **one instrumentation point feeding two
+places** — no separate `gtag()`/`dataLayer.push()` calls scattered through
+components.
+
+Pushing to `dataLayer` is necessary but not sufficient: to turn a pushed
+event into an actual GA4 event, add a matching **Trigger** (Custom Event,
+matching the `event` field, e.g. `download`) and **Tag** (GA4 Event, with
+whatever fields off the pushed object you want as event parameters — e.g.
+`page_path`, `label`, `destination_url`) in the GTM container itself at
+tagmanager.google.com. That configuration lives in Google's UI, not in
+this repo.
+
 ## Privacy design
 
 - IPs are **hashed** (HMAC-SHA256) by default and never stored raw. The
