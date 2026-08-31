@@ -12,7 +12,7 @@ function MiniList({ title, rows }: { title: string; rows: { label: string; count
         <ul className="mt-2 space-y-1.5">
           {rows.slice(0, 6).map((row) => (
             <li key={row.label} className="flex items-center justify-between text-xs">
-              <span className="truncate text-foreground/85">{row.label}</span>
+              <span className="min-w-0 truncate text-foreground/85" title={row.label}>{row.label}</span>
               <span className="shrink-0 font-semibold text-accent">{row.count.toLocaleString()}</span>
             </li>
           ))}

@@ -12,7 +12,10 @@ export default function GeoCard({ rows }: { rows: GeoRow[] }) {
         <ul className="mt-3 max-h-72 space-y-2 overflow-y-auto">
           {rows.map((row, i) => (
             <li key={i} className="flex items-center justify-between gap-3 text-sm">
-              <span className="truncate text-foreground/85">
+              <span
+                className="min-w-0 truncate text-foreground/85"
+                title={[row.city, row.region, row.country].filter(Boolean).join(", ") || "Unknown"}
+              >
                 {[row.city, row.region, row.country].filter(Boolean).join(", ") || "Unknown"}
               </span>
               <span className="shrink-0 font-display font-semibold text-accent">

@@ -23,7 +23,7 @@ export default function TopListCard({
               key={row.label}
               className="flex items-center justify-between gap-3 text-sm"
             >
-              <span className="truncate text-foreground/85" title={row.label}>
+              <span className="min-w-0 truncate text-foreground/85" title={row.label}>
                 {row.label}
               </span>
               <span className="shrink-0 font-display font-semibold text-accent">
