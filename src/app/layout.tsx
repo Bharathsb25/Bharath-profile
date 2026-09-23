@@ -120,6 +120,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Unset means GTM was never configured — rendering it anyway still loads
+  // Google's script, with a literal "undefined" container id.
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
   return (
     <html
       lang="en"
@@ -140,7 +143,7 @@ export default function RootLayout({
         {children}
         <Analytics />
         <AnalyticsProvider />
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
+        {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
       </body>
     </html>
   );
