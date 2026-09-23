@@ -4,19 +4,12 @@ import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { dbQuery } from "./client.ts";
+import { splitStatements } from "./splitStatements.ts";
 
 const migrationsDir = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
   "migrations",
 );
-
-/** Splits a .sql file into individual statements — the Neon HTTP driver runs one statement per call. */
-function splitStatements(sqlText: string): string[] {
-  return sqlText
-    .split(";")
-    .map((s) => s.trim())
-    .filter((s) => s.length > 0 && !s.startsWith("--"));
-}
 
 async function main() {
   await dbQuery(`
