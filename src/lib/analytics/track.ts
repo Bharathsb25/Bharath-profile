@@ -70,6 +70,16 @@ function getOrRotateSession(): { id: string; isNew: boolean } {
   return { id, isNew: true };
 }
 
+/** The current session's id without touching or rotating it. */
+export function currentSessionId(): string | null {
+  try {
+    const raw = safeStorage("sessionStorage")?.getItem(SESSION_KEY);
+    return raw ? (JSON.parse(raw) as StoredSession).id : null;
+  } catch {
+    return null;
+  }
+}
+
 function touchSession() {
   const storage = safeStorage("sessionStorage");
   const raw = storage?.getItem(SESSION_KEY);

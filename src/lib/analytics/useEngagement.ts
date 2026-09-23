@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { analytics, trackEvent } from "./track.ts";
+import { analytics, currentSessionId, trackEvent } from "./track.ts";
+import { loadActiveSeconds, saveActiveSeconds } from "./activeTime.ts";
 
 const IDLE_THRESHOLD_MS = 15_000;
 const TICK_MS = 1_000;
@@ -27,6 +28,8 @@ export function useEngagement(disabled = false) {
 
   useEffect(() => {
     if (disabled) return;
+    let sessionId = currentSessionId();
+    activeSecondsRef.current = loadActiveSeconds(sessionId);
     lastInputRef.current = Date.now();
     const markActive = () => {
       lastInputRef.current = Date.now();
@@ -45,7 +48,15 @@ export function useEngagement(disabled = false) {
     const tick = setInterval(() => {
       const isVisible = document.visibilityState === "visible";
       const recentlyActive = Date.now() - lastInputRef.current < IDLE_THRESHOLD_MS;
-      if (isVisible && recentlyActive) activeSecondsRef.current += 1;
+      if (!isVisible || !recentlyActive) return;
+      const id = currentSessionId();
+      if (id !== sessionId) {
+        // Session rotated after an idle gap: this time belongs to the new one.
+        sessionId = id;
+        activeSecondsRef.current = 0;
+      }
+      activeSecondsRef.current += 1;
+      saveActiveSeconds(sessionId, activeSecondsRef.current);
     }, TICK_MS);
 
     const heartbeat = setInterval(() => {
