@@ -19,7 +19,13 @@ export function useSectionObserver(disabled = false) {
     const main = document.querySelector("main");
     if (!main) return;
 
-    const sections = Array.from(main.querySelectorAll<HTMLElement>("[id]"));
+    // Form controls carry ids only so their <label>s can point at them; they
+    // aren't sections and would otherwise flood "Top sections" (c-name, …).
+    const sections = Array.from(
+      main.querySelectorAll<HTMLElement>(
+        "[id]:not(input):not(textarea):not(select):not(button):not(option)",
+      ),
+    );
     if (sections.length === 0) return;
 
     const observer = new IntersectionObserver(
