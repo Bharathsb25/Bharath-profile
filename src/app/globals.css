@@ -86,6 +86,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keeps anchor-linked sections (#about, #contact, etc.) from scrolling
+     under the sticky Navbar, which would otherwise overlap their heading. */
+  scroll-padding-top: 5rem;
 }
 
 body {

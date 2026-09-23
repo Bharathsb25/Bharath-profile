@@ -11,9 +11,15 @@ export interface DashboardFilters {
 }
 
 const DEFAULT_RANGE_DAYS = 30;
+const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
 
 function rangeOrDefault(filters: DashboardFilters): { from: string; to: string } {
-  const to = filters.to ? new Date(filters.to) : new Date();
+  // `<input type="date">` sends YYYY-MM-DD, which Date parses as midnight at the
+  // START of that day. Since the range is inclusive (started_at <= to), taking it
+  // literally would drop every session on the selected end day.
+  const to = filters.to
+    ? new Date(DATE_ONLY.test(filters.to) ? `${filters.to}T23:59:59.999Z` : filters.to)
+    : new Date();
   const from = filters.from
     ? new Date(filters.from)
     : new Date(to.getTime() - DEFAULT_RANGE_DAYS * 24 * 60 * 60 * 1000);

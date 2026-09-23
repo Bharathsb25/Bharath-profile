@@ -90,16 +90,23 @@ export async function POST(req: Request) {
          country = COALESCE($4, visitors.country),
          region = COALESCE($5, visitors.region),
          city = COALESCE($6, visitors.city),
-         timezone = COALESCE($7, visitors.timezone),
-         is_returning = true`,
+         timezone = COALESCE($7, visitors.timezone)`,
       [payload.visitor_id, ipHash, ipEncrypted, geo.country, geo.region, geo.city, geo.timezone],
     );
 
     const isNewSession = !!payload.session;
     if (isNewSession) {
-      await dbQuery("UPDATE visitors SET visit_count = visit_count + 1 WHERE id = $1", [
-        payload.visitor_id,
-      ]);
+      // Derived from sessions already on record rather than incremented per
+      // request: this runs before the new session row is inserted, so a first
+      // visit sees zero prior sessions. Incrementing here instead would count
+      // every 5s flush of a single visit as another return.
+      await dbQuery(
+        `UPDATE visitors SET
+           visit_count = 1 + (SELECT COUNT(*) FROM sessions WHERE visitor_id = $1),
+           is_returning = EXISTS (SELECT 1 FROM sessions WHERE visitor_id = $1)
+         WHERE id = $1`,
+        [payload.visitor_id],
+      );
     }
 
     const s = payload.session;
