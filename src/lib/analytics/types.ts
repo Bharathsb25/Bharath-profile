@@ -13,6 +13,7 @@ export const EVENT_NAMES = [
   "form_submit",
   "form_success",
   "form_failure",
+  "chat_question",
   "social_click",
   "copy_email",
   "copy_phone",

@@ -6,7 +6,6 @@ export const profile = {
   availability:
     "Open to full-time opportunities and available for freelance / contract projects.",
   photo: "/profile.jpg",
-  resume: "/Bharath-Sathiskumar-CV.pdf",
   // Web3Forms access key. Public by design (used in client-side forms).
   // Rotate at https://web3forms.com if you start receiving spam.
   web3formsKey: "4eb5794c-8a0c-457f-a698-026a90552d07",
@@ -283,7 +282,7 @@ export const freelance = {
     },
     {
       q: "Do you also take full-time roles?",
-      a: "Yes. If you're hiring rather than contracting, the main site has my experience, case study and CV.",
+      a: "Yes. If you're hiring rather than contracting, the main site has my experience and case study — leave your details and I'll share my CV directly.",
     },
   ],
   cta: {

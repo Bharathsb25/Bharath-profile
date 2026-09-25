@@ -7,7 +7,6 @@ import {
   getTopProjects,
   getTopButtons,
   getTopLinks,
-  getTopDownloads,
   getSocialClicks,
   getButtonCTR,
   getTrafficSources,
@@ -17,6 +16,24 @@ import {
   getRecentSessions,
   type DashboardFilters,
 } from "@/lib/db/queries/analytics";
+import {
+  getKpisWithComparison,
+  pctChange,
+  getLiveVisitors,
+  getDailyTrend,
+  getHourOfDay,
+  getLeadFunnel,
+  getChatStats,
+  getReferrerDomains,
+  getLeadsBySource,
+  getChatQuestionTopics,
+  getChatQuestions,
+} from "@/lib/db/queries/insights";
+import QuestionsCard from "./QuestionsCard";
+import TrendChart from "./TrendChart";
+import HourChart from "./HourChart";
+import FunnelCard from "./FunnelCard";
+import ChatCard from "./ChatCard";
 import StatCard from "./StatCard";
 import TopListCard from "./TopListCard";
 import GeoCard from "./GeoCard";
@@ -68,7 +85,6 @@ export default async function AdminAnalyticsPage({
     topProjects,
     topButtons,
     topLinks,
-    topDownloads,
     socialClicks,
     ctr,
     trafficSources,
@@ -76,6 +92,17 @@ export default async function AdminAnalyticsPage({
     device,
     scrollStats,
     sessions,
+    kpis,
+    live,
+    trend,
+    hours,
+    funnel,
+    chat,
+    referrers,
+    leadsBySource,
+    questionTopics,
+    unansweredQuestions,
+    recentQuestions,
   ] = await Promise.all([
     getSummary(filters),
     getTopPages(filters),
@@ -83,7 +110,6 @@ export default async function AdminAnalyticsPage({
     getTopProjects(filters),
     getTopButtons(filters),
     getTopLinks(filters),
-    getTopDownloads(filters),
     getSocialClicks(filters),
     getButtonCTR(filters),
     getTrafficSources(filters),
@@ -91,7 +117,28 @@ export default async function AdminAnalyticsPage({
     getDeviceBreakdown(filters),
     getScrollDepthStats(filters),
     getRecentSessions(filters, SESSIONS_PER_PAGE, offset),
+    getKpisWithComparison(filters),
+    getLiveVisitors(),
+    getDailyTrend(filters),
+    getHourOfDay(filters),
+    getLeadFunnel(filters),
+    getChatStats(filters),
+    getReferrerDomains(filters),
+    getLeadsBySource(filters),
+    getChatQuestionTopics(filters),
+    getChatQuestions(filters, { unansweredOnly: true, limit: 25 }),
+    getChatQuestions(filters, { limit: 25 }),
   ]);
+  const { current: k, previous: kp } = kpis;
+
+  // Quick range links (keep device/country/page/event filters).
+  const rangeHref = (days: number) => {
+    const params = new URLSearchParams(
+      Object.entries(filters).filter(([key, v]) => v && key !== "from" && key !== "to") as [string, string][],
+    );
+    params.set("from", new Date(Date.now() - days * 86_400_000).toISOString().slice(0, 10));
+    return `/admin/analytics?${params.toString()}`;
+  };
 
   const exportQuery = new URLSearchParams(
     Object.entries(filters).filter(([, v]) => v) as [string, string][],
@@ -118,7 +165,29 @@ export default async function AdminAnalyticsPage({
               Visitor analytics
             </h1>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-xs font-semibold text-foreground"
+              title="Visitors active in the last 5 minutes"
+            >
+              <span className={`h-2 w-2 rounded-full ${live > 0 ? "animate-pulse bg-emerald-500" : "bg-muted/50"}`} />
+              {live} live now
+            </span>
+            {[7, 30, 90].map((d) => (
+              <Link
+                key={d}
+                href={rangeHref(d)}
+                className="rounded-full border border-line px-3 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
+              >
+                {d}d
+              </Link>
+            ))}
+            <Link
+              href="/admin/questions"
+              className="rounded-full border border-line px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              Visitor questions →
+            </Link>
             <ExportCsvButton query={exportQuery} />
             <LogoutButton />
           </div>
@@ -128,23 +197,32 @@ export default async function AdminAnalyticsPage({
           <FilterBar />
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          <StatCard label="Unique visitors" value={summary.uniqueVisitors.toLocaleString()} />
-          <StatCard label="Sessions" value={summary.totalSessions.toLocaleString()} />
-          <StatCard label="Page views" value={summary.totalPageViews.toLocaleString()} />
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          <StatCard label="Unique visitors" value={k.visitors.toLocaleString()} delta={pctChange(k.visitors, kp.visitors)} />
+          <StatCard label="Sessions" value={k.sessions.toLocaleString()} delta={pctChange(k.sessions, kp.sessions)} />
+          <StatCard label="Page views" value={k.pageViews.toLocaleString()} delta={pctChange(k.pageViews, kp.pageViews)} />
           <StatCard
-            label="New vs returning"
-            value={`${summary.newVisitors} / ${summary.returningVisitors}`}
+            label="Leads"
+            value={k.leads.toLocaleString()}
+            delta={pctChange(k.leads, kp.leads)}
+            hint={k.sessions ? `${Math.round((k.leads / k.sessions) * 1000) / 10}% of sessions` : undefined}
           />
-          <StatCard label="Button CTR" value={`${ctr}%`} hint="clicks per session" />
+          <StatCard
+            label="Engaged sessions"
+            value={`${k.engagedRate}%`}
+            delta={pctChange(k.engagedRate, kp.engagedRate)}
+            hint="10s+ active, 2+ pages or 50%+ scroll"
+          />
           <StatCard
             label="Avg active time"
-            value={formatDuration(summary.avgActiveSeconds)}
+            value={formatDuration(k.avgActiveSeconds)}
+            delta={pctChange(k.avgActiveSeconds, kp.avgActiveSeconds)}
             hint="per session"
           />
           <StatCard
-            label="Total active time"
-            value={formatDuration(summary.totalActiveSeconds)}
+            label="New vs returning"
+            value={`${summary.newVisitors} / ${summary.returningVisitors}`}
+            hint={`Button CTR ${ctr}% · ${formatDuration(summary.totalActiveSeconds)} total active`}
           />
           <StatCard
             label="Avg scroll depth"
@@ -153,13 +231,29 @@ export default async function AdminAnalyticsPage({
           />
         </div>
 
+        <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <TrendChart points={trend} />
+          </div>
+          <HourChart hours={hours} />
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <FunnelCard steps={funnel.steps} failures={funnel.failures} leadsBySource={leadsBySource} />
+          <ChatCard stats={chat} sessions={k.sessions} />
+        </div>
+
+        <div className="mt-6">
+          <QuestionsCard topics={questionTopics} unanswered={unansweredQuestions} recent={recentQuestions} />
+        </div>
+
         <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           <TopListCard title="Top pages" rows={topPages} />
           <TopListCard title="Top sections" rows={topSections} />
           <TopListCard title="Projects" rows={topProjects} />
           <TopListCard title="Top buttons" rows={topButtons} />
           <TopListCard title="Top links" rows={topLinks} />
-          <TopListCard title="Downloads" rows={topDownloads} />
+          <TopListCard title="Referring sites" rows={referrers} />
           <TopListCard title="Social clicks" rows={socialClicks} />
           <TopListCard
             title="Traffic sources"

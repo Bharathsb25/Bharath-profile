@@ -3,6 +3,7 @@ import { Sora, Inter, Noto_Sans_Tamil } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
+import ChatWidget from "@/components/chat/ChatWidget";
 import "./globals.css";
 
 const sora = Sora({
@@ -138,6 +139,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         {children}
+        <ChatWidget />
         <Analytics />
         <AnalyticsProvider />
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
