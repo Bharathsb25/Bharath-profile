@@ -20,7 +20,7 @@ function rangeOrDefault(filters: DashboardFilters): { from: string; to: string }
 }
 
 /** Builds a `sessions s` WHERE clause (date range, bot exclusion, device/country) shared by every query below. */
-function sessionWhere(filters: DashboardFilters, startIndex: number) {
+export function sessionWhere(filters: DashboardFilters, startIndex: number) {
   const { from, to } = rangeOrDefault(filters);
   const clauses = ["s.is_bot = false", `s.started_at >= $${startIndex}`, `s.started_at <= $${startIndex + 1}`];
   const params: unknown[] = [from, to];

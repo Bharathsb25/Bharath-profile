@@ -52,7 +52,7 @@ export default function PrivacyPage() {
           <Section title="1. Information you choose to give me">
             <p>
               If you fill in the contact form, request my phone number, or
-              download my CV, I receive the details you enter: your{" "}
+              leave your details with the chat assistant, I receive the details you enter: your{" "}
               <strong className="text-foreground">name</strong> and{" "}
               <strong className="text-foreground">email</strong> (required),
               and optionally your{" "}
@@ -79,6 +79,13 @@ export default function PrivacyPage() {
               It&apos;s built to collect as little as possible:
             </p>
             <ul className="ml-4 list-disc space-y-2">
+              <li>
+                Questions you type into the chat assistant are saved
+                anonymously so I can improve its answers and my services.
+                Email addresses, phone numbers and links are removed before
+                saving, and details you give when asking me to contact you
+                are never stored here.
+              </li>
               <li>
                 You&apos;re identified only by a random, anonymous ID stored in
                 your browser — never your name, email, or account.
