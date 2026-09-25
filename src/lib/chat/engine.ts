@@ -105,11 +105,11 @@ const CANCEL_RE = /^(cancel|stop|exit|quit|never ?mind|forget it)$/i;
 
 /** Required questions end with " *". Optional ones just offer a Skip chip. */
 export const LEAD_PROMPTS: Record<LeadStep, BotReply> = {
-  name: { text: "Your name *", chips: ["Cancel"] },
+  name: { text: "Your name (min 2 characters) *", chips: ["Cancel"] },
   email: { text: "Your email address *", chips: ["Cancel"] },
   phone: { text: "Phone / WhatsApp number", chips: ["Skip", "Cancel"] },
   company: { text: "Company / organisation", chips: ["Skip", "Cancel"] },
-  need: { text: "What do you need help with, or which role are you hiring for? *", chips: ["Cancel"] },
+  need: { text: "What do you need help with, or which role are you hiring for? (min 3 characters) *", chips: ["Cancel"] },
 };
 
 export function summarizeLead(d: LeadDraft): string {
@@ -140,7 +140,7 @@ export function advanceLead(step: LeadStep, raw: string, draft: LeadDraft): Lead
   switch (step) {
     case "name": {
       if (input.length < 2 || input.length > 80) {
-        return { draft, next: "name", reply: { text: "Please enter your name *", chips: ["Cancel"] } };
+        return { draft, next: "name", reply: { text: "Name must be 2–80 characters. Please try again *", chips: ["Cancel"] } };
       }
       return { draft: { ...draft, name: input }, next: "email", reply: LEAD_PROMPTS.email };
     }
@@ -171,7 +171,7 @@ export function advanceLead(step: LeadStep, raw: string, draft: LeadDraft): Lead
     }
     case "need": {
       if (input.length < 3) {
-        return { draft, next: "need", reply: { text: "Just a few words is fine *", chips: ["Cancel"] } };
+        return { draft, next: "need", reply: { text: "Please write at least 3 characters about what you need *", chips: ["Cancel"] } };
       }
       // Last answer → send straight away, no confirm step.
       return { draft: { ...draft, need: input.slice(0, 1500) }, next: null, submit: true, reply: { text: "Sending…" } };
