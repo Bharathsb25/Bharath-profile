@@ -403,7 +403,7 @@ const en: BusinessCopy = {
       letter: "D",
       title: "Brand & Presence",
       intro: "Looking like a business people trust, before they've even called you.",
-      cols: 4,
+      cols: 3,
       items: [
         {
           outcome: "Look like a real business the moment someone sees your logo",
@@ -424,6 +424,11 @@ const en: BusinessCopy = {
           outcome: "Walk into any client, bank or investor meeting with something that looks the part",
           title: "Pitch Deck & Company Profile",
           icon: "M4 4h16v10H4V4Zm8 10v4m-3.5 2 3.5-2 3.5 2M3 4h18",
+        },
+        {
+          outcome: "Get promo videos and reels for your business — no film crew, no studio",
+          title: "AI Video Generation — product promos, social media reels and explainer videos",
+          icon: "M3 8a1.5 1.5 0 0 1 1.5-1.5h9A1.5 1.5 0 0 1 15 8v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 3 16V8Zm12 2.5 5.5-3v9l-5.5-3M9 9.5l.7 1.8 1.8.7-1.8.7L9 14.5l-.7-1.8-1.8-.7 1.8-.7L9 9.5Z",
         },
       ],
     },
@@ -789,7 +794,7 @@ const ta: BusinessCopy = {
       letter: "D",
       title: "பிராண்ட் & பிரசென்ஸ்",
       intro: "நீங்கள் தொடர்பு கொள்வதற்கு முன்பே மக்கள் நம்பும் தொழிலாக தெரியுங்கள்.",
-      cols: 4,
+      cols: 3,
       items: [
         {
           outcome: "உங்கள் லோகோவை பார்த்த உடனேயே ஒரு உண்மையான தொழிலாக தெரியுங்கள்",
@@ -810,6 +815,11 @@ const ta: BusinessCopy = {
           outcome: "எந்த கிளையண்ட், வங்கி, முதலீட்டாளர் மீட்டிங்கிலும் தகுதியாக தோன்றுங்கள்",
           title: "பிட்ச் டெக் & கம்பெனி ப்ரொஃபைல்",
           icon: "M4 4h16v10H4V4Zm8 10v4m-3.5 2 3.5-2 3.5 2M3 4h18",
+        },
+        {
+          outcome: "ஃபிலிம் க்ரூ, ஸ்டூடியோ இல்லாமலே உங்கள் தொழிலுக்கான ப்ரோமோ வீடியோக்களும் ரீல்ஸும்",
+          title: "AI வீடியோ ஜெனரேஷன் — ப்ராடக்ட் ப்ரோமோ, சோஷியல் மீடியா ரீல்ஸ், விளக்க வீடியோக்கள்",
+          icon: "M3 8a1.5 1.5 0 0 1 1.5-1.5h9A1.5 1.5 0 0 1 15 8v8a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 3 16V8Zm12 2.5 5.5-3v9l-5.5-3M9 9.5l.7 1.8 1.8.7-1.8.7L9 14.5l-.7-1.8-1.8-.7 1.8-.7L9 9.5Z",
         },
       ],
     },

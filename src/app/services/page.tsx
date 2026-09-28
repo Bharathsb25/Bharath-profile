@@ -37,6 +37,7 @@ export const metadata: Metadata = {
     "business automation India",
     "small business software",
     "brand identity kit",
+    "AI video generation for small business",
   ],
   alternates: { canonical: "/services" },
   openGraph: {
