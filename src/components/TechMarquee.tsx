@@ -13,28 +13,26 @@ const items = [
   "MS Excel",
 ];
 
+/**
+ * Was a scrolling marquee. A list of platforms is reference
+ * information — a reader scans it for the one they run — so it now
+ * sits still and stays readable, set as a ruled band.
+ */
 export default function TechMarquee() {
-  // Duplicate the row so the -50% translate loops seamlessly.
-  const row = [...items, ...items];
-
   return (
     <section
       aria-label="Platforms and tools I work with"
-      className="border-y border-line bg-card/40 py-5"
+      className="border-y border-line bg-card"
     >
-      <div className="marquee overflow-hidden">
-        <div className="marquee-track">
-          {row.map((tool, i) => (
-            <span
-              key={i}
-              className="mx-5 inline-flex items-center gap-5 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.12em] text-muted"
-              aria-hidden={i >= items.length ? true : undefined}
-            >
-              <span className="transition-colors hover:text-accent">{tool}</span>
-              <span className="h-1 w-1 rounded-full accent-bar" />
-            </span>
+      <div className="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-6 gap-y-2 px-6 py-4 text-sm">
+        <h2 className="font-display text-xs font-bold tracking-tight text-foreground">
+          On record
+        </h2>
+        <ul className="flex flex-wrap items-baseline gap-x-5 gap-y-1.5 text-muted">
+          {items.map((tool) => (
+            <li key={tool}>{tool}</li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

@@ -1,54 +1,51 @@
 import { profile } from "@/data/profile";
-import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import RevealPhoneButton from "@/components/RevealPhoneButton";
 
+/**
+ * The one place the accent is used as a full fill — the page's closing
+ * block, where a stamped panel is the right note to end a record on.
+ */
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
-      <Reveal>
-        <div className="relative overflow-hidden rounded-3xl border border-line accent-bar px-6 py-12 sm:px-10 sm:py-14">
-          <div className="glow pointer-events-none absolute -right-16 -top-16 h-64 w-64 opacity-30" />
-          <div className="glow pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 opacity-20" />
+    <section id="contact" className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <div className="accent-bar rounded-sm px-6 py-11 sm:px-10 sm:py-14">
+        <div className="grid items-start gap-10 md:grid-cols-2 md:gap-14">
+          <div className="text-on-accent">
+            <h2 className="max-w-[20ch] font-display text-3xl font-extrabold leading-[1.05] tracking-[-0.025em] sm:text-[2.5rem]">
+              Open to full-time roles and freelance projects
+            </h2>
+            <p className="mt-5 max-w-[42ch] leading-relaxed opacity-90">
+              Have a CRM rollout, implementation, or delivery challenge? Send
+              me a message and I&apos;ll get back to you quickly.
+            </p>
 
-          <div className="relative grid items-start gap-10 md:grid-cols-2">
-            {/* Left: pitch + direct actions */}
-            <div className="text-on-accent">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-on-accent">
-                Let&apos;s work together
-              </p>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                Open to full-time roles &amp; freelance projects
-              </h2>
-              <p className="mt-4 max-w-md text-on-accent">
-                Have a CRM rollout, implementation, or delivery challenge?
-                Send me a message and I&apos;ll get back to you quickly.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition-transform hover:-translate-y-0.5"
-                >
-                  ✉ {profile.email}
-                </a>
-                <RevealPhoneButton />
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border border-on-accent/40 px-6 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-on-accent/10"
-                >
-                  in LinkedIn
-                </a>
-              </div>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              <a
+                href={`mailto:${profile.email}`}
+                data-track-event="cta_click"
+                data-track-label="Email (contact)"
+                className="rounded-sm bg-on-accent px-5 py-3 font-display text-sm font-bold tracking-tight text-accent transition-opacity hover:opacity-90"
+              >
+                {profile.email}
+              </a>
+              <RevealPhoneButton />
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-track-event="social_click"
+                data-track-label="LinkedIn (contact)"
+                className="rounded-sm border border-on-accent/50 px-5 py-3 font-display text-sm font-bold tracking-tight text-on-accent transition-colors hover:bg-on-accent/10"
+              >
+                LinkedIn
+              </a>
             </div>
-
-            {/* Right: enquiry form */}
-            <ContactForm />
           </div>
+
+          <ContactForm />
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

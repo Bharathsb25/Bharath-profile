@@ -1,26 +1,28 @@
+/**
+ * A record's section header: a weighted rule, the title, and the
+ * section's own tag sitting opposite it.
+ *
+ * `index` is still accepted so the ten existing call sites keep
+ * compiling, but it is no longer rendered — 01 / 02 / 03 markers claim
+ * these sections are a sequence to work through, and they are not.
+ */
 export default function SectionHeading({
-  index,
   kicker,
   title,
 }: {
-  index: string;
+  index?: string;
   kicker: string;
   title: string;
 }) {
   return (
-    <div className="mb-10">
-      <div className="flex items-center gap-3">
-        <span className="font-display text-sm font-semibold text-accent">
-          {index}
-        </span>
-        <span className="h-px w-8 accent-bar" />
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-          {kicker}
-        </span>
+    <div className="mb-9">
+      <div className="h-[2px] w-full bg-foreground" />
+      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+        <h2 className="font-display text-2xl font-extrabold tracking-[-0.02em] text-foreground sm:text-[2rem]">
+          {title}
+        </h2>
+        <p className="text-sm text-muted">{kicker}</p>
       </div>
-      <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-        {title}
-      </h2>
     </div>
   );
 }

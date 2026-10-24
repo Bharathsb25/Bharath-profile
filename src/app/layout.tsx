@@ -1,24 +1,31 @@
 import type { Metadata } from "next";
-import { Sora, Inter, Noto_Sans_Tamil } from "next/font/google";
+import { Archivo, Newsreader, Noto_Sans_Tamil } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
 import ChatWidget from "@/components/chat/ChatWidget";
 import "./globals.css";
 
-const sora = Sora({
-  variable: "--font-sora",
+// The record face: headings, labels, dates, figures. Archivo is a
+// grotesque that holds up heavy and tight at display sizes, which is
+// what the stamped-document headings need.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+// The reading face. Body copy on this site is prose a hiring manager
+// actually reads, so it gets a text serif rather than a UI sans.
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 });
 
-// Only reachable via the /services language toggle — Inter has no Tamil
-// glyphs, so without this Tamil falls back to a system font and looks
+// Only reachable via the /services language toggle — neither Latin face
+// has Tamil glyphs, so without this Tamil falls back to a system font and looks
 // broken. Applied through the html[lang="ta"] rule in globals.css, not a
 // className here, since which font is active depends on client-side state.
 const notoSansTamil = Noto_Sans_Tamil({
@@ -124,7 +131,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${inter.variable} ${notoSansTamil.variable} h-full antialiased`}
+      className={`${archivo.variable} ${newsreader.variable} ${notoSansTamil.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

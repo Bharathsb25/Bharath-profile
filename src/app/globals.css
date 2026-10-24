@@ -1,32 +1,39 @@
 @import "tailwindcss";
 
-/* ---------------------------------------------------------------
-   Palette: 1 primary (teal, --accent), 1 secondary highlight used
-   sparingly for badges/callouts only (amber, --highlight), and one
-   neutral scale (background/card/border/muted/foreground).
+/* ===============================================================
+   "The Delivery Record"
 
-   Every accent value here is tuned per-theme so it clears WCAG AA
-   in BOTH directions at once: as small text on the page background,
-   and as a solid fill with --on-accent text sitting on top of it.
-   --on-accent is deliberately var(--background) — light mode reuses
-   near-white, dark mode reuses near-black — because it guarantees a
-   correct-for-the-theme foreground without a second literal color.
----------------------------------------------------------------- */
+   The design language comes from the subject's trade: implementation
+   work lives in project records — ruled entries, real dates, status
+   marks, signed-off milestones. So surfaces are flat sheets separated
+   by hairline rules, not shadowed cards; numbers are tabular; and the
+   accent is a stamp, used for marks and emphasis rather than decoration.
+
+   Palette: manila paper, warm ink, a hairline rule, one oxblood stamp
+   (--accent) and one slate "second pen" (--highlight) for the rare
+   secondary mark. Values are tuned per theme so each clears WCAG AA
+   both as small text on the page and as a fill under --on-accent.
+   --on-accent stays var(--background): light reuses paper, dark reuses
+   the dark record, so the fill's foreground is always theme-correct.
+=============================================================== */
 :root {
-  --background: #fbfcfd;
-  --foreground: #0b1220;
-  --card: #ffffff;
-  --muted: #5b6472;
-  --border: #e6e9ef;
-  --ink: #0b1220;
+  --background: #ede9df;
+  --foreground: #211d17;
+  --card: #f6f3eb;
+  --muted: #5e564a;
+  --border: #c9c1b0;
+  --ink: #211d17;
 
-  --accent: #0f766e;
-  --highlight: #b45309;
+  --accent: #93261f;
+  --highlight: #2e4a63;
   --on-accent: var(--background);
-  --scrim: color-mix(in srgb, black 60%, transparent);
-  --scrim-strong: color-mix(in srgb, black 80%, transparent);
+  --scrim: color-mix(in srgb, #211d17 62%, transparent);
+  --scrim-strong: color-mix(in srgb, #211d17 82%, transparent);
 
-  --shadow-card: 0 14px 36px -26px rgba(15, 40, 60, 0.45);
+  /* Sheets sit on the page by edge, not by shadow. Kept as a token
+     because ~100 call sites reference it; it is deliberately almost
+     nothing. */
+  --shadow-card: none;
 }
 
 @theme inline {
@@ -39,49 +46,51 @@
   --color-accent: var(--accent);
   --color-highlight: var(--highlight);
   --color-on-accent: var(--on-accent);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-sora);
+  --font-sans: var(--font-newsreader);
+  --font-display: var(--font-archivo);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #070b14;
-    --foreground: #eef2f8;
-    --card: #0e1524;
-    --muted: #93a0b4;
-    --border: #1b2436;
-    --accent: #2dd4bf;
-    --highlight: #fbbf24;
-    --shadow-card: 0 16px 44px -24px rgba(0, 0, 0, 0.7);
+    --background: #17140f;
+    --foreground: #ece5d7;
+    --card: #201c16;
+    --muted: #a79e8d;
+    --border: #3a342a;
+    --accent: #d9655a;
+    --highlight: #9cbad6;
+    --scrim: color-mix(in srgb, #0a0906 72%, transparent);
+    --scrim-strong: color-mix(in srgb, #0a0906 88%, transparent);
   }
 }
 
 /* Manual theme toggle — data-theme overrides the OS preference above. */
 :root[data-theme="light"] {
-  --background: #fbfcfd;
-  --foreground: #0b1220;
-  --card: #ffffff;
-  --muted: #5b6472;
-  --border: #e6e9ef;
-  --accent: #0f766e;
-  --highlight: #b45309;
-  --shadow-card: 0 14px 36px -26px rgba(15, 40, 60, 0.45);
+  --background: #ede9df;
+  --foreground: #211d17;
+  --card: #f6f3eb;
+  --muted: #5e564a;
+  --border: #c9c1b0;
+  --accent: #93261f;
+  --highlight: #2e4a63;
+  --scrim: color-mix(in srgb, #211d17 62%, transparent);
+  --scrim-strong: color-mix(in srgb, #211d17 82%, transparent);
 }
 
 :root[data-theme="dark"] {
-  --background: #070b14;
-  --foreground: #eef2f8;
-  --card: #0e1524;
-  --muted: #93a0b4;
-  --border: #1b2436;
-  --accent: #2dd4bf;
-  --highlight: #fbbf24;
-  --shadow-card: 0 16px 44px -24px rgba(0, 0, 0, 0.7);
+  --background: #17140f;
+  --foreground: #ece5d7;
+  --card: #201c16;
+  --muted: #a79e8d;
+  --border: #3a342a;
+  --accent: #d9655a;
+  --highlight: #9cbad6;
+  --scrim: color-mix(in srgb, #0a0906 72%, transparent);
+  --scrim-strong: color-mix(in srgb, #0a0906 88%, transparent);
 }
 
-/* Smooth the transition when the user flips the toggle. */
 :root[data-theme] body {
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html {
@@ -91,28 +100,61 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  /* Newsreader is the reading face: a document is meant to be read. */
+  font-family: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Tamil (set on /services via LanguageProvider): neither Inter nor Sora
-   carry Tamil glyphs. Noto Sans Tamil covers both the body copy and the
-   font-display headings — one Tamil-safe face standing in for two Latin
-   ones, since there's no separate "display weight" Tamil face in use here. */
-html[lang="ta"] body {
-  font-family: var(--font-tamil), "Noto Sans Tamil", system-ui, sans-serif;
+/* Archivo is the record face — headings, labels, dates, figures.
+   Tight tracking at display sizes, which Archivo needs. */
+.font-display {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-feature-settings: "tnum" 1;
 }
 
-html[lang="ta"] .font-display {
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  letter-spacing: -0.015em;
+}
+
+/* Dates, counts and IDs line up in a column, as they would on a record. */
+.tnum {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Tamil (set on /services via LanguageProvider): neither Archivo nor
+   Newsreader carry Tamil glyphs. Noto Sans Tamil covers body copy and
+   the display headings both — one Tamil-safe face standing in for two
+   Latin ones, since there is no separate Tamil display face in use. */
+html[lang="ta"] body,
+html[lang="ta"] .font-display,
+html[lang="ta"] .tnum,
+html[lang="ta"] h1,
+html[lang="ta"] h2,
+html[lang="ta"] h3,
+html[lang="ta"] h4 {
   font-family: var(--font-tamil), "Noto Sans Tamil", system-ui, sans-serif;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: var(--foreground);
 }
 
-/* ---- Accent helpers ---- */
-/* Solid, not a multi-hue gradient — one accent, used consistently. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---- Accent helpers (kept: ~60 call sites across the app) ---- */
 .text-gradient {
   color: var(--accent);
 }
@@ -121,42 +163,36 @@ html[lang="ta"] .font-display {
   background: var(--accent);
 }
 
-/* ---- Decorative backgrounds ---- */
+/* ---- Ruled paper ----------------------------------------------
+   Was a graph grid; now the horizontal ruling of a record sheet.
+   Same class name, so every existing call site reads correctly. */
 .bg-grid {
-  background-image:
-    linear-gradient(
-      to right,
-      color-mix(in srgb, var(--foreground) 4%, transparent) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--foreground) 4%, transparent) 1px,
-      transparent 1px
-    );
-  background-size: 56px 56px;
-  -webkit-mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 0%,
-    #000 40%,
-    transparent 100%
+  background-image: repeating-linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--foreground) 7%, transparent) 0 1px,
+    transparent 1px 2.25rem
   );
-  mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 0%,
-    #000 40%,
-    transparent 100%
-  );
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 92%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 92%);
 }
 
-.glow {
+/* The old accent blobs. Kept as near-inert paper warmth so the ~18
+   existing call sites render as nothing rather than as glowing orbs. */
+.glow,
+.aura {
   background: radial-gradient(
     circle at center,
-    color-mix(in srgb, var(--accent) 45%, transparent),
-    transparent 62%
+    color-mix(in srgb, var(--accent) 5%, transparent),
+    transparent 65%
   );
 }
 
-/* Modal / lightbox backdrops — one dark scrim, theme-independent by design
-   (an overlay behind a light card should always be black-ish, in both themes). */
+/* Was a spinning conic gradient. Now a static rule — the edge of a
+   mounted print. */
+.ring-conic {
+  background: var(--border);
+}
+
 .scrim {
   background: var(--scrim);
 }
@@ -165,187 +201,167 @@ html[lang="ta"] .font-display {
   background: var(--scrim-strong);
 }
 
-/* Larger ambient aura — same accent, softer and wider than .glow */
-.aura {
-  background: radial-gradient(
-    circle at center,
-    color-mix(in srgb, var(--accent) 32%, transparent),
-    transparent 60%
-  );
-}
-
-/* Rotating conic gradient — a techy ring behind the portrait. Tonal, not
-   multi-hue: it sweeps the single accent against transparent. */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.ring-conic {
-  background: conic-gradient(
-    from 0deg,
-    var(--accent),
-    color-mix(in srgb, var(--accent) 25%, transparent),
-    var(--accent)
-  );
-  animation: spin 9s linear infinite;
-}
-
-/* ---- Infinite tech marquee ---- */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee {
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 8%,
-    #000 92%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 8%,
-    #000 92%,
-    transparent
-  );
-}
-
-.marquee-track {
-  display: inline-flex;
-  width: max-content;
-  animation: marquee 34s linear infinite;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-/* ---- Card ---- */
+/* ---- Sheet ----------------------------------------------------
+   A record page: flat, defined by its edge. No shadow, little radius,
+   and a hairline top highlight the way a stacked sheet catches light. */
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 1rem;
-  box-shadow: var(--shadow-card);
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+  border-radius: 2px;
+  box-shadow: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-  box-shadow: 0 18px 40px -20px color-mix(in srgb, var(--accent) 45%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
 }
 
-/* ---- 3D tilt ---- */
+/* A stamped block — used sparingly, where something is genuinely
+   marked: availability, a signed-off status, a current role. */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 2px;
+  padding: 0.3rem 0.6rem;
+  color: var(--accent);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Go-live rail ---------------------------------------------
+   The page's one motion moment: a schedule rail that draws once, on
+   load, to the final milestone. --rail-ms is the full sweep. */
+.rail {
+  --rail-ms: 1500ms;
+  position: relative;
+}
+
+.rail-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.3125rem;
+  height: 2px;
+  background: var(--border);
+}
+
+.rail-progress {
+  position: absolute;
+  left: 0;
+  top: 0.3125rem;
+  height: 2px;
+  width: 100%;
+  background: var(--accent);
+  transform-origin: left center;
+  animation: rail-draw var(--rail-ms) cubic-bezier(0.65, 0.05, 0.36, 1) both;
+}
+
+@keyframes rail-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.rail-mark {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 0.75rem;
+  width: 0.75rem;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  background: var(--background);
+}
+
+/* Each mark fills as the rail reaches it. */
+.rail-mark::after {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scale(0);
+  animation: rail-fill 220ms ease-out both;
+  animation-delay: calc(var(--rail-ms) * var(--at, 0));
+}
+
+/* The last mark is the go-live: square, filled, and larger — a
+   milestone reads differently from a stage. */
+.rail-mark[data-final="true"] {
+  height: 0.875rem;
+  width: 0.875rem;
+  /* 1px up so its centre still sits on the rail line, which is set to
+     the centre of the smaller stage marks. */
+  margin-top: -1px;
+  border-radius: 2px;
+}
+
+.rail-mark[data-final="true"]::after {
+  border-radius: 1px;
+}
+
+@keyframes rail-fill {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* ---- Reveal ---------------------------------------------------
+   Deliberately inert. A fade-and-slide on every section is the
+   default tell; the hero rail carries the page's motion instead.
+   The class and component stay so all call sites keep working. */
+.reveal,
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Likewise: the tilt scene and the floating blob animation are
+   neutralised rather than deleted, since both have call sites on
+   pages beyond the home page. */
 .tilt-scene {
-  perspective: 1000px;
+  perspective: none;
 }
 
 .tilt-inner {
   position: relative;
-  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transform-style: preserve-3d;
-  transition:
-    transform 0.2s ease-out,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-  will-change: transform;
+  transform: none;
+  transition: border-color 0.2s ease;
 }
 
 .tilt-scene:hover .tilt-inner {
-  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-  box-shadow: 0 30px 60px -28px color-mix(in srgb, var(--accent) 55%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
 }
 
-/* Glossy light that follows the cursor across the surface */
-.tilt-inner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    260px circle at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--accent) 24%, transparent),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.tilt-scene:hover .tilt-inner::after {
-  opacity: 1;
-}
-
-/* Lift a child above the surface for real depth */
 .tilt-raise {
-  transform: translateZ(38px);
-}
-
-/* ---- Scroll reveal ---- */
-.reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-}
-
-.reveal.is-visible {
-  opacity: 1;
   transform: none;
 }
 
-/* ---- Animated blob ---- */
-@keyframes floaty {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(0, -18px) scale(1.05);
-  }
-}
-
 .animate-floaty {
-  animation: floaty 9s ease-in-out infinite;
+  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .animate-floaty {
+  .rail-progress,
+  .rail-mark::after {
     animation: none;
-  }
-  .tilt-inner {
-    transform: none !important;
-    transition: none;
-  }
-  .tilt-raise {
     transform: none;
   }
-  .ring-conic {
-    animation: none;
-  }
-  .marquee-track {
-    animation: none;
+  .rail-mark::after {
+    transform: scale(1);
   }
 }

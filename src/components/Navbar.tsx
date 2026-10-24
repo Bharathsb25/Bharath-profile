@@ -34,25 +34,25 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-colors duration-200 ${
         scrolled
-          ? "border-b border-line bg-background/80 backdrop-blur-md"
+          ? "border-b border-line bg-background/92 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
         <a
           href="/#top"
-          className="font-display text-sm font-bold tracking-tight text-foreground"
+          className="font-display text-sm font-extrabold tracking-[-0.02em] text-foreground"
         >
-          Bharath<span className="text-gradient"> Sathiskumar</span>
+          Bharath Sathiskumar
         </a>
 
         {/* Desktop nav starts at xl. Nine links plus the logo and "Let's talk"
             button don't fit before that — lg wraps the logo, same failure
             mode this had at md before Blog/Samples were added back in.
             Below xl: hamburger. */}
-        <ul className="hidden gap-5 text-sm font-medium text-muted xl:flex xl:gap-7">
+        <ul className="hidden gap-5 text-sm text-muted xl:flex xl:gap-6">
           {links.map((link) => (
             <li key={link.href}>
               <a
@@ -74,14 +74,14 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
             href="/#contact"
             data-track-event="cta_click"
             data-track-label="Let's talk (nav)"
-            className="hidden rounded-full accent-bar px-4 py-2 text-sm font-semibold text-on-accent shadow-sm transition-transform hover:-translate-y-0.5 xl:inline-block"
+            className="accent-bar hidden rounded-sm px-4 py-2 font-display text-sm font-bold tracking-tight text-on-accent transition-colors hover:brightness-110 xl:inline-block"
           >
             Let&apos;s talk
           </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-foreground xl:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-sm border border-line text-foreground xl:hidden"
             aria-label="Toggle menu"
           >
             {open ? "✕" : "☰"}
@@ -90,7 +90,7 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
       </nav>
 
       {open && (
-        <ul className="flex flex-col gap-1 border-t border-line bg-background px-6 py-3 text-sm font-medium text-muted xl:hidden">
+        <ul className="flex flex-col border-t border-line bg-background px-6 py-2 text-sm text-muted xl:hidden">
           {links.map((link) => (
             <li key={link.href}>
               <a
@@ -98,7 +98,7 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
                 onClick={() => setOpen(false)}
                 data-track-event="nav_click"
                 data-track-label={link.label}
-                className="block py-2"
+                className="block border-b border-line py-2.5"
               >
                 {link.label}
               </a>
@@ -110,7 +110,7 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
               onClick={() => setOpen(false)}
               data-track-event="cta_click"
               data-track-label="Let's talk (nav mobile)"
-              className="mt-1 block rounded-full accent-bar px-4 py-2 text-center font-semibold text-on-accent"
+              className="accent-bar mt-3 block rounded-sm px-4 py-2.5 text-center font-display text-sm font-bold tracking-tight text-on-accent"
             >
               Let&apos;s talk
             </a>

@@ -1,106 +1,97 @@
 import { education, certifications, training } from "@/data/profile";
-import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import CertificateGallery from "@/components/CertificateGallery";
 
 export default function Education() {
   return (
-    <section
-      id="education"
-      className="border-y border-line bg-card/40 py-20"
-    >
+    <section id="education" className="border-y border-line bg-card py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-6">
-        <Reveal>
-          <SectionHeading
-            index="06"
-            kicker="Background"
-            title="Education & Certifications"
-          />
-        </Reveal>
+        <SectionHeading
+          kicker="Background"
+          title="Education & certifications"
+        />
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <Reveal>
-            <div className="card h-full p-6">
-              <h3 className="font-display text-sm font-semibold text-foreground">
-                Education
-              </h3>
-              <div className="mt-5 space-y-5">
-                {education.map((edu) => (
-                  <div key={edu.degree}>
-                    <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-                      <h4 className="text-sm font-semibold text-foreground">
-                        {edu.degree}
-                      </h4>
-                      <span className="text-xs font-medium text-muted">
-                        {edu.period}
-                      </span>
-                    </div>
-                    <p className="text-sm text-muted">{edu.school}</p>
-                    <p className="mt-0.5 text-xs font-medium text-accent">
-                      {edu.detail}
-                    </p>
-                  </div>
-                ))}
+        <div className="grid gap-10 md:grid-cols-2 md:gap-14">
+          <div>
+            <h3 className="border-b-2 border-foreground pb-2 font-display text-sm font-bold tracking-tight text-foreground">
+              Education
+            </h3>
+            {education.map((edu) => (
+              <div key={edu.degree} className="border-b border-line py-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                  <h4 className="font-display text-base font-bold tracking-tight text-foreground">
+                    {edu.degree}
+                  </h4>
+                  <span className="tnum text-sm text-muted">{edu.period}</span>
+                </div>
+                <p className="mt-0.5 text-[0.9375rem] text-muted">
+                  {edu.school}
+                </p>
+                <p className="tnum mt-1 text-sm font-semibold text-accent">
+                  {edu.detail}
+                </p>
               </div>
+            ))}
 
-              <h3 className="mt-8 font-display text-sm font-semibold text-foreground">
-                {training.title}
-              </h3>
-              <ul className="mt-4 grid gap-2 text-sm text-muted">
-                {training.points.map((point) => (
-                  <li key={point} className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full accent-bar" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
+            <h3 className="mt-10 border-b-2 border-foreground pb-2 font-display text-sm font-bold tracking-tight text-foreground">
+              {training.title}
+            </h3>
+            <ul className="text-[0.9375rem]">
+              {training.points.map((point) => (
+                <li
+                  key={point}
+                  className="flex items-start gap-3 border-b border-line py-2.5 leading-snug text-muted"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-[0.6em] h-px w-3 shrink-0 bg-accent"
+                  />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <Reveal delay={100}>
-            <div className="card h-full p-6">
-              <h3 className="font-display text-sm font-semibold text-foreground">
-                Certifications
-              </h3>
-              <ul className="mt-5 space-y-4">
-                {certifications.map((cert) => (
-                  <li
-                    key={cert.name}
-                    className="flex items-baseline justify-between gap-4 border-b border-line pb-4 last:border-0"
-                  >
-                    <span className="text-sm text-foreground/85">
-                      {cert.name}
-                      {cert.issuer && (
-                        <span className="text-muted"> — {cert.issuer}</span>
-                      )}
-                      {cert.credentialId && (
-                        <span className="mt-0.5 block font-mono text-[11px] text-muted/80">
-                          No. {cert.credentialId}
-                        </span>
-                      )}
-                    </span>
-                    <span className="shrink-0 text-xs font-medium text-muted">
-                      {cert.date}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
+          <div>
+            <h3 className="border-b-2 border-foreground pb-2 font-display text-sm font-bold tracking-tight text-foreground">
+              Certifications
+            </h3>
+            <ul>
+              {certifications.map((cert) => (
+                <li
+                  key={cert.name}
+                  className="flex items-baseline justify-between gap-5 border-b border-line py-4"
+                >
+                  <span className="text-[0.9375rem] leading-snug text-foreground/90">
+                    {cert.name}
+                    {cert.issuer && (
+                      <span className="text-muted"> — {cert.issuer}</span>
+                    )}
+                    {cert.credentialId && (
+                      <span className="tnum mt-1 block text-xs text-muted">
+                        No. {cert.credentialId}
+                      </span>
+                    )}
+                  </span>
+                  <span className="tnum shrink-0 text-sm text-muted">
+                    {cert.date}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Certificate wall — click any tile to read the full certificate */}
-        <Reveal delay={140}>
-          <div className="mt-12">
-            <div className="mb-5 flex items-baseline justify-between gap-4">
-              <h3 className="font-display text-sm font-semibold text-foreground">
-                Certificates
-              </h3>
-              <span className="text-xs text-muted">Click to view full size</span>
-            </div>
-            <CertificateGallery />
+        {/* Certificate wall — select any tile to read the full certificate */}
+        <div className="mt-14">
+          <div className="mb-5 flex items-baseline justify-between gap-4 border-b border-line pb-2">
+            <h3 className="font-display text-sm font-bold tracking-tight text-foreground">
+              Certificates
+            </h3>
+            <span className="text-xs text-muted">Select to view full size</span>
           </div>
-        </Reveal>
+          <CertificateGallery />
+        </div>
       </div>
     </section>
   );

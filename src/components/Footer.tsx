@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-line py-10">
       <div className="mx-auto mb-8 max-w-2xl px-6 text-center">
-        <p lang="ta" className="font-display text-sm italic leading-relaxed text-foreground/80">
+        <p lang="ta" className="text-base italic leading-relaxed text-foreground/85">
           &ldquo;எல்லாரும் எல்லாமும் பெற வேண்டும், இங்கு இல்லாமை இல்லாத நிலை வேண்டும்&rdquo;
         </p>
         <p className="mt-1.5 text-xs text-muted">
@@ -13,13 +13,13 @@ export default function Footer() {
         </p>
       </div>
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
-        <p className="font-display text-sm font-semibold text-foreground">
-          Bharath<span className="text-gradient"> Sathiskumar</span>
+        <p className="font-display text-sm font-extrabold tracking-[-0.02em] text-foreground">
+          Bharath Sathiskumar
         </p>
-        <p className="text-xs text-muted">
+        <p className="tnum text-sm text-muted">
           &copy; {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-muted">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted">
           <a
             href="/services"
             data-track-event="nav_click"

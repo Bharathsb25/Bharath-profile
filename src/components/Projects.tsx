@@ -1,213 +1,152 @@
 import { featuredProject as p } from "@/data/profile";
-import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 
-// One line-icon per workflow stage
-const stepIcons = [
-  "M9 12l2 2 4-4M7.5 3.5h6l5 5v10a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2z", // doc-check
-  "M9 3.5h6a1 1 0 0 1 1 1v1H8v-1a1 1 0 0 1 1-1zM8 5.5H6a2 2 0 0 0-2 2V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5a2 2 0 0 0-2-2h-2M9 12h6M9 16h4", // clipboard-list
-  "M13 2 4 14h7l-1 8 9-12h-7l1-8z", // zap
-  "M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.5 21a2 2 0 0 1-3 0", // bell
-  "M5 13c0-5 4-9 9-11 1 6-1 10-5 12l-4-1zM5 13l-2 5 5-2M14 2c3 .5 5.5 3 6 6", // rocket
-];
-
-// One glyph per outcome tile (solid, filled)
-const outcomeIcons = [
-  "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5h-2v6l5 3 1-1.7-4-2.4V7Z", // clock — speed
-  "M12 5C5 5 1 12 1 12s4 7 11 7 11-7 11-7-4-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z", // eye — visibility
-  "M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z", // shield — SLA
-  "M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 14L6 11.2l1.4-1.4 3.4 3.4 5.8-5.8L18 8.8 10.8 16Z", // check — chasing removed
-];
-
+/**
+ * The case study, set as a case record: context and problem stated
+ * plainly, outcomes as a ruled figure row, then the workflow stage by
+ * stage with its full description.
+ *
+ * The hero shows the same five stages as a one-line rail; this is where
+ * they get written out, so the numbering here is a real sequence rather
+ * than ornament.
+ */
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-6 py-20">
-      <Reveal>
-        <SectionHeading index="05" kicker="Featured Work" title="Projects" />
-      </Reveal>
+    <section id="projects" className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <SectionHeading kicker="Featured work" title="Projects" />
 
-      <Reveal delay={80}>
-        <div className="card relative overflow-hidden p-6 sm:p-8">
-          {/* top accent bar */}
-          <div className="accent-bar absolute inset-x-0 top-0 h-1" />
-          <div className="glow pointer-events-none absolute -right-24 -top-24 h-64 w-64 opacity-20" />
+      <article>
+        <div className="flex flex-wrap items-center gap-2.5">
+          <span className="stamp">{p.type}</span>
+          <span className="text-sm text-muted">{p.role}</span>
+        </div>
 
-          {/* Header */}
-          <div className="relative flex flex-wrap items-center gap-2">
-            <span className="rounded-full accent-bar px-3 py-1 text-xs font-semibold text-on-accent">
-              {p.type}
-            </span>
-            <span className="rounded-full border border-line px-3 py-1 text-xs font-medium text-muted">
-              {p.role}
-            </span>
-          </div>
+        <h3 className="mt-5 max-w-[26ch] font-display text-2xl font-extrabold leading-[1.1] tracking-[-0.025em] text-foreground sm:text-[2.25rem]">
+          {p.title}
+        </h3>
 
-          <h3 className="relative mt-4 font-display text-xl font-bold text-foreground sm:text-2xl">
-            {p.title}
-          </h3>
-          <p className="relative mt-3 max-w-3xl text-sm leading-7 text-muted">
-            {p.summary}
-          </p>
+        <p className="mt-5 max-w-[66ch] text-lg leading-relaxed text-foreground/90">
+          {p.summary}
+        </p>
 
-          {/* Case-study context */}
-          <div className="relative mt-6 grid gap-5 rounded-2xl border border-line bg-background p-5 sm:grid-cols-2">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-                Client
-              </p>
-              <p className="mt-1.5 text-sm text-foreground/85">{p.client}</p>
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-                The problem
-              </p>
-              <p className="mt-1.5 text-sm text-muted">{p.problem}</p>
-            </div>
-          </div>
+        {/* Context, as a record's two fields. */}
+        <dl className="mt-10 grid gap-y-5 border-y border-line py-6 sm:grid-cols-[10rem_1fr] sm:gap-x-10">
+          <dt className="font-display text-sm font-bold tracking-tight text-foreground">
+            Client
+          </dt>
+          <dd className="max-w-[60ch] text-[0.9375rem] text-muted">
+            {p.client}
+          </dd>
+          <dt className="font-display text-sm font-bold tracking-tight text-foreground">
+            The problem
+          </dt>
+          <dd className="max-w-[60ch] text-[0.9375rem] leading-relaxed text-muted">
+            {p.problem}
+          </dd>
+        </dl>
 
-          {/* Outcomes */}
-          <div className="relative mt-5">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-              The outcome
-            </p>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {p.outcomes.map((o, i) => (
-                <div
-                  key={o.label}
-                  className="rounded-xl border border-line bg-background p-4 text-center"
-                >
-                  <span className="mx-auto mb-2.5 flex h-9 w-9 items-center justify-center rounded-full accent-bar text-on-accent">
-                    <svg
-                      className="h-4.5 w-4.5"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style={{ width: "1.1rem", height: "1.1rem" }}
-                    >
-                      <path d={outcomeIcons[i % outcomeIcons.length]} />
-                    </svg>
-                  </span>
-                  <div className="font-display text-lg font-bold text-gradient">
-                    {o.value}
-                  </div>
-                  <div className="mt-1 text-xs leading-4 text-muted">
-                    {o.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Flow chart */}
-          <div className="relative mt-8">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-              How the workflow runs
-            </p>
-            <div className="flex flex-col gap-2 md:flex-row md:items-stretch">
-              {p.flow.map((step, i) => (
-                <div
-                  key={step.title}
-                  className="flex flex-col md:flex-1 md:flex-row md:items-stretch"
-                >
-                  <div className="group relative flex-1 rounded-xl border border-line bg-background p-5 transition-all duration-200 hover:-translate-y-1 hover:border-accent hover:shadow-lg hover:shadow-accent/10">
-                    <div className="flex items-center justify-between">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl accent-bar text-on-accent">
-                        <svg
-                          className="h-5 w-5"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.7"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d={stepIcons[i % stepIcons.length]} />
-                        </svg>
-                      </span>
-                      <span className="font-display text-2xl font-extrabold text-line">
-                        {i + 1}
-                      </span>
-                    </div>
-                    <h4 className="mt-4 font-display text-sm font-semibold text-foreground">
-                      {step.title}
-                    </h4>
-                    <p className="mt-1.5 text-xs leading-5 text-muted">
-                      {step.desc}
-                    </p>
-                  </div>
-                  {i < p.flow.length - 1 && (
-                    <div
-                      className="flex items-center justify-center py-1 text-accent md:px-1.5 md:py-0"
-                      aria-hidden="true"
-                    >
-                      <span className="text-lg md:hidden">↓</span>
-                      <span className="hidden text-lg md:inline">→</span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Highlights */}
-          <div className="relative mt-8 grid gap-2.5 sm:grid-cols-2">
-            {p.highlights.map((h) => (
+        {/* Outcomes. Qualitative, and set as such — no icon tiles
+            dressing four words up as metrics. */}
+        <div className="mt-10">
+          <h4 className="font-display text-sm font-bold tracking-tight text-foreground">
+            The outcome
+          </h4>
+          <dl className="mt-4 grid grid-cols-2 border-t border-line sm:grid-cols-4">
+            {p.outcomes.map((o) => (
               <div
-                key={h}
-                className="flex items-start gap-2.5 text-sm text-muted"
+                key={o.label}
+                className="border-b border-line px-1 py-5 sm:border-b-0 sm:border-r sm:last:border-r-0 sm:pr-5 sm:[&:not(:first-child)]:pl-5"
               >
-                <svg
-                  className="mt-0.5 h-4 w-4 shrink-0 text-accent"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.3 3.29 6.8-6.79a1 1 0 0 1 1.4 0Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>{h}</span>
+                <dt className="font-display text-xl font-bold leading-none tracking-tight text-accent">
+                  {o.value}
+                </dt>
+                <dd className="mt-2 text-sm leading-snug text-muted">
+                  {o.label}
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
+        </div>
 
-          {/* Tags */}
-          <div className="relative mt-6 flex flex-wrap gap-2">
+        {/* The workflow, stage by stage. */}
+        <div className="mt-12">
+          <h4 className="font-display text-sm font-bold tracking-tight text-foreground">
+            How the workflow runs
+          </h4>
+          <ol className="mt-4">
+            {p.flow.map((step, i) => (
+              <li
+                key={step.title}
+                className="grid gap-y-1 border-t border-line py-5 sm:grid-cols-[2.5rem_1fr] sm:gap-x-6"
+              >
+                <span className="tnum text-sm font-bold text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h5 className="font-display text-base font-bold tracking-tight text-foreground">
+                    {step.title}
+                  </h5>
+                  <p className="mt-1 max-w-[62ch] leading-relaxed text-muted">
+                    {step.desc}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* What it took to build. */}
+        <div className="mt-12 border-t-2 border-foreground pt-6">
+          <h4 className="font-display text-sm font-bold tracking-tight text-foreground">
+            Built into it
+          </h4>
+          <ul className="mt-4 grid gap-x-12 sm:grid-cols-2">
+            {p.highlights.map((h) => (
+              <li
+                key={h}
+                className="flex items-start gap-3 border-b border-line py-3 text-[0.9375rem] leading-snug text-muted"
+              >
+                <span
+                  aria-hidden
+                  className="mt-[0.6em] h-px w-3 shrink-0 bg-accent"
+                />
+                <span>{h}</span>
+              </li>
+            ))}
+          </ul>
+
+          <ul className="mt-6 flex flex-wrap gap-2">
             {p.tags.map((tag) => (
-              <span
+              <li
                 key={tag}
-                className="rounded-full border border-line px-3 py-1 text-xs font-medium text-foreground/70"
+                className="rounded-sm border border-line px-2.5 py-1 text-sm text-muted"
               >
                 {tag}
-              </span>
+              </li>
             ))}
-          </div>
-
-          {/* Business CTA */}
-          <div className="accent-bar relative mt-8 overflow-hidden rounded-2xl p-6 text-on-accent sm:p-8">
-            <div className="glow pointer-events-none absolute -right-10 -top-10 h-44 w-44 opacity-30" />
-            <div className="relative flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h4 className="font-display text-lg font-bold sm:text-xl">
-                  {p.businessCta.title}
-                </h4>
-                <p className="mt-1.5 max-w-xl text-sm leading-6 text-on-accent">
-                  {p.businessCta.text}
-                </p>
-              </div>
-              <a
-                href="#contact"
-                data-track-event="project_click"
-                data-track-section="projects"
-                data-track-label={p.businessCta.button}
-                className="shrink-0 rounded-full bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm transition-transform hover:-translate-y-0.5"
-              >
-                {p.businessCta.button}
-              </a>
-            </div>
-          </div>
+          </ul>
         </div>
-      </Reveal>
+
+        <div className="mt-10 flex flex-col gap-5 border-t border-line pt-8 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h4 className="font-display text-lg font-bold tracking-tight text-foreground">
+              {p.businessCta.title}
+            </h4>
+            <p className="mt-1.5 max-w-[56ch] leading-relaxed text-muted">
+              {p.businessCta.text}
+            </p>
+          </div>
+          <a
+            href="#contact"
+            data-track-event="project_click"
+            data-track-section="projects"
+            data-track-label={p.businessCta.button}
+            className="accent-bar shrink-0 self-start rounded-sm px-5 py-3 font-display text-sm font-bold tracking-tight text-on-accent transition-colors hover:brightness-110 sm:self-auto"
+          >
+            {p.businessCta.button.replace(/\s*→\s*$/, "")}
+          </a>
+        </div>
+      </article>
     </section>
   );
 }

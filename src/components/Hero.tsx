@@ -1,154 +1,180 @@
 import Image from "next/image";
-import { profile, highlights } from "@/data/profile";
-import Reveal from "@/components/Reveal";
-import TiltCard from "@/components/TiltCard";
+import { profile, highlights, featuredProject } from "@/data/profile";
+
+/**
+ * The hero reads as the first page of a delivery record: a ruled header
+ * line stating who and where, the claim, and then the page's one piece
+ * of motion — a go-live rail that draws once, on load, through the five
+ * real stages of the onboarding automation in `featuredProject.flow`.
+ *
+ * The rail is content, not decoration: those are the actual stages, in
+ * order, which is why marks and a sequence are justified here and
+ * nowhere else on the page.
+ */
+/**
+ * Short glosses for the rail. The full descriptions live in
+ * `featuredProject.flow` and are shown in the project section — at rail
+ * width they would set as five dense paragraphs, so each stage gets a
+ * faithful one-line compression instead.
+ */
+const glosses = [
+  "Tenant setup, invoicing and a secure intake email fire on their own.",
+  "A wizard showing only the modules bought, with locks and versioning.",
+  "A finished section flips the internal task live and routes its owner.",
+  "A three-level SLA ladder fires before the client notices a slip.",
+  "Single-shot or phased, each phase tracked as its own milestone.",
+];
 
 export default function Hero() {
+  const stages = featuredProject.flow;
+  const last = stages.length - 1;
+
   return (
     <section id="top" className="relative overflow-hidden">
-      {/* Decorative background */}
-      <div className="pointer-events-none absolute inset-0 bg-grid" />
-      <div className="glow animate-floaty pointer-events-none absolute -right-24 -top-24 h-96 w-96 opacity-40" />
-      <div className="glow pointer-events-none absolute -left-32 top-40 h-80 w-80 opacity-20" />
+      <div className="bg-grid pointer-events-none absolute inset-0 opacity-70" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-6 pb-16 pt-16 md:grid-cols-[1.35fr_1fr] md:pt-24">
-        {/* Text */}
-        <div className="flex flex-col items-start gap-6">
-          <Reveal>
-            <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-sm">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-                </span>
-                Open to Full-Time Roles
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-3.5 py-1.5 text-xs font-semibold text-foreground shadow-sm">
-                <span className="h-2 w-2 rounded-full accent-bar" />
-                Available for Freelance
-              </span>
-              <a
-                href="#ai"
-                className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3.5 py-1.5 text-xs font-semibold text-accent shadow-sm transition-colors hover:bg-accent/20"
-              >
-                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6L12 3Z" />
-                </svg>
-                AI Tools Certified — be10x
-              </a>
-            </div>
-          </Reveal>
+      <div className="relative mx-auto max-w-6xl px-6">
+        {/* Record header — who, what, where, on one ruled line. */}
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-line pb-3 pt-10 text-sm">
+          <span className="font-display font-bold tracking-tight text-foreground">
+            {profile.name}
+          </span>
+          <span aria-hidden className="text-line">
+            /
+          </span>
+          <span className="text-muted">{profile.title}</span>
+          <span aria-hidden className="text-line">
+            /
+          </span>
+          <span className="text-muted">Chennai, India</span>
+        </div>
 
-          <Reveal delay={80}>
-            <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-6xl">
-              Bharath
+        <div className="grid gap-12 pt-10 md:grid-cols-[1.5fr_1fr] md:gap-14 md:pt-14">
+          <div>
+            <h1 className="font-display text-[2.75rem] font-extrabold leading-[0.95] tracking-[-0.035em] text-foreground sm:text-[4.25rem]">
+              I get stalled
               <br />
-              <span className="text-gradient">Sathiskumar</span>
+              rollouts live.
             </h1>
-          </Reveal>
 
-          <Reveal delay={140}>
-            <p className="font-display text-lg font-semibold text-foreground/80">
-              {profile.title}
-            </p>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <p className="max-w-xl text-base leading-7 text-muted">
+            <p className="mt-7 max-w-[52ch] text-lg leading-relaxed text-muted">
               {profile.tagline}
             </p>
-          </Reveal>
 
-          <Reveal delay={260}>
-            <div className="flex flex-wrap gap-3 pt-1">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#contact"
-                className="rounded-full accent-bar px-6 py-3 text-sm font-semibold text-on-accent shadow-lg shadow-accent/20 transition-transform hover:-translate-y-0.5"
+                data-track-event="cta_click"
+                data-track-label="Hire / Work With Me (hero)"
+                className="accent-bar rounded-sm px-6 py-3 font-display text-sm font-bold tracking-tight text-on-accent transition-colors hover:brightness-110"
               >
-                Hire / Work With Me
+                Hire / work with me
               </a>
               <a
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-line bg-card px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
+                data-track-event="social_click"
+                data-track-label="LinkedIn (hero)"
+                className="rounded-sm border border-line bg-card px-6 py-3 font-display text-sm font-bold tracking-tight text-foreground transition-colors hover:border-accent hover:text-accent"
               >
                 LinkedIn
               </a>
             </div>
-          </Reveal>
 
-          <Reveal delay={320}>
-            <div className="pt-2">
-              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">
-                Working across
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {[
-                  "CRM",
-                  "ERP",
-                  "LeadSquared",
-                  "Power BI",
-                  "Jira",
-                  "Postman",
-                  "Claude AI",
-                ].map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-lg border border-line bg-card px-3 py-1 text-xs font-medium text-muted"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
+            <div className="mt-8 flex flex-wrap items-center gap-2.5">
+              <span className="stamp">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="accent-bar absolute inline-flex h-full w-full rounded-full opacity-60" />
+                  <span className="accent-bar relative inline-flex h-1.5 w-1.5 rounded-full" />
+                </span>
+                Open to full-time roles
+              </span>
+              <span className="stamp">Available for freelance</span>
+              <a
+                href="#ai"
+                className="stamp transition-colors hover:bg-accent hover:text-on-accent"
+              >
+                AI tools certified, be10x
+              </a>
             </div>
-          </Reveal>
-        </div>
+          </div>
 
-        {/* Photo */}
-        <Reveal delay={160} className="flex justify-center md:justify-end">
-          <div className="relative">
-            <div className="aura animate-floaty absolute -inset-8 opacity-60" />
-            <TiltCard max={8} className="rounded-[1.9rem]">
-              {/* rotating gradient ring */}
-              <div className="ring-conic absolute -inset-[3px] rounded-[1.9rem] opacity-90 blur-[0.5px]" />
-              <div className="relative h-64 w-64 overflow-hidden rounded-[1.75rem] border-2 border-background shadow-2xl sm:h-72 sm:w-72">
+          {/* The photograph, mounted: flat, hairline edge, no ring or tilt. */}
+          <div className="md:justify-self-end">
+            <figure className="w-full max-w-[17rem]">
+              <div className="relative aspect-square overflow-hidden rounded-sm border border-line bg-card">
                 <Image
                   src={profile.photo}
                   alt={profile.name}
                   fill
                   priority
-                  sizes="288px"
+                  sizes="272px"
                   className="object-cover"
                 />
               </div>
-              {/* techy status chip */}
-              <span className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full border border-line bg-card px-3.5 py-1.5 font-mono text-[0.7rem] font-medium text-foreground shadow-sm">
-                <span className="mr-1.5 text-accent">●</span>
-                available_for_projects
-              </span>
-            </TiltCard>
-          </div>
-        </Reveal>
-      </div>
-
-      {/* Highlights strip */}
-      <Reveal delay={120}>
-        <div className="relative mx-auto max-w-6xl px-6 pb-16">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {highlights.map((item) => (
-              <TiltCard key={item.label} className="card px-5 py-5 text-center">
-                <div className="font-display text-2xl font-bold text-gradient">
-                  {item.value}
-                </div>
-                <div className="mt-1 text-xs font-medium text-muted">
-                  {item.label}
-                </div>
-              </TiltCard>
-            ))}
+              <figcaption className="mt-2.5 flex items-baseline justify-between border-t border-line pt-2 text-xs text-muted">
+                <span>{profile.name}</span>
+                <span className="tnum">MBA-IB</span>
+              </figcaption>
+            </figure>
           </div>
         </div>
-      </Reveal>
+
+        {/* ---- The go-live rail: the page's single motion moment ---- */}
+        <div className="mt-16 border-t border-line pt-8 sm:mt-20">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 className="font-display text-sm font-bold tracking-tight text-foreground">
+              How a rollout I run reaches go-live
+            </h2>
+            <p className="text-sm text-muted">
+              The onboarding automation I designed, stage by stage
+            </p>
+          </div>
+
+          <div className="rail mt-8">
+            {/* The line only spans the single-row layout — below lg the
+                stages wrap, and a continuous line would then lie. */}
+            <span aria-hidden className="rail-line hidden lg:block" />
+            <span aria-hidden className="rail-progress hidden lg:block" />
+
+            <ol className="grid grid-cols-2 gap-x-5 gap-y-7 sm:grid-cols-3 lg:grid-cols-5">
+              {stages.map((stage, i) => (
+                <li key={stage.title}>
+                  <span
+                    className="rail-mark"
+                    data-final={i === last ? "true" : undefined}
+                    style={{ ["--at" as string]: `${i / last}` }}
+                  />
+                  <h3 className="mt-3.5 font-display text-sm font-bold tracking-tight text-foreground">
+                    {stage.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-snug text-muted">
+                    {glosses[i]}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+
+        {/* ---- Facts, as a ruled row of a record ---- */}
+        <dl className="mt-14 grid grid-cols-2 border-t border-line sm:grid-cols-4">
+          {highlights.map((item) => (
+            <div
+              key={item.label}
+              className="border-b border-line px-1 py-5 sm:border-b-0 sm:border-r sm:last:border-r-0 sm:pr-5 sm:[&:not(:first-child)]:pl-5"
+            >
+              <dt className="tnum text-2xl font-bold leading-none tracking-tight text-accent">
+                {item.value}
+              </dt>
+              <dd className="mt-2 text-sm leading-snug text-muted">
+                {item.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   );
 }
