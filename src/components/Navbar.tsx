@@ -52,7 +52,7 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
             button don't fit before that — lg wraps the logo, same failure
             mode this had at md before Blog/Samples were added back in.
             Below xl: hamburger. */}
-        <ul className="hidden gap-5 text-sm text-muted xl:flex xl:gap-6">
+        <ul className="hidden gap-5 font-display text-sm font-medium text-muted xl:flex xl:gap-6">
           {links.map((link) => (
             <li key={link.href}>
               <a
@@ -90,7 +90,7 @@ export default function Navbar({ extra }: { extra?: React.ReactNode } = {}) {
       </nav>
 
       {open && (
-        <ul className="flex flex-col border-t border-line bg-background px-6 py-2 text-sm text-muted xl:hidden">
+        <ul className="flex flex-col border-t border-line bg-background px-6 py-2 font-display text-sm font-medium text-muted xl:hidden">
           {links.map((link) => (
             <li key={link.href}>
               <a

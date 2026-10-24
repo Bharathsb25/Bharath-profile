@@ -65,7 +65,7 @@ export default function CertificateGallery({
             {/* White mat — the certificates are white artwork, so they need to
                 stay light even in dark mode. */}
             <span
-              className={`relative block aspect-[1136/762] overflow-hidden rounded-lg bg-white ring-1 ring-line ${
+              className={`relative block aspect-[1136/762] overflow-hidden rounded-sm bg-white ring-1 ring-line ${
                 solo ? "w-full shrink-0 sm:w-[58%]" : "w-full"
               }`}
             >
@@ -129,7 +129,7 @@ export default function CertificateGallery({
                   {cert.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-md border border-accent/30 bg-accent/10 px-2 py-1 text-[11px] font-medium text-accent"
+                      className="rounded-sm border border-accent/30 bg-accent/10 px-2 py-1 text-[11px] font-medium text-accent"
                     >
                       {skill}
                     </span>
@@ -138,7 +138,7 @@ export default function CertificateGallery({
               )}
 
               <span className="mt-3 block px-1 text-xs font-semibold text-accent">
-                View certificate →
+                View certificate
               </span>
             </span>
           </button>

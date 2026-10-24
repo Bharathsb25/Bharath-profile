@@ -34,27 +34,29 @@ export default function Hero() {
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-70" />
 
       <div className="relative mx-auto max-w-6xl px-6">
-        {/* Record header — who, what, where, on one ruled line. */}
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-line pb-3 pt-10 text-sm">
-          <span className="font-display font-bold tracking-tight text-foreground">
-            {profile.name}
-          </span>
-          <span aria-hidden className="text-line">
+        {/* Record header — what and where. The name sits in the h1 below,
+            and in the masthead above; a third copy here would just be
+            repetition. Stacked on small screens so no separator dangles
+            at the end of a wrapped line. */}
+        <div className="flex flex-col items-start gap-y-0.5 border-b border-line pb-3 pt-10 text-sm text-muted sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-3">
+          <span>{profile.title}</span>
+          <span aria-hidden className="hidden text-line sm:inline">
             /
           </span>
-          <span className="text-muted">{profile.title}</span>
-          <span aria-hidden className="text-line">
-            /
-          </span>
-          <span className="text-muted">Chennai, India</span>
+          <span>Chennai, India</span>
         </div>
 
         <div className="grid gap-12 pt-10 md:grid-cols-[1.5fr_1fr] md:gap-14 md:pt-14">
           <div>
-            <h1 className="font-display text-[2.75rem] font-extrabold leading-[0.95] tracking-[-0.035em] text-foreground sm:text-[4.25rem]">
-              I get stalled
-              <br />
-              rollouts live.
+            <h1 className="text-foreground">
+              <span className="block font-display text-sm font-bold tracking-tight">
+                {profile.name}
+              </span>
+              <span className="mt-3 block font-display text-[2.75rem] font-extrabold leading-[0.95] tracking-[-0.035em] sm:text-[4.25rem]">
+                I get stalled
+                <br />
+                rollouts live.
+              </span>
             </h1>
 
             <p className="mt-7 max-w-[52ch] text-lg leading-relaxed text-muted">
@@ -102,7 +104,10 @@ export default function Hero() {
 
           {/* The photograph, mounted: flat, hairline edge, no ring or tilt. */}
           <div className="md:justify-self-end">
-            <figure className="w-full max-w-[17rem]">
+            {/* Explicit width, not w-full: justify-self-end shrinks the
+                grid item to its content, which collapses a percentage
+                width to nothing. */}
+            <figure className="w-[17rem] max-w-full">
               <div className="relative aspect-square overflow-hidden rounded-sm border border-line bg-card">
                 <Image
                   src={profile.photo}

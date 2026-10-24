@@ -24,7 +24,7 @@ than sprayed across decoration.
 | `--foreground` | `#211D17` | `#ECE5D7` | warm ink                      |
 | `--card`       | `#F6F3EB` | `#201C16` | a raised sheet                |
 | `--muted`      | `#5E564A` | `#A79E8D` | secondary ink                 |
-| `--border`     | `#C9C1B0` | `#3A342A` | hairline rule                 |
+| `--border`     | `#B5AB96` | `#4D4539` | hairline rule                 |
 | `--accent`     | `#93261F` | `#D9655A` | oxblood stamp                 |
 | `--highlight`  | `#2E4A63` | `#9CBAD6` | the "second pen", used rarely |
 

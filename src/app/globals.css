@@ -21,7 +21,7 @@
   --foreground: #211d17;
   --card: #f6f3eb;
   --muted: #5e564a;
-  --border: #c9c1b0;
+  --border: #b5ab96;
   --ink: #211d17;
 
   --accent: #93261f;
@@ -56,7 +56,7 @@
     --foreground: #ece5d7;
     --card: #201c16;
     --muted: #a79e8d;
-    --border: #3a342a;
+    --border: #4d4539;
     --accent: #d9655a;
     --highlight: #9cbad6;
     --scrim: color-mix(in srgb, #0a0906 72%, transparent);
@@ -70,7 +70,7 @@
   --foreground: #211d17;
   --card: #f6f3eb;
   --muted: #5e564a;
-  --border: #c9c1b0;
+  --border: #b5ab96;
   --accent: #93261f;
   --highlight: #2e4a63;
   --scrim: color-mix(in srgb, #211d17 62%, transparent);
@@ -82,7 +82,7 @@
   --foreground: #ece5d7;
   --card: #201c16;
   --muted: #a79e8d;
-  --border: #3a342a;
+  --border: #4d4539;
   --accent: #d9655a;
   --highlight: #9cbad6;
   --scrim: color-mix(in srgb, #0a0906 72%, transparent);
