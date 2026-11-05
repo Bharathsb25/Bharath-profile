@@ -1,4 +1,4 @@
-import { profile } from "@/data/profile";
+import { profile, blogUrl } from "@/data/profile";
 import CopyEmailButton from "@/components/CopyEmailButton";
 
 export default function Footer() {
@@ -45,7 +45,17 @@ export default function Footer() {
             IPO Analysis
           </a>
           <a
-            href="/#blog"
+            href="/certificates"
+            data-track-event="nav_click"
+            data-track-label="Certificates (footer)"
+            className="transition-colors hover:text-accent"
+          >
+            Certificates
+          </a>
+          <a
+            href={blogUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             data-track-event="nav_click"
             data-track-label="Blog (footer)"
             className="transition-colors hover:text-accent"

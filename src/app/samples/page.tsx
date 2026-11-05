@@ -29,7 +29,7 @@ export default function SamplesPage() {
       <Navbar />
       <main className="flex-1">
         <section className="relative overflow-hidden">
-          <div className="bg-grid pointer-events-none absolute inset-0" />
+          <div className="streaks" />
           <div className="glow pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 opacity-20" />
 
           <div className="relative mx-auto max-w-5xl px-6 pb-12 pt-16 sm:pt-20">

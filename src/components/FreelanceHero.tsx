@@ -4,7 +4,7 @@ import { freelance } from "@/data/profile";
 export default function FreelanceHero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="bg-grid pointer-events-none absolute inset-0" />
+      <div className="streaks" />
       <div className="glow pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 opacity-20 animate-floaty" />
 
       <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 sm:pt-20">

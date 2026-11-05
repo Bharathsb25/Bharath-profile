@@ -477,6 +477,17 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
+    name: "Foodpreneur Growth Summit 2026",
+    issuer: "Mypreneur",
+    date: "Oct 2026",
+    image: "/certificates/foodpreneur-growth-summit-2026.jpg",
+    width: 1491,
+    height: 1055,
+    detail:
+      "Certificate of Participation — two-day summit on learning, networking and entrepreneurial growth in the food business community, IITM Research Park, Chennai.",
+    skills: ["Entrepreneurship", "Networking", "Food business growth"],
+  },
+  {
     name: "AI Tools & ChatGPT Workshop",
     issuer: "be10x",
     date: "Aug 2026",

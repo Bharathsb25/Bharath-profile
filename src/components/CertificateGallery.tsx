@@ -7,6 +7,10 @@ import { certifications, type Certification } from "@/data/profile";
 // Only certificates with a scan/screenshot get a tile.
 const defaultCertificates = certifications.filter((cert) => cert.image);
 
+/** URL fragment for a tile, so other pages can deep-link (/certificates#power-bi). */
+const anchorFor = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 export default function CertificateGallery({
   items,
 }: {
@@ -55,9 +59,10 @@ export default function CertificateGallery({
         {certificates.map((cert, i) => (
           <button
             key={cert.name}
+            id={anchorFor(cert.name)}
             type="button"
             onClick={() => setOpenIndex(i)}
-            className={`card card-hover group p-3 text-left ${
+            className={`card card-hover group scroll-mt-28 p-3 text-left ${
               solo ? "flex w-full flex-col gap-5 sm:flex-row sm:p-4" : ""
             }`}
             aria-label={`View ${cert.name} certificate`}

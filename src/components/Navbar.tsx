@@ -4,13 +4,12 @@ import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
-  { href: "/#about", label: "About" },
-  { href: "/#services", label: "Services" },
+  { href: "/#work", label: "Case studies" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/lifecycle", label: "Lifecycle" },
+  { href: "/certificates", label: "Certificates" },
   { href: "/services", label: "For Business" },
   { href: "/freelance", label: "Hire Me" },
-  { href: "/#experience", label: "Experience" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/#blog", label: "Blog" },
   { href: "/samples", label: "IPO Analysis" },
   { href: "/#contact", label: "Contact" },
 ];

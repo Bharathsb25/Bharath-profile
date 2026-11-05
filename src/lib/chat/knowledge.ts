@@ -14,6 +14,7 @@ import {
   experience,
   education,
   certifications,
+  blogUrl,
 } from "../../data/profile.ts";
 import { businessCopy } from "../../data/businessCopy.ts";
 import type { BotReply, ChatLink, Intent } from "./engine.ts";
@@ -23,13 +24,13 @@ const firstName = profile.name.split(" ")[0];
 
 const L = {
   home: { label: "Home", href: "/#top" },
-  about: { label: "About", href: "/#about" },
-  services: { label: "Services", href: "/#services" },
+  about: { label: "About", href: "/#impact" },
+  services: { label: "Skills & services", href: "/#skills" },
   skills: { label: "Skills", href: "/#skills" },
   experience: { label: "Experience", href: "/#experience" },
-  projects: { label: "Case study", href: "/#projects" },
-  education: { label: "Education & certs", href: "/#education" },
-  blog: { label: "Blog", href: "/#blog" },
+  projects: { label: "Case studies", href: "/#work" },
+  education: { label: "Education & certs", href: "/certificates" },
+  blog: { label: "Blog", href: blogUrl },
   contact: { label: "Contact form", href: "/#contact" },
   freelance: { label: "Freelance packages", href: "/freelance#packages" },
   freelanceFaq: { label: "Freelance FAQ", href: "/freelance#faq" },

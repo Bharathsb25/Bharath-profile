@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------
-   Palette: 1 primary (teal, --accent), 1 secondary highlight used
-   sparingly for badges/callouts only (amber, --highlight), and one
-   neutral scale (background/card/border/muted/foreground).
+   Palette ("Aurora", matching the static homepage in public/redesign):
+   1 primary (violet, --accent), 1 secondary (cyan, --accent-2) that only
+   ever appears paired with the primary in gradients, 1 highlight for
+   badges/callouts (cyan, --highlight), and one cool ink neutral scale
+   (background/card/border/muted/foreground).
 
    Every accent value here is tuned per-theme so it clears WCAG AA
    in BOTH directions at once: as small text on the page background,
@@ -13,20 +15,21 @@
    correct-for-the-theme foreground without a second literal color.
 ---------------------------------------------------------------- */
 :root {
-  --background: #fbfcfd;
-  --foreground: #0b1220;
+  --background: #fbfaff;
+  --foreground: #0d0e1a;
   --card: #ffffff;
-  --muted: #5b6472;
-  --border: #e6e9ef;
-  --ink: #0b1220;
+  --muted: #5b5f73;
+  --border: #e7e5f2;
+  --ink: #0d0e1a;
 
-  --accent: #0f766e;
-  --highlight: #b45309;
+  --accent: #6d28d9;
+  --accent-2: #0891b2;
+  --highlight: #0e7490;
   --on-accent: var(--background);
   --scrim: color-mix(in srgb, black 60%, transparent);
   --scrim-strong: color-mix(in srgb, black 80%, transparent);
 
-  --shadow-card: 0 14px 36px -26px rgba(15, 40, 60, 0.45);
+  --shadow-card: 0 14px 36px -26px rgba(40, 20, 90, 0.4);
 }
 
 @theme inline {
@@ -37,6 +40,7 @@
   --color-line: var(--border);
   --color-ink: var(--ink);
   --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
   --color-highlight: var(--highlight);
   --color-on-accent: var(--on-accent);
   --font-sans: var(--font-inter);
@@ -45,38 +49,41 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #070b14;
-    --foreground: #eef2f8;
-    --card: #0e1524;
-    --muted: #93a0b4;
-    --border: #1b2436;
-    --accent: #2dd4bf;
-    --highlight: #fbbf24;
-    --shadow-card: 0 16px 44px -24px rgba(0, 0, 0, 0.7);
+    --background: #0a0b14;
+    --foreground: #e8e9f3;
+    --card: #12131f;
+    --muted: #a9abc4;
+    --border: #1f2133;
+    --accent: #a78bfa;
+    --accent-2: #22d3ee;
+    --highlight: #67e8f9;
+    --shadow-card: 0 16px 44px -24px rgba(0, 0, 0, 0.75);
   }
 }
 
 /* Manual theme toggle — data-theme overrides the OS preference above. */
 :root[data-theme="light"] {
-  --background: #fbfcfd;
-  --foreground: #0b1220;
+  --background: #fbfaff;
+  --foreground: #0d0e1a;
   --card: #ffffff;
-  --muted: #5b6472;
-  --border: #e6e9ef;
-  --accent: #0f766e;
-  --highlight: #b45309;
-  --shadow-card: 0 14px 36px -26px rgba(15, 40, 60, 0.45);
+  --muted: #5b5f73;
+  --border: #e7e5f2;
+  --accent: #6d28d9;
+  --accent-2: #0891b2;
+  --highlight: #0e7490;
+  --shadow-card: 0 14px 36px -26px rgba(40, 20, 90, 0.4);
 }
 
 :root[data-theme="dark"] {
-  --background: #070b14;
-  --foreground: #eef2f8;
-  --card: #0e1524;
-  --muted: #93a0b4;
-  --border: #1b2436;
-  --accent: #2dd4bf;
-  --highlight: #fbbf24;
-  --shadow-card: 0 16px 44px -24px rgba(0, 0, 0, 0.7);
+  --background: #0a0b14;
+  --foreground: #e8e9f3;
+  --card: #12131f;
+  --muted: #a9abc4;
+  --border: #1f2133;
+  --accent: #a78bfa;
+  --accent-2: #22d3ee;
+  --highlight: #67e8f9;
+  --shadow-card: 0 16px 44px -24px rgba(0, 0, 0, 0.75);
 }
 
 /* Smooth the transition when the user flips the toggle. */
@@ -88,8 +95,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Faint violet/cyan aurora pinned behind every page, as on the homepage. */
 body {
-  background: var(--background);
+  background:
+    radial-gradient(60vw 50vh at 0% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%),
+    radial-gradient(50vw 45vh at 100% 100%, color-mix(in srgb, var(--accent-2) 7%, transparent), transparent 70%),
+    var(--background);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -112,13 +124,20 @@ html[lang="ta"] .font-display {
 }
 
 /* ---- Accent helpers ---- */
-/* Solid, not a multi-hue gradient — one accent, used consistently. */
+/* Violet → cyan, the homepage's headline treatment. The solid color is the
+   fallback where background-clip:text is unsupported. */
 .text-gradient {
   color: var(--accent);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .accent-bar {
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
 }
 
 /* ---- Decorative backgrounds ---- */
@@ -155,6 +174,75 @@ html[lang="ta"] .font-display {
   );
 }
 
+/* Diagonal light streaks behind a hero (after Vimcal): a wide soft band of
+   violet into magenta, with a thin bright core line riding along it. */
+@keyframes streak-drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 3% -2%;
+  }
+}
+
+.streaks {
+  --streak-hot: color-mix(in srgb, var(--accent) 45%, #ec4899);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.streaks::before,
+.streaks::after {
+  content: "";
+  position: absolute;
+  left: -25%;
+  width: 150%;
+  border-radius: 50%;
+  transform: rotate(-16deg);
+  animation: streak-drift 18s ease-in-out infinite;
+}
+
+.streaks::before {
+  top: 48%;
+  height: 34%;
+  background: linear-gradient(
+    90deg,
+    transparent 8%,
+    color-mix(in srgb, var(--accent) 38%, transparent) 38%,
+    color-mix(in srgb, var(--streak-hot) 42%, transparent) 62%,
+    transparent 92%
+  );
+  filter: blur(36px);
+}
+
+.streaks::after {
+  top: 60%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 12%,
+    color-mix(in srgb, var(--accent) 85%, white) 45%,
+    var(--streak-hot) 65%,
+    transparent 90%
+  );
+  filter: blur(1.5px);
+  box-shadow: 0 0 18px 2px color-mix(in srgb, var(--streak-hot) 45%, transparent);
+}
+
+:root[data-theme="light"] .streaks {
+  opacity: 0.45;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .streaks {
+    opacity: 0.45;
+  }
+}
+
 /* Modal / lightbox backdrops — one dark scrim, theme-independent by design
    (an overlay behind a light card should always be black-ish, in both themes). */
 .scrim {
@@ -174,8 +262,8 @@ html[lang="ta"] .font-display {
   );
 }
 
-/* Rotating conic gradient — a techy ring behind the portrait. Tonal, not
-   multi-hue: it sweeps the single accent against transparent. */
+/* Rotating conic gradient — a techy ring behind the portrait, sweeping
+   violet into cyan and back. */
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -186,7 +274,8 @@ html[lang="ta"] .font-display {
   background: conic-gradient(
     from 0deg,
     var(--accent),
-    color-mix(in srgb, var(--accent) 25%, transparent),
+    color-mix(in srgb, var(--accent-2) 25%, transparent),
+    var(--accent-2),
     var(--accent)
   );
   animation: spin 9s linear infinite;
@@ -343,6 +432,10 @@ html[lang="ta"] .font-display {
     transform: none;
   }
   .ring-conic {
+    animation: none;
+  }
+  .streaks::before,
+  .streaks::after {
     animation: none;
   }
   .marquee-track {
