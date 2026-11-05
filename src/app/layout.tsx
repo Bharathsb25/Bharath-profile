@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Sora, Inter, Noto_Sans_Tamil } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
 import AnalyticsProvider from "@/components/analytics/AnalyticsProvider";
 import ChatWidget from "@/components/chat/ChatWidget";
@@ -143,6 +144,8 @@ export default function RootLayout({
         <Analytics />
         <AnalyticsProvider />
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
+        {/* Multilingual welcome splash, shared with the static homepage. */}
+        <Script src="/redesign/welcome.js" strategy="beforeInteractive" />
       </body>
     </html>
   );
