@@ -22,11 +22,11 @@
   // c1/c2 = the card's gradient for that language (dark enough for white text).
   var WORDS = [
     { text: "Welcome", lang: "en", name: "English", ms: 800, c1: "#6d28d9", c2: "#0e7490" },
-    { text: "வணக்கம்", lang: "ta", name: "Tamil", ms: 1200, c1: "#c2410c", c2: "#be185d" },
-    { text: "स्वागत है", lang: "hi", name: "Hindi", ms: 500, c1: "#be185d", c2: "#6d28d9" },
+    { text: "வணக்கம்", lang: "ta", name: "Tamil", ms: 1200, c1: "#4338ca", c2: "#a21caf" },
+    { text: "स्वागत है", lang: "hi", name: "Hindi", ms: 500, c1: "#a21caf", c2: "#1d4ed8" },
     { text: "స్వాగతం", lang: "te", name: "Telugu", ms: 500, c1: "#047857", c2: "#0e7490" },
     { text: "ಸ್ವಾಗತ", lang: "kn", name: "Kannada", ms: 500, c1: "#1d4ed8", c2: "#7e22ce" },
-    { text: "സ്വാഗതം", lang: "ml", name: "Malayalam", ms: 500, c1: "#a21caf", c2: "#c2410c" },
+    { text: "സ്വാഗതം", lang: "ml", name: "Malayalam", ms: 500, c1: "#7e22ce", c2: "#0f766e" },
   ];
   var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var INDIC = "'Noto Sans Tamil','Noto Sans Devanagari','Noto Sans Telugu','Noto Sans Kannada','Noto Sans Malayalam','Nirmala UI','Latha','Mangal',";
