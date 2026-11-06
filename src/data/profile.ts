@@ -5,7 +5,6 @@ export const profile = {
     "I help SaaS and enterprise teams turn complex product rollouts into smooth, on-time deliveries — and I use AI to strip the busywork out of the workflows that slow businesses down.",
   availability:
     "Open to full-time opportunities and available for freelance / contract projects.",
-  photo: "/profile.jpg",
   // Web3Forms access key. Public by design (used in client-side forms).
   // Rotate at https://web3forms.com if you start receiving spam.
   web3formsKey: "4eb5794c-8a0c-457f-a698-026a90552d07",

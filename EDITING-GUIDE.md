@@ -34,20 +34,7 @@ tagline: "I help SaaS and enterprise teams turn complex CRM rollouts ...",
 
 ---
 
-## 2. Replace your photo
-
-Put your new photo in the `public` folder and name it exactly:
-
-```
-public/profile.jpg
-```
-
-(Replace the existing file with the same name.) Square photos (e.g. 1000×1000)
-look best.
-
----
-
-## 3. Replace your CV / resume (the "Download CV" button)
+## 2. Replace your CV / resume (the "Download CV" button)
 
 Put your new PDF in the `public` folder and name it exactly:
 
@@ -72,7 +59,7 @@ This overwrites `public/Bharath-Sathiskumar-CV.pdf` with your edited version.
 
 ---
 
-## 4. Change the browser tab logo ("B")
+## 3. Change the browser tab logo ("B")
 
 Edit this file:
 
@@ -85,7 +72,7 @@ You can change the letter, colors, or shape. To change the letter, find the
 
 ---
 
-## 5. See your changes
+## 4. See your changes
 
 **On your computer (preview before publishing):**
 

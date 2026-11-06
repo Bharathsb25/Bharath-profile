@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { profile, highlights } from "@/data/profile";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
@@ -11,7 +10,7 @@ export default function Hero() {
       <div className="glow animate-floaty pointer-events-none absolute -right-24 -top-24 h-96 w-96 opacity-40" />
       <div className="glow pointer-events-none absolute -left-32 top-40 h-80 w-80 opacity-20" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-6 pb-16 pt-16 md:grid-cols-[1.35fr_1fr] md:pt-24">
+      <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-16 md:pt-24">
         {/* Text */}
         <div className="flex flex-col items-start gap-6">
           <Reveal>
@@ -104,32 +103,6 @@ export default function Hero() {
             </div>
           </Reveal>
         </div>
-
-        {/* Photo */}
-        <Reveal delay={160} className="flex justify-center md:justify-end">
-          <div className="relative">
-            <div className="aura animate-floaty absolute -inset-8 opacity-60" />
-            <TiltCard max={8} className="rounded-[1.9rem]">
-              {/* rotating gradient ring */}
-              <div className="ring-conic absolute -inset-[3px] rounded-[1.9rem] opacity-90 blur-[0.5px]" />
-              <div className="relative h-64 w-64 overflow-hidden rounded-[1.75rem] border-2 border-background shadow-2xl sm:h-72 sm:w-72">
-                <Image
-                  src={profile.photo}
-                  alt={profile.name}
-                  fill
-                  priority
-                  sizes="288px"
-                  className="object-cover"
-                />
-              </div>
-              {/* techy status chip */}
-              <span className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full border border-line bg-card px-3.5 py-1.5 font-mono text-[0.7rem] font-medium text-foreground shadow-sm">
-                <span className="mr-1.5 text-accent">●</span>
-                available_for_projects
-              </span>
-            </TiltCard>
-          </div>
-        </Reveal>
       </div>
 
       {/* Highlights strip */}
